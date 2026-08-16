@@ -1,0 +1,1718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>PRO HOOPS SIMULATOR 2026</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { background-color: #0b0f19; color: #e2e8f0; font-family: 'Segoe UI', sans-serif; -webkit-tap-highlight-color: transparent; }
+        /* ── TOUCH TARGETS: minimum 44px so thumbs can hit them ─────────── */
+        .nav-btn { min-height: 44px; min-width: 44px; touch-action: manipulation; }
+        button, .btn, select, input[type="range"] { touch-action: manipulation; }
+        .asset-pill { min-height: 38px; display: inline-flex; align-items: center; touch-action: manipulation; cursor: pointer; }
+        .player-link { touch-action: manipulation; }
+        /* ── NAV ─────────────────────────────────────────────────────────── */
+        .topnav { background-color: #0f172a; border-bottom: 1px solid #1f2937; position: sticky; top: 0; z-index: 400; }
+        .topnav-inner { display: flex; align-items: center; gap: 18px; padding: 10px 20px; flex-wrap: wrap; }
+        .topnav-brand { white-space: nowrap; }
+        .topnav-links { display: flex; flex-wrap: wrap; gap: 4px; flex: 1 1 auto; }
+        .topnav-status { white-space: nowrap; margin-left: auto; }
+        .nav-btn { text-align: center; background: none; border: none; border-bottom: 3px solid transparent; color: #9db4d9; padding: 10px 12px; border-radius: 6px 6px 0 0; font-weight: 600; font-size: 0.86rem; white-space: nowrap; transition: background-color .15s, color .15s; }
+        .nav-btn:hover { background-color: #1e293b; color: #cbd5e1; }
+        .nav-btn.active { background-color: #1e293b; color: #38bdf8; border-bottom-color: #38bdf8; }
+        @media (max-width: 992px) { .topnav-status { margin-left: 0; } }
+        /* ── MOBILE NAV: scrollable pill row ─────────────────────────────── */
+        @media (max-width: 767px) {
+            .topnav-inner { padding: 6px 10px; gap: 6px; }
+            .topnav-links { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 2px;
+                            -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 2px; }
+            .topnav-links::-webkit-scrollbar { display: none; }
+            .nav-btn { font-size: 0.72rem; padding: 8px 9px; flex-shrink: 0; }
+            .topnav-brand { font-size: 0.8rem; }
+            .dashboard-card { padding: 14px !important; margin-bottom: 14px !important; }
+            .section-title { font-size: 0.85rem !important; }
+            /* Bigger touch targets on mobile */
+            .btn { min-height: 42px; }
+            .btn-sm { min-height: 36px; }
+            /* Modal fills screen on mobile */
+            .modal-custom { width: 96% !important; max-width: none !important; max-height: 92vh !important;
+                            top: 4% !important; transform: translateX(-50%) !important; left: 50% !important; }
+            .player-modal { width: 96% !important; }
+            /* Tables scroll horizontally */
+            .table-dark-custom { font-size: 0.75rem; }
+            div[style*="overflow-y:auto"] { -webkit-overflow-scrolling: touch; }
+            /* Cap bar font */
+            .cap-val { font-size: 0.9rem !important; }
+            /* Roster sliders: bigger touch area */
+            input[type=range] { height: 28px; }
+            /* Grid columns collapse to 1 on very small screens */
+            .col-md-6, .col-md-4, .col-md-3 { padding-left: 8px; padding-right: 8px; }
+            /* Trade builder pills wrap nicely */
+            .asset-pill { font-size: 0.75rem; }
+            /* Lineup slot-select stays usable */
+            .pos-slot-select { font-size: 0.78rem; }
+        }
+        @media (max-width: 480px) {
+            body { font-size: 0.85rem; }
+            h2.section-title { font-size: 0.9rem !important; }
+            .ovr-badge { font-size: 0.65rem !important; }
+            .nav-btn { padding: 7px 7px; font-size: 0.68rem; }
+        }
+        /* ── SCROLLBARS ───────────────────────────────────────────────────── */
+        * { scrollbar-width: thin; scrollbar-color: #334155 #0f172a; }
+        *::-webkit-scrollbar { width: 9px; height: 9px; }
+        *::-webkit-scrollbar-track { background: transparent; }
+        *::-webkit-scrollbar-thumb { background-color: #334155; border-radius: 20px; border: 2px solid transparent; background-clip: padding-box; }
+        *::-webkit-scrollbar-thumb:hover { background-color: #5d7599; background-clip: padding-box; }
+        .smooth-scroll { scroll-behavior: smooth; }
+        .dashboard-card { background-color: #111827; border: 1px solid #1f2937; border-radius: 12px; padding: 18px; margin-bottom: 18px; }
+        .section-title { color: #38bdf8; font-family: monospace; letter-spacing: 1px; text-transform: uppercase; font-weight: bold; }
+
+        /* UI OVERHAUL: previously every "stat box" sub-panel used an inline
+           background (#212a3d) close enough to the page/card backgrounds that
+           it read as a smear rather than a distinct surface. This gives those
+           sub-panels their own identity (accent-tinted, left-bordered) so the
+           eye can actually tell panels apart. */
+        .stat-subpanel { background: linear-gradient(135deg, #16213a 0%, #131c2e 100%); border: 1px solid #26324a; border-left: 3px solid #38bdf8; border-radius: 8px; padding: 10px 12px; }
+
+        /* UI OVERHAUL: 2K-style click-to-drill menu, replacing walls of
+           always-expanded buttons + raw JSON dumps. Rows are collapsed by
+           default; clicking one opens just that row's result. */
+        /* ---- "More Tools" accordion grids (GM/Media/Analytics/Franchise/etc) ----
+           Converted from a single vertical list into a responsive card grid,
+           per the brief -- purely a CSS reflow, so the existing expand/collapse
+           JS and row markup are untouched. */
+        .hub-menu { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 8px;
+            border: none; border-radius: 0; overflow: visible; align-items: start; }
+        .hub-menu-row { border-bottom: none; background: linear-gradient(160deg,#101a30,#0d1526);
+            border: 1px solid #1d2c4d; border-radius: 10px; overflow: hidden; }
+        .hub-menu-row:last-child { border-bottom: none; }
+        .hub-menu-row-head { display: flex; justify-content: space-between; align-items: center; padding: 12px 14px;
+            cursor: pointer; background: transparent; transition: background 0.1s; user-select: none;
+            -webkit-tap-highlight-color: transparent; font-family:'Rajdhani',sans-serif; font-weight:700;
+            letter-spacing:0.3px; }
+        .hub-menu-row-head:hover { background: rgba(0,229,255,0.06); }
+        .hub-menu-row-head:active { background: rgba(0,229,255,0.1); }
+        .hub-menu-row-head.expanded { border-bottom: 1px solid #1d2c4d; }
+        .hub-menu-chevron { color: #00e5ff; font-size: 1rem; transition: transform .15s; flex-shrink: 0; margin-left: 10px; }
+        .hub-menu-row-head.expanded .hub-menu-chevron { transform: rotate(90deg); }
+        .hub-menu-row-body { padding: 10px 12px; background: #0a0f1c; }
+        .hub-kv-grid { display: grid; grid-template-columns: max-content 1fr; column-gap: 12px; row-gap: 4px; font-size: 0.82rem; }
+        .hub-kv-key { color: #9db4d9; }
+        .hub-kv-val { color: #e2e8f0; font-weight: 600; text-align: right; }
+        .cap-banner { background: linear-gradient(90deg, #065f46 0%, #0f172a 100%); border-left: 6px solid #10b981; padding: 20px; border-radius: 8px; margin-bottom: 24px; }
+        .cap-banner.negative { background: linear-gradient(90deg, #7f1d1d 0%, #0f172a 100%); border-left: 6px solid #ef4444; }
+        .cap-val { font-size: 32px; font-weight: bold; color: #10b981; }
+        .cap-val.negative { color: #f87171; }
+        .table-dark-custom { width: 100%; color: #e2e8f0; border-collapse: collapse; margin-top: 10px; }
+        .table-dark-custom th { background-color: #1e293b; color: #9db4d9; padding: 12px; text-align: left; position: sticky; top:0; }
+        .table-dark-custom td { padding: 10px 12px; border-bottom: 1px solid #1f2937; }
+        .player-link { cursor: pointer; color: #38bdf8 !important; text-decoration: none; font-weight: 600; }
+        .player-link:hover { text-decoration: underline; color: #7dd3fc !important; }
+        .coach-link { cursor: pointer; color: #facc15 !important; text-decoration: none; font-weight: 600; }
+        .coach-link:hover { text-decoration: underline; color: #fde047 !important; }
+        .stats-sortable { cursor: pointer; user-select: none; white-space: nowrap; }
+        .stats-sortable:hover { color: #7dd3fc !important; }
+        .modal-custom { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; max-width: 1400px; background-color: #111827; border: 2px solid #374151; border-radius: 12px; z-index: 1000; padding: 24px; max-height: 85vh; overflow-y: auto; }
+        .player-modal { width: 60% !important; max-width: 700px; z-index: 3000 !important; }
+        .series-modal { width: 40% !important; max-width: 500px; }
+        .modal-overlay { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.8); z-index: 999; }
+        .btn-accent { background-color: #3b82f6; color: white; border: none; padding: 8px 16px; border-radius: 6px; }
+        .btn-accent:hover { background-color: #2563eb; }
+        .btn-outline-accent { background-color: transparent; color: #93c5fd !important; border: 1px solid #3b82f6; padding: 8px 16px; border-radius: 6px; font-weight: 600; }
+        .btn-outline-accent:hover { background-color: rgba(59,130,246,0.15); color: #bfdbfe !important; }
+        .btn-outline-accent:disabled { opacity: 0.5; }
+        .btn-danger-custom { background-color: #ef4444; color: white; border: none; padding: 6px 12px; border-radius: 6px; }
+        .awards-banner { background: linear-gradient(45deg, #b45309, #0f172a); border-left: 6px solid #f59e0b; padding: 20px; border-radius: 8px; margin-top: 20px; display: none; }
+        .bracket-card { cursor: pointer; transition: transform 0.2s; }
+        .bracket-card:hover { transform: scale(1.02); border-color: #38bdf8 !important; }
+        .asset-pill { display:inline-flex; align-items:center; gap:6px; background:#1e293b; border:1px solid #334155; border-radius:20px; padding:5px 12px; margin:3px; cursor:pointer; font-size:0.85rem; }
+        .asset-pill.selected { background:#0369a1; border-color:#38bdf8; color:white; }
+        .asset-pill.readonly { cursor:default; }
+        .trade-slot { display:flex; align-items:center; gap:8px; padding:8px 10px; margin-bottom:4px; border-radius:6px; font-size:0.85rem; }
+        .trade-slot.filled { background:#132036; border:1px solid #2c3e5c; }
+        .trade-slot.empty { background:#0d1420; border:1px dashed #334155; color:#7d93b8; justify-content:center; cursor:pointer; font-size:0.75rem; letter-spacing:0.5px; transition:background 0.12s; }
+        .trade-slot.empty:hover { background:#16213a; color:#9db4d9; }
+        .trade-slot-remove { cursor:pointer; color:#f87171; font-weight:700; padding:0 4px; }
+        .trade-item-picker { display:flex; flex-wrap:wrap; gap:4px; margin-top:6px; padding:8px; background:#0b0f19; border:1px solid #334155; border-radius:8px; max-height:220px; overflow-y:auto; }
+        .stage-banner { background: linear-gradient(90deg,#312e81,#0f172a); border-left:6px solid #818cf8; padding:16px 20px; border-radius:8px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; }
+        .attr-bar-wrap { background:#1e293b; border-radius:6px; overflow:hidden; height:8px; width:100%; }
+        .attr-bar-fill { height:100%; border-radius:6px; }
+        .attr-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; font-size:0.82rem; }
+        .attr-row .attr-name { width:45%; color:#9db4d9; }
+        .attr-row .attr-track { width:40%; }
+        .attr-row .attr-val { width:12%; text-align:right; font-weight:bold; color:#e2e8f0; }
+        .badge-injury { background:#7f1d1d; color:#fecaca; padding:2px 8px; border-radius:10px; font-size:0.72rem; }
+        .pos-slot-tag { display:inline-block; min-width:28px; text-align:center; background:#1e3a8a; color:#bfdbfe; font-weight:700; font-size:0.72rem; padding:2px 6px; border-radius:4px; margin-right:6px; }
+        /* Player row meta text (age, etc.) -- readable slate instead of washed-out bootstrap grey */
+        .player-meta { color:#9db4d9; font-size:0.82rem; }
+        /* App-wide: override Bootstrap's grey text utilities everywhere they're
+           used (labels, subtext, timestamps, etc.) with the same muted-blue
+           instead of literal grey -- much more legible on a dark background
+           and consistent with .player-meta above. */
+        .text-white-50, .text-muted { color: #9db4d9 !important; }
+        /* 2K-style tiered OVR badge -- color communicates quality at a glance */
+        .ovr-badge { display:inline-block; min-width:40px; text-align:center; font-weight:800; font-size:0.74rem; padding:2px 7px; border-radius:5px; margin-left:4px; letter-spacing:0.3px; border:1px solid transparent; }
+        .ovr-hof   { background:#4c1d95; color:#e9d5ff; border-color:#7c3aed; }
+        .ovr-elite { background:#065f46; color:#a7f3d0; border-color:#10b981; }
+        .ovr-great { background:#1e3a8a; color:#bfdbfe; border-color:#3b82f6; }
+        .ovr-good  { background:#155e63; color:#a5f3fc; border-color:#22d3ee; }
+        .ovr-avg   { background:#854d0e; color:#fde68a; border-color:#eab308; }
+        .ovr-low   { background:#334155; color:#cbd5e1; border-color:#7d93b8; }
+        /* Calendar icon button -- click to open the game-day quick actions menu */
+        .cal-icon-btn { position:absolute; top:6px; right:6px; background:rgba(15,23,42,0.75); border:1px solid #334155; border-radius:6px; font-size:0.72rem; line-height:1; padding:3px 5px; cursor:pointer; color:#e2e8f0; transition: transform .12s, border-color .12s; }
+        .cal-icon-btn:hover { transform: scale(1.12); border-color:#38bdf8; }
+        .calendar-tile { position:relative; }
+        .fa-card, .prospect-card { background:#0f172a; border:1px solid #1f2937; border-radius:10px; padding:14px; margin-bottom:10px; }
+        /* Scouting simplification pass: a visual fill bar reads faster than
+           a raw "6/10" fraction, and doubles as a tooltip host for the
+           plain-English explanation of what scouting points actually do. */
+        .scout-progress-track { width:100%; height:6px; border-radius:3px; background:#1f2937; overflow:hidden; }
+        .scout-progress-fill { height:100%; background:linear-gradient(90deg, #38bdf8, #2ee6a6); border-radius:3px; transition:width .2s; }
+        .pick-tag { display:inline-block; background:#1e293b; border:1px solid #38bdf8; color:#7dd3fc; border-radius:6px; padding:2px 8px; font-size:0.75rem; margin:2px; }
+        .calendar-grid { display:grid; grid-template-columns: repeat(7, 1fr); gap:16px; max-height:640px; overflow-y:auto; padding:10px; }
+        .calendar-tile { background:#0f172a; border:1px solid #1f2937; border-radius:10px; padding:14px 10px; min-height:104px; cursor:default; display:flex; flex-direction:column; justify-content:space-between; font-size:0.76rem; transition: border-color .15s, transform .15s, box-shadow .15s; }
+        .calendar-tile .cal-day-num { color:#7d93b8; font-weight:bold; font-size:0.7rem; letter-spacing:0.5px; }
+        .cal-cup-badge { color:#fbbf24; font-size:0.65rem; margin-left:4px; }
+        .calendar-tile.played { cursor:pointer; }
+        .calendar-tile.played:hover { transform: translateY(-3px); border-color:#38bdf8; box-shadow: 0 4px 14px rgba(56,189,248,0.25); }
+        .calendar-tile.win { border-color:#10b981; background: linear-gradient(160deg, #052e21 0%, #0f172a 70%); }
+        .calendar-tile.loss { border-color:#ef4444; background: linear-gradient(160deg, #3f0d0d 0%, #0f172a 70%); }
+        .calendar-tile.next-up { border-color:#38bdf8; box-shadow: 0 0 10px rgba(56,189,248,0.5); cursor:pointer; }
+        .calendar-tile.next-up:hover { transform: translateY(-3px); }
+        .calendar-tile.sim-target { cursor:pointer; }
+        .calendar-tile.sim-target:hover { transform: translateY(-3px); border-color:#a78bfa; box-shadow: 0 4px 14px rgba(167,139,250,0.25); }
+        .calendar-tile.no-game { opacity:0.45; }
+        .calendar-tile .cal-score { font-weight:bold; font-size:0.86rem; margin-top:3px; }
+        .calendar-tile .cal-opp { color:#9db4d9; font-size:0.7rem; margin:4px 0; }
+        .calendar-tile .cal-wl { font-size:0.7rem; font-weight:bold; letter-spacing:1px; }
+        @media (max-width: 1200px) { .calendar-grid { grid-template-columns: repeat(5, 1fr); } }
+        @media (max-width: 768px) { .calendar-grid { grid-template-columns: repeat(3, 1fr); gap:10px; } }
+        .bottom-ticker-wrap { position:fixed; bottom:0; left:0; width:100%; background:#0f172a; border-top:2px solid #38bdf8; padding:8px 0; z-index:500; overflow:hidden; white-space:nowrap; }
+        .bottom-ticker-track { display:inline-block; padding-left:100%; animation: ticker-scroll 45s linear infinite; font-family:monospace; font-size:0.85rem; }
+        .bottom-ticker-track span { margin-right:48px; color:#e2e8f0; }
+        .bottom-ticker-track .tk-label { color:#38bdf8; font-weight:bold; }
+        .bottom-ticker-track .tk-val { color:#fbbf24; font-weight:bold; }
+        @keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+        body { padding-bottom: 42px; }
+        .ovr-badge { display:inline-flex; align-items:center; justify-content:center; width:52px; height:52px; border-radius:50%; font-weight:bold; font-size:1.1rem; border:3px solid; }
+        .player-avatar { width:64px; height:64px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:1.3rem; color:#f8fafc; text-shadow:0 1px 3px rgba(0,0,0,0.85); flex-shrink:0; }
+        .jersey-badge { background:#1e293b; border:1px solid #334155; border-radius:6px; padding:2px 8px; font-size:0.78rem; color:#9db4d9; }
+        .pm-tab-btn { background:#101a30; border:1px solid #1d2c4d; color:#7d90b8; padding:8px 16px; font-weight:600;
+            border-radius:999px; margin:0 4px 6px 0; font-family:'Rajdhani',sans-serif; letter-spacing:0.4px;
+            transition:border-color .15s, color .15s, background .15s; }
+        .pm-tab-btn:hover { border-color:#00e5ff; color:#e2e8f0; }
+        .pm-tab-btn.active { color:#04141c; border-color:#00e5ff; background:#00e5ff; box-shadow:0 0 14px rgba(0,229,255,0.35); }
+        #trade-mini-tabs, #hist-mini-tabs { border-bottom:none !important; }
+
+        /* ---- Trade Center: split-screen desk + AI deal-acceptance meter ---- */
+        #trade-your-col, #trade-their-col, #trade-third-col { background:linear-gradient(160deg,#101a30,#0d1526);
+            border:1px solid #1d2c4d; border-radius:12px; padding:14px; }
+        #trade-your-col { border-top:2px solid #00e5ff; }
+        #trade-their-col { border-top:2px solid #ffb020; }
+        #trade-third-col { border-top:2px solid #a78bfa; }
+        .deal-meter-panel { background:linear-gradient(160deg,#101a30,#0d1526); border:1px solid #1d2c4d; border-radius:12px; padding:16px; }
+        .deal-meter-title { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:0.78rem; letter-spacing:1.4px;
+            text-transform:uppercase; color:#7d90b8; }
+        .deal-meter-track { height:14px; border-radius:999px; background:#0a0f1c; overflow:hidden; border:1px solid #1d2c4d; }
+        .deal-meter-track .progress-bar { border-radius:999px; transition:width .35s ease, background .35s ease; }
+
+        /* ---- Team Management: strategy dials (segmented pill selectors
+           standing in for the underlying <select>, which stays in the DOM
+           -- just visually hidden -- so saveRotation()'s .value reads and
+           the team-load code's .value writes both keep working untouched) */
+        .strategy-select-native { position:absolute; width:1px; height:1px; opacity:0; pointer-events:none; }
+        .dial-label { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:0.72rem; letter-spacing:1.2px;
+            text-transform:uppercase; color:#7d90b8; margin:14px 0 8px; }
+        .dial-group { display:flex; flex-wrap:wrap; gap:8px; }
+        .dial-pill { background:#101a30; border:1px solid #1d2c4d; color:#c7d3ea; padding:9px 15px; border-radius:999px;
+            font-size:0.82rem; cursor:pointer; transition:border-color .15s, background .15s, color .15s; -webkit-tap-highlight-color:transparent; }
+        .dial-pill:hover { border-color:#00e5ff; }
+        .dial-pill.active { background:linear-gradient(135deg,#00e5ff,#0891b2); border-color:#00e5ff; color:#04141c; font-weight:700;
+            box-shadow:0 0 14px rgba(0,229,255,0.3); }
+
+        /* ---- Rotation Desk: broadcast-style roster rows + energy bars ---- */
+        .roster-row-card { background:linear-gradient(160deg,#101a30,#0d1526); border:1px solid #1d2c4d;
+            border-radius:8px; margin-bottom:8px; }
+        .roster-row-card.starter { border-color:#ffb020; }
+        .energy-bar-track { width:52px; height:7px; background:#0a0f1c; border:1px solid #1d2c4d; border-radius:999px; overflow:hidden; }
+        .energy-bar-fill { height:100%; border-radius:999px; transition:width .3s ease, background .3s ease; }
+        .slider-minutes-input.form-range { accent-color:#00e5ff; }
+        .slider-minutes-input.form-range::-webkit-slider-thumb { background:#00e5ff; box-shadow:0 0 6px rgba(0,229,255,0.6); }
+        .slider-minutes-input.form-range::-moz-range-thumb { background:#00e5ff; box-shadow:0 0 6px rgba(0,229,255,0.6); }
+
+        /* ---- Team Tracker: power rankings ---- */
+        .power-rank-card { display:flex; justify-content:space-between; align-items:center; cursor:pointer;
+            background:linear-gradient(160deg,#101a30,#0d1526); border:1px solid #1d2c4d; border-radius:10px;
+            padding:10px 14px; transition:border-color .15s, transform .12s; }
+        .power-rank-card:hover { border-color:#00e5ff; transform:translateY(-1px); }
+        .power-rank-card.rank-1 { border-color:#ffb020; box-shadow:0 0 14px rgba(255,176,32,0.15); }
+        .power-rank-card.rank-2 { border-color:#94a3b8; }
+        .power-rank-card.rank-3 { border-color:#c2793a; }
+        .power-rank-num { color:#00e5ff; font-family:'Rajdhani',sans-serif; font-weight:700; }
+        .power-rank-card.rank-1 .power-rank-num { color:#ffb020; }
+
+        /* ---- Front Office: coach cards ---- */
+        .fo-coach-spotlight { background:linear-gradient(160deg,#101a30,#0d1526); border:1px solid #1d2c4d;
+            border-top:2px solid #00e5ff; border-radius:12px; padding:16px; display:flex; justify-content:space-between;
+            align-items:center; gap:14px; flex-wrap:wrap; }
+        .fo-system-badge { display:inline-block; background:rgba(255,176,32,0.14); color:#ffb020; border:1px solid rgba(255,176,32,0.4);
+            border-radius:999px; padding:2px 10px; font-family:'Rajdhani',sans-serif; font-weight:700; font-size:0.7rem;
+            letter-spacing:0.6px; text-transform:uppercase; margin-left:6px; }
+        .fo-candidate-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr)); gap:10px; }
+        .fo-candidate-card { background:#101a30; border:1px solid #1d2c4d; border-radius:10px; padding:12px;
+            display:flex; justify-content:space-between; align-items:center; gap:8px; transition:border-color .15s; }
+        .fo-candidate-card:hover { border-color:#00e5ff; }
+
+        /* ---- Free Agency: filter pills + player cards ---- */
+        .fa-pill-row { display:flex; gap:6px; flex-wrap:wrap; }
+        .fa-pill { background:#101a30; border:1px solid #1d2c4d; color:#7d90b8; padding:6px 14px; border-radius:999px;
+            font-family:'Rajdhani',sans-serif; font-weight:700; font-size:0.8rem; letter-spacing:0.4px; cursor:pointer;
+            transition:border-color .15s, color .15s, background .15s; -webkit-tap-highlight-color:transparent; }
+        .fa-pill:hover { border-color:#00e5ff; color:#e2e8f0; }
+        .fa-pill.active { color:#04141c; border-color:#00e5ff; background:#00e5ff; box-shadow:0 0 12px rgba(0,229,255,0.3); }
+        .fa-card { background:linear-gradient(160deg,#101a30,#0d1526); border:1px solid #1d2c4d; border-radius:10px;
+            padding:12px 14px; margin-bottom:10px; transition:border-color .15s; }
+        .fa-card:hover { border-color:#ffb020; }
+        /* ---- Playoff bracket -- broadcast tournament tree ---- */
+        .bracket-tree-col { display:flex; flex-direction:column; justify-content:space-around; gap:16px; }
+        .bracket-tree-col-label { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:0.66rem; letter-spacing:1.6px;
+            text-transform:uppercase; color:#7d90b8; text-align:center; margin-bottom:4px; }
+        .bracket-seed-card { background:linear-gradient(160deg,#101a30,#0d1526); border:1px solid #1d2c4d; border-radius:8px;
+            padding:8px 10px; font-size:0.78rem; cursor:pointer; transition:border-color .15s, transform .12s; }
+        .bracket-seed-card:hover { border-color:#00e5ff; transform:translateY(-1px); }
+        .bracket-seed-row { display:flex; justify-content:space-between; align-items:center; padding:2px 0; font-family:'Rajdhani',sans-serif; font-weight:600; }
+        .bracket-seed-row .bracket-series-score { font-weight:700; color:#7d90b8; }
+        .bracket-seed-row.winner { color:#2ee6a6; }
+        .bracket-seed-row.winner .bracket-series-score { color:#2ee6a6; }
+        .bracket-finals-card { background:linear-gradient(160deg,#1a1030,#0d1526); border:2px solid #ffb020; border-radius:12px;
+            padding:18px; text-align:center; box-shadow:0 0 30px rgba(255,176,32,0.15); }
+        .bracket-finals-title { font-family:'Rajdhani',sans-serif; font-weight:700; letter-spacing:1.6px; color:#ffb020;
+            font-size:0.76rem; text-transform:uppercase; margin-bottom:10px; }
+        .team-chip { display:inline-flex; align-items:center; gap:6px; }
+        .team-logo-mini { width:22px; height:22px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:0.6rem; font-weight:bold; color:#f8fafc; text-shadow:0 1px 2px rgba(0,0,0,0.85); flex-shrink:0; }
+        .bracket-tree { grid-template-columns: 1fr 1fr 0.9fr 1.3fr 0.9fr 1fr 1fr; gap:10px; align-items:center; }
+        @media (max-width: 1200px) { .bracket-tree { display:flex !important; flex-direction:column; } }
+        /* ==========================================================
+           2K24 MYLEAGUE-STYLE SIDEBAR SHELL
+           Left rail navigation replacing the old scrolling top-nav strip,
+           grouped into sections the way NBA 2K's MyLEAGUE hub is organized
+           (My Team / League / Front Office / GM Career / Media / Ops).
+           ========================================================== */
+        html, body { height: 100%; }
+        .app-shell { display: flex; min-height: 100vh; background: #0b0f19; }
+        .mlg-sidebar {
+            width: 248px; flex: 0 0 248px; background: linear-gradient(180deg,#0d1420 0%,#0a0e17 100%);
+            border-right: 1px solid #1f2937; height: 100vh; position: sticky; top: 0;
+            overflow-y: auto; padding: 18px 0 24px; z-index: 500;
+        }
+        .mlg-sidebar-brand {
+            font-family: monospace; font-weight: 800; letter-spacing: 1px; color: #f5f5f5;
+            padding: 0 18px 16px; border-bottom: 1px solid #1f2937; margin-bottom: 10px; font-size: 1.02rem;
+        }
+        .mlg-sidebar-brand span { color: #eab308; }
+        .mlg-nav { display: flex; flex-direction: column; }
+        .mlg-nav-group-label {
+            color: #eab308; font-family: monospace; font-size: 0.68rem; font-weight: 700;
+            letter-spacing: 1.5px; text-transform: uppercase; padding: 14px 18px 6px;
+        }
+        .side-nav-btn {
+            display: flex; align-items: center; gap: 10px; width: 100%; text-align: left;
+            background: none; border: none; border-left: 3px solid transparent; color: #9db4d9;
+            padding: 9px 16px; font-weight: 600; font-size: 0.84rem; transition: background-color .15s, color .15s, border-color .15s;
+        }
+        .side-nav-btn .snb-ico { font-size: 0.95rem; width: 20px; text-align: center; flex-shrink: 0; }
+        .side-nav-btn:hover { background-color: #16213a; color: #e2e8f0; }
+        .side-nav-btn.active { background: linear-gradient(90deg, rgba(234,179,8,0.14), transparent); color: #eab308; border-left-color: #eab308; }
+        .mlg-main { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; }
+        .mlg-topbar {
+            display: flex; align-items: center; gap: 14px; padding: 10px 20px; background: #0f172a;
+            border-bottom: 1px solid #1f2937; position: sticky; top: 0; z-index: 600;
+        }
+        .mlg-sidebar-toggle { display: none; background: none; border: 1px solid #334155; color: #e2e8f0; border-radius: 6px; padding: 6px 10px; font-size: 1rem; }
+        /* BUGFIX (major): the sidebar's z-index (500) sat ABOVE the topbar's
+           (400) that the hamburger toggle button lives in, so opening the
+           sidebar on mobile visually covered the only button that could
+           close it again -- it was physically unclickable once open, on
+           both mobile and desktop-narrow. Fixed three ways for real
+           redundancy: the topbar (and its toggle button) now renders above
+           the sidebar so it's always reachable either way; the sidebar
+           also gets its own always-visible ✕ close button; and a tap-
+           anywhere-outside backdrop closes it too, since that's the
+           standard mobile pattern people already expect. */
+        .mlg-sidebar-close-btn { display: none; }
+        .mlg-sidebar-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 490; }
+        .mlg-topbar-brand { font-size: 0.95rem; }
+        .mlg-content { padding: 20px 24px 40px; flex: 1 1 auto; }
+        /* On wide desktop monitors the dark full-bleed layout read as
+           oversized/bulky -- real 2K menus stay a comfortable reading width
+           even on a big screen instead of stretching every card edge to edge.
+           Cap content width and center it past a certain viewport size, and
+           trim the base font size slightly so density feels closer to the
+           mobile experience instead of everything being blown up. */
+        @media (min-width: 1400px) {
+            .mlg-content { max-width: 1180px; margin: 0 auto; padding: 24px 24px 48px; }
+            body { font-size: 0.94rem; }
+            .dashboard-card, .stat-card, .hub-menu, .table-dark-custom { font-size: 0.96em; }
+        }
+        @media (min-width: 1800px) {
+            .mlg-content { max-width: 1320px; }
+        }
+        /* Generic auto-rendered "data hub" rows for the 2K-style menu screens
+           (GM Career, Franchise, Media, Awards, Coaching, Contracts, Draft,
+           Sim Controls, Analytics, League Ops) that surface simulation systems
+           previously built but with no UI at all. */
+        .hub-row-run-btn { background:#eab308; color:#111827; border:none; border-radius:6px; padding:5px 12px; font-size:0.76rem; font-weight:700; }
+        .hub-row-run-btn:hover { background:#facc15; }
+        .hub-arg-input { background:#0b0f19; border:1px solid #334155; color:#e2e8f0; border-radius:5px; padding:4px 8px; font-size:0.78rem; margin-right:6px; width:140px; }
+        .hub-result-box { margin-top:8px; }
+        .hub-result-empty { color:#7d93b8; font-size:0.8rem; font-style:italic; }
+        /* BUGFIX: hub-table results (League History, Cap Sheet, etc.) had
+           no horizontal scroll, so wide result tables got silently cut off
+           mid-column with no way to see the rest. */
+        .hub-table-scroll { width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+        .hub-table { width:100%; border-collapse:collapse; font-size:0.8rem; margin-top:6px; }
+        .hub-table th { text-align:left; color:#9db4d9; border-bottom:1px solid #26324a; padding:4px 8px; }
+        .hub-table td { padding:4px 8px; border-bottom:1px solid #17202f; }
+        /* ---- Bespoke 2K24-style panels: GM Career / Awards & Legacy / Media ---- */
+        .stat-card-row { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:16px; }
+        .stat-card { background:linear-gradient(160deg,#101a30,#0d1526); border:1px solid #1d2c4d; border-top:2px solid #00e5ff;
+            border-radius:10px; padding:12px 16px; flex:1 1 140px; min-width:130px; }
+        .stat-card .sc-label { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:0.66rem; letter-spacing:1.4px;
+            text-transform:uppercase; color:#7d90b8; }
+        .stat-card .sc-value { color:#f9fafb; font-size:1.6rem; font-weight:700; font-family:'Rajdhani',sans-serif; margin-top:2px; }
+        .stat-card .sc-value.gold { color:#ffb020; }
+        .stat-card .sc-sub { color:#7d90b8; font-size:0.72rem; margin-top:2px; }
+        .ladder-row { display:flex; align-items:center; gap:10px; padding:8px 10px; margin-bottom:4px;
+            background:linear-gradient(160deg,#101a30,#0d1526); border:1px solid #1d2c4d; border-radius:8px; font-size:0.84rem; }
+        .ladder-rank { font-family:'Rajdhani',sans-serif; font-weight:700; color:#00e5ff; min-width:20px; }
+        .ladder-name { flex:1; color:#e2e8f0; font-weight:600; }
+        .ladder-team { color:#7d93b8; font-size:0.74rem; width:100px; }
+        .ladder-stat { color:#9db4d9; font-family:monospace; font-size:0.78rem; }
+        .odds-bar-wrap { margin-bottom:8px; }
+        .odds-bar-label { display:flex; justify-content:space-between; font-size:0.78rem; color:#e2e8f0; margin-bottom:3px;
+            font-family:'Rajdhani',sans-serif; font-weight:600; }
+        .odds-bar-track { background:#0a0f1c; border:1px solid #1d2c4d; border-radius:999px; height:10px; overflow:hidden; }
+        .odds-bar-fill { background:linear-gradient(90deg,#00e5ff,#0891b2); height:100%; border-radius:999px; transition:width .4s ease; }
+        .presser-opt-btn { display:block; width:100%; text-align:left; background:linear-gradient(160deg,#101a30,#0d1526);
+            border:1px solid #1d2c4d; color:#e2e8f0; border-radius:8px; padding:10px 14px; margin-bottom:8px;
+            font-size:0.86rem; transition:border-color .12s, background .12s; }
+        .presser-opt-btn:hover { border-color:#00e5ff; background:#101a30; }
+        .feed-card { background:linear-gradient(160deg,#101a30,#0d1526); border:1px solid #1d2c4d; border-left:3px solid #00e5ff;
+            border-radius:10px; padding:10px 14px; margin-bottom:8px; font-size:0.84rem; }
+        .feed-card .fc-meta { color:#7d90b8; font-size:0.7rem; margin-top:4px; }
+        .resume-item { border-left:2px solid #1d2c4d; padding:2px 0 10px 14px; position:relative; font-size:0.83rem; color:#c7d3ea; }
+        .resume-item::before { content:''; position:absolute; left:-5px; top:4px; width:8px; height:8px; border-radius:50%;
+            background:#ffb020; box-shadow:0 0 6px rgba(255,176,32,0.5); }
+        .gm-archetype-badge { display:inline-flex; align-items:center; gap:8px; background:linear-gradient(160deg,#101a30,#0d1526);
+            border:1px solid #1d2c4d; border-radius:10px; padding:10px 14px; }
+        .fo-role-row { display:flex; justify-content:space-between; align-items:center; padding:8px 10px; margin-bottom:4px;
+            background:#101a30; border:1px solid #1d2c4d; border-radius:8px; font-size:0.83rem; }
+        .fo-hire-btn { background:none; border:1px solid #334155; color:#9db4d9; border-radius:999px; padding:3px 11px; font-size:0.72rem;
+            transition:border-color .12s, color .12s; }
+        .fo-hire-btn:hover { border-color:#00e5ff; color:#00e5ff; }
+        .subsection-title { color:#9db4d9; font-size:0.72rem; text-transform:uppercase; letter-spacing:1.2px; font-weight:700; margin:18px 0 8px; border-bottom:1px solid #1f2937; padding-bottom:6px; }
+        .more-tools-toggle { color:#eab308; font-size:0.78rem; cursor:pointer; margin-top:6px; display:inline-block; }
+        /* ---- Reusable gauge ring + badge/timeline components for the
+           "major upgrade" pass on Franchise/Coaching/Trades/Draft/Sim/
+           Analytics/League Ops -- same visual vocabulary as GM Career /
+           Awards & Legacy / Media so every hub panel reads consistently. ---- */
+        .gauge-row { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:16px; }
+        .gauge-card { background:linear-gradient(160deg,#101a30,#0d1526); border:1px solid #1d2c4d; border-top:2px solid #00e5ff;
+            border-radius:10px; padding:14px; flex:1 1 150px; display:flex; align-items:center; gap:12px; min-width:150px; }
+        .gauge-ring { width:56px; height:56px; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center;
+            font-family:'Rajdhani',sans-serif; font-weight:700; font-size:0.98rem; color:#f9fafb; position:relative; }
+        .gauge-label-block .gl-title { color:#7d90b8; font-size:0.66rem; text-transform:uppercase; letter-spacing:1.3px; font-weight:700;
+            font-family:'Rajdhani',sans-serif; }
+        .gauge-label-block .gl-sub { color:#7d90b8; font-size:0.74rem; margin-top:2px; }
+        .info-badge { display:inline-flex; align-items:center; gap:8px; background:linear-gradient(160deg,#101a30,#0d1526);
+            border:1px solid #1d2c4d; border-radius:999px; padding:9px 15px; font-size:0.84rem; }
+        .timeline-strip { display:flex; gap:10px; overflow-x:auto; padding-bottom:6px; }
+        .timeline-node { flex:0 0 auto; background:linear-gradient(160deg,#101a30,#0d1526); border:1px solid #1d2c4d;
+            border-left:3px solid #ffb020; border-radius:8px; padding:8px 12px; min-width:130px; font-size:0.78rem; }
+        .mini-select-row { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:10px; }
+        .synergy-pip-row { display:flex; gap:4px; margin-top:4px; }
+        .synergy-pip { width:18px; height:6px; border-radius:3px; background:#26324a; }
+        .synergy-pip.on { background:#eab308; }
+        /* ---- Toast notifications (replaces blocking alert() popups) ---- */
+        .toast-stack { position:fixed; top:14px; left:50%; transform:translateX(-50%); z-index:5000;
+            display:flex; flex-direction:column; gap:8px; align-items:center; pointer-events:none; width:100%; max-width:420px; padding:0 12px; }
+        .app-toast { background:#0f1622; border:1px solid #26324a; border-left:4px solid #eab308; border-radius:8px;
+            padding:10px 16px; color:#e2e8f0; font-size:0.86rem; box-shadow:0 8px 24px rgba(0,0,0,0.5);
+            opacity:0; transform:translateY(-12px); transition:opacity .2s, transform .2s; pointer-events:auto; width:100%; }
+        .app-toast.show { opacity:1; transform:translateY(0); }
+        .app-toast.error { border-left-color:#ef4444; }
+        .app-toast.success { border-left-color:#22c55e; }
+        /* ---- Loading spinner (replaces plain "Loading..." text) ---- */
+        .hub-spinner { display:inline-flex; align-items:center; gap:8px; color:#9db4d9; font-size:0.82rem; }
+        .hub-spinner::before { content:''; width:14px; height:14px; border-radius:50%; border:2px solid #334155;
+            border-top-color:#eab308; animation:hub-spin .7s linear infinite; }
+        @keyframes hub-spin { to { transform:rotate(360deg); } }
+        /* ---- Global quick search ---- */
+        .global-search-wrap { position:relative; flex:1 1 auto; max-width:340px; margin:0 12px; }
+        .global-search-input { width:100%; background:#0b0f19; border:1px solid #334155; color:#e2e8f0;
+            border-radius:7px; padding:6px 12px; font-size:0.84rem; }
+        .global-search-input:focus { outline:none; border-color:#eab308; }
+        .global-search-results { position:absolute; top:calc(100% + 4px); left:0; right:0; background:#0f1622;
+            border:1px solid #26324a; border-radius:8px; max-height:340px; overflow-y:auto; z-index:900; box-shadow:0 8px 24px rgba(0,0,0,0.5); }
+        .gsr-item { display:flex; justify-content:space-between; align-items:center; padding:9px 12px; cursor:pointer; border-bottom:1px solid #17202f; font-size:0.84rem; }
+        .gsr-item:last-child { border-bottom:none; }
+        .gsr-item:hover { background:#16213a; }
+        .gsr-item .gsr-sub { color:#7d93b8; font-size:0.72rem; }
+        /* ==================================================================
+           HOME DASHBOARD -- broadcast scoreboard treatment.
+           Scoped entirely to #dashboard-root; nothing outside it is touched,
+           so this is safe to ship without affecting any other tab.
+           Signature element: metric tiles use a clipped top-right corner
+           (like a scoreboard/lower-third graphic) with a thin animated
+           cyan sweep on the live "next game" tile.
+           ================================================================== */
+        #dashboard-root {
+            --db-bg: #0a0f1c; --db-card: #0d1526; --db-card2: #101a30; --db-border: #1d2c4d;
+            --db-cyan: #00e5ff; --db-amber: #ffb020; --db-text: #f4f7fb; --db-muted: #7d90b8;
+            --db-green: #2ee6a6; --db-red: #ff5470;
+            font-family: 'Inter', sans-serif;
+        }
+        #dashboard-root .db-display { font-family: 'Rajdhani', sans-serif; }
+
+        .db-headline { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:1.5rem; letter-spacing:0.5px;
+            color:var(--db-text); text-transform:uppercase; display:flex; align-items:center; gap:10px; margin-bottom:16px; }
+        .db-headline .db-live-dot { width:9px; height:9px; border-radius:50%; background:var(--db-green);
+            box-shadow:0 0 8px var(--db-green); animation:db-pulse 1.6s ease-in-out infinite; flex-shrink:0; }
+        @keyframes db-pulse { 0%,100%{opacity:1;} 50%{opacity:0.35;} }
+
+        /* ---- metric bar ---- */
+        .db-metric-bar { display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:2px;
+            background:var(--db-border); border-radius:10px; overflow:hidden; margin-bottom:18px;
+            box-shadow:0 10px 30px rgba(0,0,0,0.35); }
+        .db-metric-tile { background:linear-gradient(160deg, var(--db-card2), var(--db-card));
+            padding:14px 16px; clip-path:polygon(0 0, calc(100% - 14px) 0, 100% 100%, 0 100%); position:relative; }
+        .db-metric-tile:last-child { clip-path:none; }
+        .db-metric-label { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:0.66rem; letter-spacing:1.6px;
+            text-transform:uppercase; color:var(--db-muted); margin-bottom:4px; }
+        .db-metric-value { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:1.7rem; line-height:1;
+            color:var(--db-text); }
+        .db-metric-sub { font-size:0.7rem; color:var(--db-muted); margin-top:3px; }
+
+        /* ---- split view: matchup + newswire ---- */
+        .db-split { display:grid; grid-template-columns:1.1fr 0.9fr; gap:16px; margin-bottom:8px; align-items:stretch; }
+        @media (max-width: 900px) { .db-split { grid-template-columns:1fr; } }
+
+        .db-panel { background:var(--db-card); border:1px solid var(--db-border); border-radius:12px; padding:18px;
+            display:flex; flex-direction:column; }
+        .db-panel-title { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:0.78rem; letter-spacing:1.4px;
+            text-transform:uppercase; color:var(--db-muted); margin-bottom:14px; display:flex; align-items:center;
+            justify-content:space-between; }
+
+        .db-matchup-teams { display:flex; align-items:center; justify-content:center; gap:18px; margin-bottom:14px; }
+        .db-matchup-vs { font-family:'Rajdhani',sans-serif; font-weight:700; color:var(--db-amber); font-size:1rem; }
+        .db-matchup-name { font-size:0.72rem; color:var(--db-muted); text-align:center; margin-top:6px; max-width:110px; }
+        .db-ovr-compare { margin:6px 0 14px; }
+        .db-ovr-row { display:flex; align-items:center; gap:8px; font-family:'Rajdhani',sans-serif; font-weight:700; }
+        .db-ovr-num { width:34px; text-align:center; font-size:1.05rem; color:var(--db-text); }
+        .db-ovr-track { flex:1 1 auto; height:8px; background:#0a0f1c; border-radius:4px; overflow:hidden; display:flex; }
+        .db-ovr-fill-left { background:linear-gradient(90deg, var(--db-cyan), #0891b2); height:100%; margin-left:auto; border-radius:4px 0 0 4px; }
+        .db-ovr-fill-right { background:linear-gradient(90deg, #b45309, var(--db-amber)); height:100%; border-radius:0 4px 4px 0; }
+        .db-ovr-caption { text-align:center; font-size:0.66rem; color:var(--db-muted); text-transform:uppercase; letter-spacing:1px; margin-top:2px; }
+        .db-jump-btn { background:linear-gradient(135deg, var(--db-cyan), #0891b2); border:none; color:#04141c;
+            font-family:'Rajdhani',sans-serif; font-weight:700; letter-spacing:0.5px; text-transform:uppercase;
+            border-radius:8px; padding:10px 16px; align-self:center; cursor:pointer; margin-top:auto;
+            box-shadow:0 4px 16px rgba(0,229,255,0.25); -webkit-tap-highlight-color:transparent; }
+        .db-jump-btn:hover, .db-jump-btn:active { filter:brightness(1.1); }
+        .db-empty { color:var(--db-muted); font-size:0.82rem; text-align:center; margin:auto 0; }
+
+        .db-news-feed { display:flex; flex-direction:column; gap:0; overflow-y:auto; max-height:230px; }
+        .db-news-item { display:flex; gap:9px; padding:8px 0; border-bottom:1px solid var(--db-border); font-size:0.8rem; }
+        .db-news-item:last-child { border-bottom:none; }
+        .db-news-day { color:var(--db-muted); font-family:'Rajdhani',sans-serif; font-weight:700; min-width:46px; font-size:0.72rem; }
+
+        /* ---- quick action pills ---- */
+        .db-quick-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:10px; margin:22px 0 4px; }
+        .db-quick-btn { background:var(--db-card); border:1px solid var(--db-border); border-top:2px solid var(--db-border);
+            border-radius:10px; padding:14px 10px; text-align:center; color:var(--db-text); cursor:pointer;
+            transition:border-color .15s, transform .12s, background .15s; -webkit-tap-highlight-color:transparent; }
+        .db-quick-btn:hover, .db-quick-btn:active { border-top-color:var(--db-cyan); background:var(--db-card2); transform:translateY(-2px); }
+        .db-quick-btn .dqb-icon { font-size:1.35rem; display:block; margin-bottom:5px; }
+        .db-quick-btn .dqb-label { font-family:'Rajdhani',sans-serif; font-size:0.78rem; font-weight:700; letter-spacing:0.3px; text-transform:uppercase; }
+
+        .recent-players-strip { display:flex; gap:8px; overflow-x:auto; padding-bottom:4px; }
+        .recent-player-chip { flex:0 0 auto; background:var(--db-card); border:1px solid var(--db-border); border-radius:8px; padding:8px 12px;
+            cursor:pointer; font-size:0.78rem; white-space:nowrap; -webkit-tap-highlight-color:transparent; color:var(--db-text); }
+        .recent-player-chip:hover, .recent-player-chip:active { border-color:var(--db-amber); }
+
+        /* ==================================================================
+           LEAGUE LEADERS -- broadcast leaderboard cards (spotlight podium +
+           stat-leader strip). Same token vocabulary as the Dashboard so the
+           two "broadcast" screens read as one visual family; scoped to new
+           class names only, so nothing outside League Leaders is touched.
+           ================================================================== */
+        .lb-strip { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:20px; }
+        .lb-leader-card { flex:1 1 130px; min-width:120px; background:linear-gradient(160deg,#101a30,#0d1526);
+            border:1px solid #1d2c4d; border-top:2px solid #00e5ff; border-radius:10px; padding:12px; text-align:center; }
+        .lb-leader-label { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:0.66rem; letter-spacing:1.4px;
+            text-transform:uppercase; color:#7d90b8; margin-bottom:4px; }
+        .lb-leader-name { font-weight:700; font-size:0.86rem; color:#f4f7fb; }
+        .lb-leader-team { font-size:0.7rem; color:#7d90b8; margin:2px 0 4px; }
+        .lb-leader-value { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:1.5rem; color:#ffb020; }
+
+        .lb-podium { display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; margin-bottom:8px; }
+        @media (max-width: 700px) { .lb-podium { grid-template-columns:1fr; } }
+        .lb-podium-card { background:linear-gradient(160deg,#101a30,#0d1526); border:1px solid #1d2c4d;
+            border-radius:12px; padding:16px; text-align:center; position:relative; }
+        .lb-podium-card.rank-1 { border-color:#ffb020; box-shadow:0 0 24px rgba(255,176,32,0.18); order:2; }
+        .lb-podium-card.rank-2 { order:1; }
+        .lb-podium-card.rank-3 { order:3; }
+        @media (max-width: 700px) { .lb-podium-card.rank-1, .lb-podium-card.rank-2, .lb-podium-card.rank-3 { order:initial; } }
+        .lb-medal { font-size:1.5rem; margin-bottom:4px; }
+        .lb-avatar { width:52px; height:52px; border-radius:50%; margin:0 auto 8px; display:flex; align-items:center;
+            justify-content:center; font-family:'Rajdhani',sans-serif; font-weight:700; font-size:1.1rem; color:#04141c; }
+        .lb-podium-name { font-weight:700; font-size:0.92rem; color:#f4f7fb; }
+        .lb-podium-team { font-size:0.72rem; color:#7d90b8; margin:2px 0 8px; }
+        .lb-podium-stats { display:flex; justify-content:center; gap:14px; }
+        .lb-podium-stat-num { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:1.15rem; color:#00e5ff; }
+        .lb-podium-stat-label { font-size:0.62rem; color:#7d90b8; text-transform:uppercase; letter-spacing:0.6px; }
+
+        /* ==================================================================
+           LEAGUE HISTORY -- chronological champions timeline. Same token
+           vocabulary as Dashboard/League Leaders; a vertical rail with a dot
+           per season reads more like a franchise record book than a table.
+           ================================================================== */
+        .hist-timeline { position:relative; padding-left:26px; margin-bottom:8px; }
+        .hist-timeline::before { content:''; position:absolute; left:8px; top:6px; bottom:6px; width:2px;
+            background:linear-gradient(#1d2c4d, #00e5ff, #1d2c4d); }
+        .hist-timeline-item { position:relative; margin-bottom:14px; }
+        .hist-timeline-dot { position:absolute; left:-26px; top:4px; width:14px; height:14px; border-radius:50%;
+            background:#0d1526; border:2px solid #ffb020; box-shadow:0 0 8px rgba(255,176,32,0.4); }
+        .hist-timeline-card { background:linear-gradient(160deg,#101a30,#0d1526); border:1px solid #1d2c4d;
+            border-radius:10px; padding:12px 16px; }
+        .hist-timeline-year { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:0.72rem; letter-spacing:1.4px;
+            color:#7d90b8; text-transform:uppercase; }
+        .hist-timeline-champ { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:1.15rem; color:#f4f7fb; margin:2px 0 6px; }
+        .hist-timeline-champ .uc { color:#ffb020; }
+        .hist-timeline-meta { display:flex; flex-wrap:wrap; gap:14px; font-size:0.78rem; color:#7d90b8; }
+        .hist-timeline-meta b { color:#00e5ff; font-weight:600; }
+        .hist-timeline-reel { margin-top:6px; padding-left:10px; border-left:3px solid #1d2c4d; font-size:0.76rem; color:#8296bb; }
+        /* ---- 2K24-style in-game HUD score bug ---- */
+        .hud-scorebug {
+            display:flex; align-items:stretch; background:linear-gradient(180deg,#12182a,#0a0e17);
+            border:1px solid #26324a; border-radius:10px; overflow:hidden; margin-bottom:14px;
+            box-shadow:0 6px 20px rgba(0,0,0,0.4);
+        }
+        .hud-team-block { flex:0 0 150px; display:flex; align-items:center; gap:8px; padding:10px 14px; }
+        #hud-away-block { justify-content:flex-start; }
+        #hud-home-block { justify-content:flex-end; }
+        .hud-team-logo { width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+            font-weight:800; font-size:0.85rem; color:#0b0f19; flex-shrink:0; }
+        .hud-team-abbrev { font-family:monospace; font-weight:800; letter-spacing:1px; color:#e2e8f0; font-size:0.92rem; }
+        .hud-poss-arrow { color:#eab308; font-size:0.9rem; opacity:0.25; transition:opacity .2s; }
+        .hud-poss-arrow.active { opacity:1; text-shadow:0 0 8px rgba(234,179,8,0.8); }
+        .hud-score-block { flex:1 1 auto; display:flex; flex-direction:column; align-items:center; justify-content:center;
+            padding:8px 10px; border-left:1px solid #1f2937; border-right:1px solid #1f2937; }
+        .hud-score-nums { font-family:monospace; font-weight:800; font-size:1.9rem; color:#f5f5f5; line-height:1; display:flex; align-items:center; gap:8px; }
+        .hud-score-num { min-width:2.1ch; text-align:center; transition:color .15s, transform .15s; }
+        .hud-score-num.flash { color:#eab308; transform:scale(1.18); }
+        .hud-score-dash { color:#5d7599; font-size:1.3rem; }
+        .hud-clock-row { display:flex; align-items:center; gap:10px; margin-top:2px; }
+        .hud-period { color:#eab308; font-family:monospace; font-weight:700; font-size:0.78rem; }
+        .hud-gameclock { color:#e2e8f0; font-family:monospace; font-weight:700; font-size:0.9rem; }
+        .hud-shotclock { color:#0b0f19; background:#eab308; font-family:monospace; font-weight:800; font-size:0.76rem;
+            border-radius:4px; padding:0 6px; min-width:1.8em; text-align:center; }
+        .hud-timeouts-row { display:flex; align-items:center; gap:4px; margin-top:5px; }
+        .hud-to-label { color:#5d7599; font-size:0.6rem; font-family:monospace; letter-spacing:1px; }
+        .hud-to-pips { display:flex; gap:2px; }
+        .hud-to-pips .pip { width:6px; height:6px; border-radius:50%; background:#334155; }
+        .hud-to-pips .pip.on { background:#eab308; }
+        .hud-to-spacer { flex:1 1 auto; }
+        @media (max-width: 700px) {
+            .hud-team-block { flex-basis:90px; padding:8px; }
+            .hud-team-abbrev { font-size:0.76rem; }
+            .hud-score-nums { font-size:1.3rem; }
+        }
+        @media (max-width: 900px) {
+            .mlg-sidebar { position: fixed; left: -260px; top: 0; width: 240px; transition: left .2s; box-shadow: 4px 0 24px rgba(0,0,0,0.5); z-index: 500; }
+            .mlg-sidebar.open { left: 0; }
+            .mlg-sidebar-toggle { display: inline-block; }
+            .mlg-content { padding: 14px; }
+            .mlg-sidebar-close-btn { display: inline-block; }
+            body.sidebar-open .mlg-sidebar-backdrop { display: block; }
+        }
+        /* BUGFIX: table wrapper divs across the app (roster, stat leaders,
+           standings, trade finder results, etc.) set overflow-y:auto to cap
+           height, but none set overflow-x -- so on a narrow phone a table
+           with more columns than fit the screen just clips or squishes
+           instead of scrolling, and the clipped columns become
+           unreachable. Make every .table-dark-custom horizontally
+           scrollable in its own right on narrow viewports, independent of
+           whatever wrapper div JS happened to put around it. */
+        @media (max-width: 700px) {
+            .table-dark-custom { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; white-space: nowrap; }
+            .table-dark-custom th, .table-dark-custom td { white-space: nowrap; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-shell">
+    <aside class="mlg-sidebar" id="mlg-sidebar">
+        <div class="mlg-sidebar-brand d-flex justify-content-between align-items-center">
+            <span>🏀 HOOPS SIM <span>2026</span></span>
+            <!-- BUGFIX: on mobile the sidebar's own z-index sat above the
+                 topbar's, covering the only button (☰) that could close it
+                 -- once open, there was no way to close it. This close
+                 button lives inside the sidebar itself so it's never
+                 obscured by anything, regardless of any other layout issue. -->
+            <button class="mlg-sidebar-close-btn" onclick="closeSidebar()" aria-label="Close menu"
+                style="background:none;border:1px solid #334155;color:#e2e8f0;border-radius:6px;padding:2px 9px;font-size:1rem;">✕</button>
+        </div>
+        <nav class="mlg-nav">
+            <div class="mlg-nav-group-label">HOME</div>
+            <button class="side-nav-btn active" onclick="switchTab('dashboard', this)"><span class="snb-ico">🏠</span> Dashboard</button>
+
+            <div class="mlg-nav-group-label">MY TEAM</div>
+            <button class="side-nav-btn" onclick="switchTab('roster', this)"><span class="snb-ico">🧑‍💼</span> Team Management</button>
+            <button class="side-nav-btn" onclick="switchTab('teamtracker', this)"><span class="snb-ico">🏟</span> Team Tracker</button>
+            <button class="side-nav-btn" onclick="switchTab('teamintel', this)"><span class="snb-ico">🕵️</span> Team Intel</button>
+
+            <div class="mlg-nav-group-label">LEAGUE</div>
+            <button class="side-nav-btn" onclick="switchTab('calendar', this)"><span class="snb-ico">📅</span> Season Calendar</button>
+            <button class="side-nav-btn" onclick="switchTab('stats', this)"><span class="snb-ico">📊</span> League Leaders</button>
+            <button class="side-nav-btn" onclick="switchTab('playoffs', this)"><span class="snb-ico">🏆</span> Playoff Bracket</button>
+            <button class="side-nav-btn" onclick="switchTab('history', this)"><span class="snb-ico">🏛</span> League History</button>
+
+            <div class="mlg-nav-group-label">FRONT OFFICE</div>
+            <button class="side-nav-btn" onclick="switchTab('trade', this)"><span class="snb-ico">🔁</span> Trade Center</button>
+            <button class="side-nav-btn" onclick="switchTab('frontoffice', this)"><span class="snb-ico">🏢</span> Front Office</button>
+            <button class="side-nav-btn" onclick="switchTab('freeagency', this)"><span class="snb-ico">💰</span> Free Agency</button>
+
+            <div class="mlg-nav-group-label">GM CAREER</div>
+            <button class="side-nav-btn" onclick="switchTab('hub-gm', this)"><span class="snb-ico">🎙️</span> GM Career</button>
+            <button class="side-nav-btn" onclick="switchTab('hub-franchise', this)"><span class="snb-ico">🏟️</span> Franchise &amp; Business</button>
+
+            <div class="mlg-nav-group-label">MEDIA &amp; LEGACY</div>
+            <button class="side-nav-btn" onclick="switchTab('hub-media', this)"><span class="snb-ico">📰</span> Media &amp; Fans</button>
+            <button class="side-nav-btn" onclick="switchTab('hub-awards', this)"><span class="snb-ico">🏅</span> Awards &amp; Legacy</button>
+
+            <div class="mlg-nav-group-label">OPERATIONS</div>
+            <button class="side-nav-btn" onclick="switchTab('hub-coaching', this)"><span class="snb-ico">🧠</span> Coaching &amp; Strategy</button>
+            <button class="side-nav-btn" onclick="switchTab('hub-contracts', this)"><span class="snb-ico">📄</span> Trades &amp; Contracts</button>
+            <button class="side-nav-btn" onclick="switchTab('hub-draft', this)"><span class="snb-ico">🎓</span> Draft &amp; Prospects</button>
+            <button class="side-nav-btn" onclick="switchTab('hub-sim', this)"><span class="snb-ico">⏱️</span> Sim Controls</button>
+            <button class="side-nav-btn" onclick="switchTab('hub-analytics', this)"><span class="snb-ico">📈</span> Analytics</button>
+            <button class="side-nav-btn" onclick="switchTab('hub-leagueops', this)"><span class="snb-ico">⚖️</span> League Ops</button>
+
+            <div class="mlg-nav-group-label">SYSTEM</div>
+            <button class="side-nav-btn" onclick="openSaveLoadMenu()"><span class="snb-ico">💾</span> Save / Load</button>
+            <button class="side-nav-btn" onclick="toggleShortcutsHelp()" title="Keyboard shortcuts"><span class="snb-ico">⌨️</span> Shortcuts</button>
+            <button class="side-nav-btn" id="sound-toggle-btn" onclick="toggleSoundPanel()" title="Sound settings"><span class="snb-ico">🔊</span> Sound</button>
+            <button class="side-nav-btn" id="notif-bell-btn" onclick="toggleNotificationPanel()" title="Notifications"><span class="snb-ico">🔔</span> Notifications <span id="notif-badge" style="display:none; background:#dc3545; border-radius:10px; padding:0 6px; font-size:0.7rem;">0</span></button>
+            <button class="side-nav-btn" onclick="runUndoLastAction()" title="Undo the most recent trade/waive/signing"><span class="snb-ico">↩️</span> Undo</button>
+            <button class="side-nav-btn" onclick="openTutorialModal()" title="How to play"><span class="snb-ico">❓</span> Tutorial</button>
+        </nav>
+    </aside>
+    <!-- BUGFIX: tap-anywhere-outside-to-close backdrop for the mobile
+         sidebar -- the standard pattern people already expect, and a third
+         independent way to close it on top of the fixed toggle button and
+         the sidebar's own close button. -->
+    <div class="mlg-sidebar-backdrop" onclick="closeSidebar()"></div>
+
+    <div id="sound-panel" style="display:none; position:fixed; top:16px; right:16px; background:#0f172a; border:1px solid #334155; border-radius:8px; padding:14px; z-index:2000; width:240px; box-shadow:0 8px 24px rgba(0,0,0,0.5);">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="text-white small fw-bold">Sound Effects</span>
+            <input type="checkbox" id="sfx-enabled-check" onchange="SoundEngine.setEnabled(this.checked); refreshSoundIcon();">
+        </div>
+        <input type="range" min="0" max="1" step="0.05" id="sfx-volume-slider" class="form-range" oninput="SoundEngine.setSfxVolume(parseFloat(this.value))">
+        <div class="d-flex justify-content-between align-items-center mb-2 mt-3">
+            <span class="text-white small fw-bold">Crowd Ambience</span>
+            <input type="checkbox" id="ambience-enabled-check" onchange="SoundEngine.setAmbienceOn(this.checked)">
+        </div>
+        <input type="range" min="0" max="0.6" step="0.02" id="ambience-volume-slider" class="form-range" oninput="SoundEngine.setAmbienceVolume(parseFloat(this.value))">
+    </div>
+    <div id="notif-panel" style="display:none; position:fixed; top:16px; right:16px; background:#0f172a; border:1px solid #334155; border-radius:8px; padding:12px; z-index:2000; width:300px; max-height:400px; overflow-y:auto; box-shadow:0 8px 24px rgba(0,0,0,0.5);"></div>
+    <div class="toast-stack" id="toast-stack"></div>
+
+    <main class="mlg-main">
+        <div class="mlg-topbar">
+            <button class="mlg-sidebar-toggle" onclick="toggleSidebar()">☰</button>
+            <h4 class="text-white m-0 font-monospace fw-bold mlg-topbar-brand d-none d-md-block">🏀 HOOPS SIM 2026</h4>
+            <div class="global-search-wrap">
+                <input type="text" class="global-search-input" id="global-search-input" placeholder="🔍 Search players or teams..."
+                    oninput="globalSearchInput(this.value)" onfocus="globalSearchInput(this.value)">
+                <div class="global-search-results" id="global-search-results" style="display:none;"></div>
+            </div>
+            <div class="mlg-topbar-status small text-white-50 font-monospace ms-auto" id="sidebar-status">
+                Season 2026
+            </div>
+        </div>
+        <div class="mlg-content">
+
+            <div id="tab-dashboard" class="tab-content">
+                <div id="dashboard-root">
+                    <div class="hub-spinner">Loading your dashboard...</div>
+                </div>
+            </div>
+
+            <div id="tab-roster" class="tab-content" style="display:none;">
+                <div class="cap-banner" id="roster-cap-banner">
+                    <div class="text-uppercase small text-white-50">Franchise Cap Space</div>
+                    <div class="cap-val" id="roster-cap-display">Loading cap space...</div>
+                </div>
+                <div id="fan-approval-widget" class="mb-3 px-1"></div>
+
+                <div class="d-flex border-bottom border-secondary mb-3 flex-wrap" id="tm-mini-tabs">
+                    <button class="pm-tab-btn active" data-tm="lineup" onclick="switchTMTab('lineup')">🧩 Lineup</button>
+                    <button class="pm-tab-btn" data-tm="offense" onclick="switchTMTab('offense')">🔥 Offense Strategy</button>
+                    <button class="pm-tab-btn" data-tm="defense" onclick="switchTMTab('defense')">🛡 Defense Strategy</button>
+                    <!-- UPGRADE: each team's Playbook (the 10 Coaching Gameplan
+                         sliders -- Crash Glass, Help Defense, Zone Frequency,
+                         Double Team, Defensive Pressure, Transition Focus, Star
+                         Usage, Bench Usage, Switch Everything, Pace) previously
+                         only lived buried inside the Coaching & Strategy Advanced
+                         Tools catalog, several clicks away from Lineup
+                         Management where a coach would actually expect to find
+                         it. Surfaced as its own tab right next to the other
+                         strategy tabs, since it's now a real per-team
+                         gameplan with genuine effects on every simulated game. -->
+                    <button class="pm-tab-btn" data-tm="playbook" onclick="switchTMTab('playbook')">📖 Playbook</button>
+                    <button class="pm-tab-btn" data-tm="snapshot" onclick="switchTMTab('snapshot')">📌 Team Snapshot</button>
+                </div>
+
+                <div id="tm-panel-lineup" class="tm-panel">
+                    <div class="dashboard-card">
+                        <h3 class="section-title mb-3">Lineup Rotation Allocation Desk</h3>
+                        <div id="roster-limit-banner" style="display:none;"></div>
+                        <div id="roster-balance-panel" class="mb-3"></div>
+                        <div class="p-2 mb-3 bg-dark border border-secondary rounded d-flex align-items-end gap-2 flex-wrap">
+                            <div class="flex-fill">
+                                <label class="form-label text-white-50 small mb-1">Bench Depth Strategy</label>
+                                <select id="bench-depth-select" class="form-select form-select-sm bg-dark text-white border-secondary"
+                                        onchange="const d={shallow:8,standard:10,deep:12}[this.value]; document.getElementById('rotation-size-input').value=d; document.getElementById('rotation-size-display').textContent=d;">
+                                    <option value="shallow">Shallow Bench (Ride the Starters)</option>
+                                    <option value="standard" selected>Standard Rotation</option>
+                                    <option value="deep">Deep Bench (Spread Minutes)</option>
+                                </select>
+                            </div>
+                            <!-- UPGRADE: rotation size used to be locked to whatever
+                                 the chosen philosophy hardcoded (8/10/12 players) --
+                                 this lets you pick any rotation size from a tight
+                                 5-man playoff rotation up to playing the full 15-man
+                                 roster, independent of the philosophy chosen above. -->
+                            <div style="width:150px;">
+                                <label class="form-label text-white-50 small mb-1">Rotation Size <span id="rotation-size-display" class="text-info">10</span></label>
+                                <input type="range" min="5" max="15" value="10" step="1" class="form-range" id="rotation-size-input"
+                                       oninput="document.getElementById('rotation-size-display').textContent = this.value">
+                            </div>
+                            <button class="btn btn-outline-info btn-sm" onclick="autoSetRotation()">🤖 Auto-Build Lineup</button>
+                        </div>
+                        <div id="minutes-total-banner" class="p-2 mb-3 bg-dark border border-secondary rounded">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-white-50 small">Total minutes allocated per game (5 players × 48 min = 240 max)</span>
+                                <span class="font-monospace fw-bold" id="minutes-total-display">0 / 240</span>
+                            </div>
+                            <div class="d-flex justify-content-between mt-2 small font-monospace" id="minutes-by-position"></div>
+                        </div>
+                        <div id="g-league-panel" class="mb-3"></div>
+                        <div id="minutes-sliders-container" class="smooth-scroll" style="max-height: 600px; overflow-y:auto; padding-right:10px;"></div>
+                        <button class="btn btn-accent mt-3 w-100" onclick="saveRotation()">Commit Strategy Changes</button>
+                    </div>
+                </div>
+
+                <div id="tm-panel-offense" class="tm-panel" style="display:none;">
+                    <div class="dashboard-card" style="max-width:640px;">
+                        <h3 class="section-title mb-3">🔥 Offense Strategy Dials</h3>
+                        <select id="strat-offense" class="strategy-select-native">
+                            <option value="Balanced">Balanced Mix Strategy</option>
+                            <option value="Pace & Space">Pace & Space Archetype</option>
+                            <option value="Post-Up Heavy">Post-Up Heavy</option>
+                            <option value="Iso-Heavy">Iso-Heavy</option>
+                            <option value="Motion Offense">Motion Offense</option>
+                            <option value="Fast Break Heavy">Fast Break Heavy (push pace + transition 3s)</option>
+                            <option value="Pick-and-Roll Heavy">Pick-and-Roll Heavy (extra assists)</option>
+                            <option value="Small Ball">Small Ball (max pace + 3PA, fewer boards)</option>
+                            <option value="Grit and Grind">Grit and Grind (paint pounding, extra free throws)</option>
+                        </select>
+                        <div class="dial-label">Offensive Architecture Archetype</div>
+                        <div class="dial-group" id="dial-strat-offense"></div>
+
+                        <select id="strat-pace" class="strategy-select-native">
+                            <option value="Slow">Slow It Down</option>
+                            <option value="Balanced" selected>Balanced</option>
+                            <option value="Fast">Push The Pace</option>
+                        </select>
+                        <div class="dial-label">Pace</div>
+                        <div class="dial-group" id="dial-strat-pace"></div>
+
+                        <select id="strat-shooting" class="strategy-select-native">
+                            <option value="Conservative">Conservative</option>
+                            <option value="Balanced" selected>Balanced</option>
+                            <option value="Aggressive">Aggressive (Green Light)</option>
+                        </select>
+                        <div class="dial-label">3PT / Shooting Willingness</div>
+                        <div class="dial-group" id="dial-strat-shooting"></div>
+
+                        <select id="strat-scoring" class="strategy-select-native">
+                            <option value="Featured Scorer">Featured Scorer (Feed the Star)</option>
+                            <option value="Balanced Attack" selected>Balanced Attack</option>
+                            <option value="Everyone Shoots">Everyone Shoots</option>
+                        </select>
+                        <div class="dial-label">Scoring Options</div>
+                        <div class="dial-group" id="dial-strat-scoring"></div>
+
+                        <!-- UPGRADE: Featured Scorer used to always auto-pick
+                             whichever player the system decided was your
+                             highest-rated -- no way to actually choose who
+                             "the star" is. This lets the user designate
+                             anyone on the roster; leaving it on Auto keeps
+                             the old system-picks-for-you behavior. -->
+                        <select id="strat-designated-star" class="strategy-select-native">
+                            <option value="">Auto (highest-rated player)</option>
+                        </select>
+                        <div class="dial-label">Designated Star (for Featured Scorer)</div>
+
+                        <button class="btn btn-accent mt-2 w-100" onclick="saveRotation()">Commit Strategy Changes</button>
+                    </div>
+                </div>
+
+                <div id="tm-panel-defense" class="tm-panel" style="display:none;">
+                    <div class="dashboard-card" style="max-width:640px;">
+                        <h3 class="section-title mb-3">🛡 Defense Strategy Dials</h3>
+                        <select id="strat-defense" class="strategy-select-native">
+                            <option value="Man-to-Man">Man-to-Man Focus</option>
+                            <option value="2-3 Zone Package">2-3 Zone Package</option>
+                            <option value="Full-Court Press">Full-Court Press</option>
+                            <option value="Switch Everything">Switch Everything</option>
+                            <option value="Box-and-1">Box-and-1 (shadow their #1 scorer)</option>
+                            <option value="Triangle-and-2">Triangle-and-2 (shadow their top 2)</option>
+                            <option value="Drop Coverage">Drop Coverage (wall off the rim, concede mid-range)</option>
+                            <option value="Blitz the Pick-and-Roll">Blitz the Pick-and-Roll (double the ball, risk open shooters)</option>
+                        </select>
+                        <div class="dial-label">Defensive Aggression / Focus</div>
+                        <div class="dial-group" id="dial-strat-defense"></div>
+
+                        <select id="strat-rebounding" class="strategy-select-native">
+                            <option value="Crash Offensive Glass">Crash Offensive Glass</option>
+                            <option value="Balanced" selected>Balanced</option>
+                            <option value="Get Back on Defense">Get Back on Defense</option>
+                        </select>
+                        <div class="dial-label">Rebounding Options</div>
+                        <div class="dial-group" id="dial-strat-rebounding"></div>
+
+                        <button class="btn btn-accent mt-2 w-100" onclick="saveRotation()">Commit Strategy Changes</button>
+                    </div>
+                </div>
+
+                <div id="tm-panel-playbook" class="tm-panel" style="display:none;">
+                    <div class="dashboard-card" style="max-width:640px;">
+                        <h3 class="section-title mb-1">📖 Team Playbook</h3>
+                        <div class="player-meta small mb-3">
+                            Fine-tune your team's identity beyond the Offense/Defense scheme picks -- every dial here has a
+                            real, measurable effect on the box score (crash the glass harder, feed your star more shots,
+                            play more zone, etc). Changes apply immediately and stack with your scheme selections.
+                        </div>
+                        <div id="playbook-sliders-root"><div class="hub-spinner">Loading playbook...</div></div>
+                    </div>
+                </div>
+
+                <div id="tm-panel-snapshot" class="tm-panel" style="display:none;">
+                    <div class="dashboard-card">
+                        <h3 class="section-title mb-3">Team Snapshot</h3>
+                        <div id="team-snapshot"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-calendar" class="tab-content" style="display:none;">
+                <div class="dashboard-card">
+                    <h2 class="section-title">Season Calendar</h2>
+                    <div class="stat-subpanel mb-3">
+                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                            <h5 class="text-white m-0 font-monospace" id="schedule-day-tracker" style="font-size:1rem;">Schedule Matrix Progress: Day 1</h5>
+                            <div class="small text-white-50">🟢 Win &nbsp; 🔴 Loss &nbsp; 🔵 Next up &nbsp; ⚪ Upcoming</div>
+                        </div>
+                        <div class="mt-2 d-flex align-items-center flex-wrap gap-3" id="autosim-controls">
+                            <button class="btn btn-accent btn-sm" id="btn-autosim-toggle" onclick="toggleAutoSim()">▶ Auto-Sim</button>
+                            <div class="d-flex align-items-center gap-2 flex-fill" style="min-width:220px;">
+                                <span class="small text-white-50">Speed</span>
+                                <input type="range" id="autosim-speed" min="1" max="6" value="3" class="form-range" style="max-width:220px;" oninput="updateAutoSimSpeedLabel()">
+                                <span class="small text-info font-monospace" id="autosim-speed-label">2 days/sec</span>
+                            </div>
+                            <button class="btn btn-outline-accent btn-sm" style="border:1px solid #3b82f6;color:#93c5fd;" onclick="simEntireSeason()">⏩ Sim Entire Regular Season</button>
+                        </div>
+                        <div class="small text-white-50 mt-2">Click any upcoming day on the calendar below to simulate straight through to that date.</div>
+                        <div id="playoff-ready-alert" class="mt-3" style="display:none;">
+                            <div class="alert alert-success m-0 py-2">🏆 Regular season complete! The playoff bracket has been seeded automatically -- head to the <b>Playoff Bracket</b> tab.</div>
+                        </div>
+                    </div>
+                    <div id="season-calendar" class="calendar-grid"></div>
+                </div>
+
+                <div class="row g-3 mt-1">
+                    <div class="col-lg-6">
+                        <div class="dashboard-card h-100">
+                            <h3 class="section-title mb-3">📰 League Newswire</h3>
+                            <div id="league-news-feed" class="smooth-scroll" style="max-height:320px; overflow-y:auto;"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="dashboard-card h-100" id="cup-card">
+                            <h3 class="section-title mb-3">🏆 NBA Cup</h3>
+                            <div id="cup-content" class="small"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6" id="all-star-card-col" style="display:none;">
+                        <div class="dashboard-card h-100" id="all-star-card">
+                            <h3 class="section-title mb-3">🌟 All-Star Weekend</h3>
+                            <div id="all-star-content"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="dashboard-card h-100">
+                            <h3 class="section-title mb-3">🩹 League Injury Report</h3>
+                            <div id="calendar-injury-report" class="small" style="max-height:320px; overflow-y:auto;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-livegame" class="tab-content" style="display:none;">
+                <div class="dashboard-card">
+                    <h2 class="section-title">🎮 Jump Into a Game</h2>
+                    <p class="text-white-50 small">Watch any of today's games play out live, possession by possession. The
+                        final result is committed the instant you start watching -- you can skip to the end any time.</p>
+                    <div id="livegame-picker"></div>
+                    <div id="livegame-viewer" style="display:none;">
+                        <div class="hud-scorebug" id="hud-scorebug">
+                            <div class="hud-team-block" id="hud-away-block">
+                                <span class="hud-team-logo" id="hud-away-logo"></span>
+                                <span class="hud-team-abbrev" id="hud-away-abbrev">AWY</span>
+                                <span class="hud-poss-arrow" id="hud-away-poss">◀</span>
+                            </div>
+                            <div class="hud-score-block">
+                                <div class="hud-score-nums">
+                                    <span class="hud-score-num" id="hud-away-score">0</span>
+                                    <span class="hud-score-dash">-</span>
+                                    <span class="hud-score-num" id="hud-home-score">0</span>
+                                </div>
+                                <div class="hud-clock-row">
+                                    <span class="hud-period" id="hud-period">Q1</span>
+                                    <span class="hud-gameclock" id="hud-gameclock">12:00</span>
+                                    <span class="hud-shotclock" id="hud-shotclock">24</span>
+                                </div>
+                                <div class="hud-timeouts-row">
+                                    <span class="hud-to-label">TO</span><span id="hud-away-timeouts" class="hud-to-pips"></span>
+                                    <span class="hud-to-spacer"></span>
+                                    <span id="hud-home-timeouts" class="hud-to-pips"></span><span class="hud-to-label">TO</span>
+                                </div>
+                            </div>
+                            <div class="hud-team-block" id="hud-home-block">
+                                <span class="hud-poss-arrow" id="hud-home-poss">▶</span>
+                                <span class="hud-team-abbrev" id="hud-home-abbrev">HOM</span>
+                                <span class="hud-team-logo" id="hud-home-logo"></span>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-dark border border-secondary rounded mb-3 d-flex justify-content-between align-items-center flex-wrap gap-2">
+                            <div class="d-flex gap-2 flex-wrap">
+                                <button class="btn btn-outline-warning btn-sm" onclick="lgCallTimeout(lgUserSide)" id="lg-timeout-user-btn">⏱ Call Timeout</button>
+                                <button class="btn btn-outline-danger btn-sm" onclick="lgToggleFoulStrategy()" id="lg-foul-strategy-btn" title="When trailing late, take more (higher-variance) fouling risks">🦶 Foul When Trailing: Off</button>
+                                <button class="btn btn-outline-accent btn-sm" onclick="lgTogglePlay()" id="lg-play-btn">⏸ Pause</button>
+                                <button class="btn btn-outline-accent btn-sm" onclick="lgSetSpeed()" id="lg-speed-btn">Speed: 1x</button>
+                                <button class="btn btn-accent btn-sm" onclick="lgSkipToEnd()">⏭ Skip to Final</button>
+                                <button class="btn btn-outline-danger btn-sm" onclick="lgCloseViewer()">✕ Close</button>
+                            </div>
+                        </div>
+                        <div id="lg-crunch-panel" style="display:none;" class="alert alert-warning mb-3">
+                            <div class="fw-bold mb-2">🚨 Crunch Time! Draw up the final play:</div>
+                            <div id="lg-crunch-options" class="d-flex gap-2 flex-wrap"></div>
+                        </div>
+                        <div id="lg-timeout-panel" style="display:none;" class="p-3 bg-dark border border-info rounded mb-3"></div>
+                        <div class="d-flex gap-2 mb-2">
+                            <button class="btn btn-sm btn-accent" id="lg-minitab-pbp-btn" onclick="lgSwitchMiniTab('pbp')">📜 Play-by-Play</button>
+                            <button class="btn btn-sm btn-outline-accent" id="lg-minitab-box-btn" onclick="lgSwitchMiniTab('box')">📊 Box Score So Far</button>
+                        </div>
+                        <div id="lg-feed" class="smooth-scroll" style="max-height:420px; overflow-y:auto; font-family:monospace; font-size:0.88rem;"></div>
+                        <div id="lg-boxscore-sofar" style="display:none; max-height:420px; overflow-y:auto;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-stats" class="tab-content" style="display:none;">
+                <div class="dashboard-card">
+                    <h2 class="section-title">League Leaders</h2>
+
+                    <div id="stats-mvp-ladder" class="mb-4"></div>
+
+                    <div id="stat-leaders-strip" class="row g-2 mb-4"></div>
+
+                    <div class="awards-banner" id="awards-banner">
+                        <h3 class="text-warning fw-bold mb-3">🏅 End of Season League Awards</h3>
+                        <div class="row" id="awards-content"></div>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mt-2">
+                        <h4 class="text-white-50 font-monospace m-0">Season Player Stats Tracker</h4>
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="small text-white-50 mb-0">Filter by team:</label>
+                            <select id="stats-team-filter" class="form-select form-select-sm bg-dark text-white border-secondary" style="width:auto;" onchange="filterByTeam(this.value || null)"></select>
+                        </div>
+                    </div>
+                    <div style="max-height: 650px; overflow-y:auto; margin-top: 10px;">
+                        <table class="table-dark-custom" id="season-player-stats-table">
+                            <thead><tr>
+                                <th class="stats-sortable" onclick="setStatsSort('NAME')">Player<span id="sort-arrow-NAME"></span></th>
+                                <th class="stats-sortable" onclick="setStatsSort('TEAM')">Team<span id="sort-arrow-TEAM"></span></th>
+                                <th class="stats-sortable" onclick="setStatsSort('GP')">GP<span id="sort-arrow-GP"></span></th>
+                                <th class="stats-sortable" onclick="setStatsSort('MPG')">MPG<span id="sort-arrow-MPG"></span></th>
+                                <th class="stats-sortable" onclick="setStatsSort('PPG')">PPG<span id="sort-arrow-PPG"></span></th>
+                                <th class="stats-sortable" onclick="setStatsSort('RPG')">RPG<span id="sort-arrow-RPG"></span></th>
+                                <th class="stats-sortable" onclick="setStatsSort('APG')">APG<span id="sort-arrow-APG"></span></th>
+                                <th class="stats-sortable" onclick="setStatsSort('SPG')">SPG<span id="sort-arrow-SPG"></span></th>
+                                <th class="stats-sortable" onclick="setStatsSort('BPG')">BPG<span id="sort-arrow-BPG"></span></th>
+                                <th class="stats-sortable" onclick="setStatsSort('FGPCT')">FG%<span id="sort-arrow-FGPCT"></span></th>
+                                <th class="stats-sortable" onclick="setStatsSort('TPPCT')">3PT%<span id="sort-arrow-TPPCT"></span></th>
+                                <th>Badges</th>
+                            </tr></thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-teamtracker" class="tab-content" style="display:none;">
+                <div class="dashboard-card">
+                    <h2 class="section-title mb-3">🏟 Team Tracker</h2>
+
+                    <div id="teamtracker-list-view">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5 class="text-white-50 font-monospace">Western Conference</h5>
+                                <div id="tt-standings-west" class="stat-subpanel" style="padding:6px;"></div>
+                            </div>
+                            <div class="col-md-6">
+                                <h5 class="text-white-50 font-monospace">Eastern Conference</h5>
+                                <div id="tt-standings-east" class="stat-subpanel" style="padding:6px;"></div>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-md-12">
+                                <h5 class="text-white-50 font-monospace">⚡ League Power Rankings</h5>
+                                <div id="power-rankings" class="row"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="teamtracker-detail-view" style="display:none;">
+                        <button class="btn btn-outline-info btn-sm mb-3" onclick="showTeamTrackerList()">⬅ Back to All Teams</button>
+                        <div id="tt-detail-content"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-teamintel" class="tab-content" style="display:none;">
+                <div class="dashboard-card">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <button class="btn btn-outline-accent" onclick="cycleTeamIntel(-1)">◀</button>
+                        <div class="text-center d-flex align-items-center gap-3">
+                            <div id="ti-chemistry-ring" style="line-height:1;"></div>
+                            <div>
+                                <h2 class="section-title m-0" id="ti-team-name">🕵️ Team Intel</h2>
+                                <div class="small text-white-50" id="ti-team-sub"></div>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline-accent" onclick="cycleTeamIntel(1)">▶</button>
+                    </div>
+                    <select id="ti-team-select" class="form-select form-select-sm bg-dark text-white border-secondary mb-3" style="max-width:260px;" onchange="renderTeamIntelTab(this.value)"></select>
+                    <div id="ti-content"></div>
+                </div>
+            </div>
+
+            <div id="tab-trade" class="tab-content" style="display:none;">
+                <div class="dashboard-card">
+                    <h2 class="section-title mb-3">🔁 Trade Center</h2>
+                    <div id="trade-asset-grid" class="mb-3"></div>
+
+                    <div class="d-flex border-bottom border-secondary mb-3 flex-wrap" id="trade-mini-tabs">
+                        <button class="pm-tab-btn active" data-trade="playerfinder" onclick="switchTradeSubTab('playerfinder')">🔍 Player Finder</button>
+                        <button class="pm-tab-btn" data-trade="tradefinder" onclick="switchTradeSubTab('tradefinder')">🔁 Trade Finder</button>
+                        <button class="pm-tab-btn" data-trade="center" onclick="switchTradeSubTab('center')">🏛 Trade Center</button>
+                    </div>
+
+                    <div id="trade-panel-playerfinder" class="trade-sub-panel">
+                    <div class="stat-subpanel mb-3">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h6 class="text-info m-0">🔍 Player Finder</h6>
+                            <span class="small text-white-50" id="trade-finder-count"></span>
+                        </div>
+                        <div class="row g-2 align-items-end mb-2">
+                            <div class="col-auto">
+                                <label class="small text-white-50 mb-1">Search</label>
+                                <input id="tf-query" type="text" class="form-control form-control-sm bg-dark text-white border-secondary" style="width:150px;" placeholder="Player name" onkeydown="if(event.key==='Enter') runTradeFinder();">
+                            </div>
+                            <div class="col-auto">
+                                <label class="small text-white-50 mb-1">Position</label>
+                                <select id="tf-position" class="form-select form-select-sm bg-dark text-white border-secondary" onchange="runTradeFinder()">
+                                    <option value="">Any</option>
+                                    <option value="PG">PG</option><option value="SG">SG</option><option value="SF">SF</option><option value="PF">PF</option><option value="C">C</option>
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <label class="small text-white-50 mb-1">Min OVR</label>
+                                <input id="tf-min-rating" type="number" class="form-control form-control-sm bg-dark text-white border-secondary" style="width:70px;" value="60" onkeydown="if(event.key==='Enter') runTradeFinder();">
+                            </div>
+                            <div class="col-auto">
+                                <label class="small text-white-50 mb-1">Max Salary ($M)</label>
+                                <input id="tf-max-salary" type="number" class="form-control form-control-sm bg-dark text-white border-secondary" style="width:80px;" value="999" onkeydown="if(event.key==='Enter') runTradeFinder();">
+                            </div>
+                            <div class="col-auto">
+                                <label class="small text-white-50 mb-1">Max Age</label>
+                                <input id="tf-max-age" type="number" class="form-control form-control-sm bg-dark text-white border-secondary" style="width:70px;" value="99" onkeydown="if(event.key==='Enter') runTradeFinder();">
+                            </div>
+                            <div class="col-12">
+                                <label class="small text-white-50 mb-1 d-block">Attributes (select any number)</label>
+                                <div id="tf-attribute-checkboxes" class="d-flex flex-wrap gap-1 stat-subpanel" style="max-height:140px; overflow-y:auto;"></div>
+                            </div>
+                            <div class="col-auto">
+                                <label class="small text-white-50 mb-1">Min Attribute</label>
+                                <input id="tf-min-attribute" type="number" class="form-control form-control-sm bg-dark text-white border-secondary" style="width:70px;" value="0" onkeydown="if(event.key==='Enter') runTradeFinder();">
+                            </div>
+                            <div class="col-auto">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="tf-include-untouchable" onchange="runTradeFinder()">
+                                    <label class="form-check-label small text-white-50" for="tf-include-untouchable">Include untouchables</label>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <button class="btn btn-accent btn-sm" onclick="runTradeFinder()">🔍 Search</button>
+                            </div>
+                        </div>
+                        <div id="trade-finder-results" style="max-height:400px; overflow-y:auto;"></div>
+                    </div>
+                    </div>
+
+                    <div id="trade-panel-tradefinder" class="trade-sub-panel" style="display:none;">
+                    <div class="stat-subpanel mb-3">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h6 class="text-info m-0">🔁 Trade Finder</h6>
+                            <span class="small text-white-50">Select your players/picks below, then find who wants them</span>
+                        </div>
+                        <div id="tf-partner-your-players" class="d-flex flex-wrap gap-2 mb-2"></div>
+                        <!-- BUGFIX: Trade Finder previously only let you select
+                             players to shop -- your own draft picks had no way
+                             to be included in the search package at all. -->
+                        <div id="tf-partner-your-picks" class="d-flex flex-wrap gap-2 mb-2"></div>
+                        <button class="btn btn-accent btn-sm" onclick="findTradePartners()">🔁 Find Interested Teams</button>
+                        <div id="trade-partner-results" class="mt-2"></div>
+                    </div>
+                    </div>
+
+                    <div id="trade-panel-center" class="trade-sub-panel" style="display:none;">
+                    <div class="row mb-3 align-items-end">
+                        <div class="col-md-6">
+                            <label class="form-label text-white-50">Trade Partner</label>
+                            <select id="trade-partner-select" class="form-select bg-dark text-white border-secondary" onchange="onTradePartnerChange()"></select>
+                        </div>
+                        <div class="col-md-6 d-flex justify-content-end gap-2">
+                            <button class="btn btn-outline-info btn-sm" onclick="scoutOffer()">📡 Scout Offers</button>
+                            <button class="btn btn-outline-accent btn-sm" onclick="findFairDeal()">🔍 Find a Fair Deal</button>
+                        </div>
+                    </div>
+                    <div id="pending-offer-panel"></div>
+
+                    <div class="row" id="trade-assets-row">
+                        <div class="col-md-6" id="trade-your-col">
+                            <h5 class="text-info mb-1">Your Assets — <span id="trade-your-team"></span></h5>
+                            <div class="small text-white-50 mb-2">Team Needs: <span id="trade-your-needs" class="text-warning"></span></div>
+                            <div class="mb-2 small text-white-50">Trade Slots</div>
+                            <div id="trade-your-players"></div>
+                            <div id="trade-your-picks" style="display:none;"></div>
+                            <div id="trade-protect-panel" class="mt-2"></div>
+                        </div>
+                        <div class="col-md-6" id="trade-their-col">
+                            <h5 class="text-warning mb-1">Their Assets — <span id="trade-their-team"></span></h5>
+                            <div class="small text-white-50 mb-2">Team Needs: <span id="trade-their-needs" class="text-warning"></span></div>
+                            <div class="mb-2 small text-white-50">Trade Slots</div>
+                            <div id="trade-their-players"></div>
+                            <div id="trade-their-picks" style="display:none;"></div>
+                        </div>
+                        <div class="col-md-4" id="trade-third-col" style="display:none;">
+                            <h5 class="mb-1" style="color:#a78bfa;">Third Team — <span id="trade-third-team-label"></span></h5>
+                            <div class="small text-white-50 mb-2">Team Needs: <span id="trade-third-needs" class="text-warning"></span></div>
+                            <select id="trade-third-team-select" class="form-select form-select-sm bg-dark text-white border-secondary mb-2" onchange="onThirdTeamChange()">
+                                <option value="">— Select a third team —</option>
+                            </select>
+                            <div id="third-team-assets" style="display:none;">
+                                <div class="mb-2 small text-white-50">Their Players</div>
+                                <div id="trade-third-players"></div>
+                                <div class="mb-2 small text-white-50 mt-2">Their Picks</div>
+                                <div id="trade-third-picks"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center mt-3 mb-2">
+                        <div class="d-flex gap-2">
+                            <button id="btn-trade-2team" class="btn btn-accent btn-sm" onclick="setTradeMode(2)">2-Team</button>
+                            <button id="btn-trade-3team" class="btn btn-outline-accent btn-sm" onclick="setTradeMode(3)">3-Team</button>
+                        </div>
+                        <div id="tpe-panel-inline" class="d-flex align-items-center gap-2 small text-white-50">
+                            <span>Trade Exception:</span>
+                            <select id="trade-tpe-select" class="form-select form-select-sm bg-dark text-white border-secondary" style="width:auto;">
+                                <option value="">None</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="tpe-panel" class="mb-3"></div>
+
+                    <div class="deal-meter-panel mt-3">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="deal-meter-title">🤖 AI Deal Acceptance Meter</span>
+                            <span id="trade-fairness-label" style="font-family:'Rajdhani',sans-serif; font-weight:700;">—</span>
+                        </div>
+                        <div class="deal-meter-track">
+                            <div id="trade-fairness-bar" class="progress-bar" role="progressbar" style="width:0%; height:100%; background:#facc15;"></div>
+                        </div>
+                        <div class="d-flex justify-content-between small text-white-50 mt-2">
+                            <span>Salary Out: <span id="trade-salary-out-a" class="text-info">$0.0M</span></span>
+                            <span>Salary Out: <span id="trade-salary-out-b" class="text-warning">$0.0M</span></span>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-accent w-100 mt-3" onclick="tradeMode===3?propose3TeamTrade():proposeTrade()">Propose Trade</button>
+                    <div id="trade-result-panel" class="mt-3"></div>
+
+                    <h5 class="text-white-50 font-monospace mt-4" style="cursor:pointer;" onclick="const el=document.getElementById('trade-log-list'); el.style.display = el.style.display==='none' ? 'block' : 'none';">Recent Trade Log <span class="small">▾</span></h5>
+                    <div id="trade-log-list" style="max-height:300px; overflow-y:auto; display:none;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-frontoffice" class="tab-content" style="display:none;">
+                <div class="d-flex border-bottom border-secondary mb-3 flex-wrap" id="fo-mini-tabs">
+                    <button class="pm-tab-btn active" data-fo="overview" onclick="switchFOTab('overview')">🏢 Overview</button>
+                    <button class="pm-tab-btn" data-fo="scouting" onclick="switchFOTab('scouting')">🔭 Scouting & Requests</button>
+                    <button class="pm-tab-btn" data-fo="facilities" onclick="switchFOTab('facilities')">🏟️ Facilities & Arena</button>
+                    <button class="pm-tab-btn" data-fo="staff" onclick="switchFOTab('staff')">👔 Staff & Culture</button>
+                    <button class="pm-tab-btn" data-fo="rules" onclick="switchFOTab('rules')">🕰️ League Rules</button>
+                    <button class="pm-tab-btn" data-fo="awards" onclick="switchFOTab('awards')">🏅 Awards & Leaders</button>
+                </div>
+
+                <div id="fo-panel-overview" class="fo-panel">
+                    <div class="dashboard-card">
+                        <h2 class="section-title mb-3">🏢 Front Office</h2>
+                        <div id="fo-coach" class="mb-4"></div>
+                        <div id="fo-content"></div>
+                        <div id="fo-extras" class="mt-4"></div>
+                        <div class="mt-4 pt-3 border-top border-secondary">
+                            <button class="btn btn-outline-accent btn-sm" onclick="reopenTeamPicker()" title="Take over a different franchise">🔁 Switch Franchise</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="fo-panel-scouting" class="fo-panel" style="display:none;">
+                    <div class="dashboard-card">
+                        <h2 class="section-title mb-3">🔭 Scouting & Trade Requests</h2>
+                        <div id="fo-trade-requests" class="mb-4"></div>
+                        <div id="fo-scouting"></div>
+                        <div id="fo-arbitration" class="mt-4"></div>
+                    </div>
+                </div>
+
+                <div id="fo-panel-facilities" class="fo-panel" style="display:none;">
+                    <div class="dashboard-card">
+                        <h2 class="section-title mb-3">🏟️ Facilities & Arena</h2>
+                        <div id="fo-facilities"></div>
+                        <div id="fo-arena" class="mt-4"></div>
+                    </div>
+                </div>
+
+                <div id="fo-panel-staff" class="fo-panel" style="display:none;">
+                    <div class="dashboard-card">
+                        <h3 class="section-title mb-3">👔 GM Personality, Staff, Coaching &amp; Business</h3>
+                        <p class="player-meta small mb-3">These tools have their own dedicated, fully-built-out screens now instead of being crammed into a sub-tab here -- press conferences, career resume, front office roster with hire buttons, franchise value, sponsorships, and more.</p>
+                        <div class="d-flex flex-wrap gap-2">
+                            <button class="hub-row-run-btn" onclick="dashGoTab('hub-gm')">🎙️ Open GM Career</button>
+                            <button class="hub-row-run-btn" onclick="dashGoTab('hub-franchise')">🏟️ Open Franchise & Business</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="fo-panel-rules" class="fo-panel" style="display:none;">
+                    <div class="dashboard-card">
+                        <h3 class="section-title mb-3">🕰️ Eras, League Rules &amp; Settings</h3>
+                        <p class="player-meta small mb-3">Era selection, league rule configuration, realignment, relocation, and franchise settings all live in League Operations now, alongside power rankings and this season's recap.</p>
+                        <div class="d-flex flex-wrap gap-2">
+                            <button class="hub-row-run-btn" onclick="dashGoTab('hub-leagueops')">⚖️ Open League Operations</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="fo-panel-awards" class="fo-panel" style="display:none;">
+                    <div class="dashboard-card">
+                        <h3 class="section-title mb-3">🏅 Awards & Leaders</h3>
+                        <p class="player-meta small mb-3">MVP/ROY ladders, award odds, Hall of Fame ballot, legacy scores, and every other awards/records tool now live together in Awards & Legacy with a real dashboard instead of a plain list.</p>
+                        <div class="d-flex flex-wrap gap-2">
+                            <button class="hub-row-run-btn" onclick="dashGoTab('hub-awards')">🏅 Open Awards & Legacy</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-freeagency" class="tab-content" style="display:none;">
+                <div class="dashboard-card">
+                    <h2 class="section-title mb-3">💰 Free Agency Wire</h2>
+                    <p class="text-white-50 small mb-3">Sign unassigned players onto your roster any time -- during the season, not just the offseason -- as long as you have roster space and cap room.</p>
+                    <div class="stat-subpanel mb-3">
+                        <div class="row g-2 align-items-end">
+                            <div class="col-auto">
+                                <label class="small text-white-50 mb-1">Search</label>
+                                <input id="fa-query" type="text" class="form-control form-control-sm bg-dark text-white border-secondary" style="width:150px;" placeholder="Player name" oninput="renderFreeAgencyTab()">
+                            </div>
+                            <div class="col-auto">
+                                <label class="small text-white-50 mb-1 d-block">Position</label>
+                                <input id="fa-position" type="hidden" value="">
+                                <div class="fa-pill-row" id="fa-position-pills">
+                                    <button type="button" class="fa-pill active" data-pos="" onclick="setFaPositionFilter('')">All</button>
+                                    <button type="button" class="fa-pill" data-pos="PG" onclick="setFaPositionFilter('PG')">PG</button>
+                                    <button type="button" class="fa-pill" data-pos="SG" onclick="setFaPositionFilter('SG')">SG</button>
+                                    <button type="button" class="fa-pill" data-pos="SF" onclick="setFaPositionFilter('SF')">SF</button>
+                                    <button type="button" class="fa-pill" data-pos="PF" onclick="setFaPositionFilter('PF')">PF</button>
+                                    <button type="button" class="fa-pill" data-pos="C" onclick="setFaPositionFilter('C')">C</button>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <label class="small text-white-50 mb-1">Min OVR</label>
+                                <input id="fa-min-rating" type="number" class="form-control form-control-sm bg-dark text-white border-secondary" style="width:70px;" value="0" oninput="renderFreeAgencyTab()">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="fa-tab-content"></div>
+                </div>
+            </div>
+
+            <div id="tab-playoffs" class="tab-content" style="display:none;">
+                <div class="dashboard-card">
+                    <h2 class="section-title text-center mb-2">🏆 Postseason Bracket — West vs East</h2>
+                    <div id="playoff-init-panel" class="text-center"></div>
+                    <div id="playoff-bracket-layout" class="bracket-tree" style="display:none;"></div>
+                </div>
+            </div>
+
+            <div id="tab-history" class="tab-content" style="display:none;">
+                <div class="d-flex border-bottom border-secondary mb-3 flex-wrap" id="hist-mini-tabs">
+                    <button class="pm-tab-btn active" data-hist="champions" onclick="switchHistTab('champions')">🏛 Champions & News</button>
+                    <button class="pm-tab-btn" data-hist="legends" onclick="switchHistTab('legends')">🌟 Hall of Fame & GOATs</button>
+                    <button class="pm-tab-btn" data-hist="leaders" onclick="switchHistTab('leaders')">📊 All-Time Leaders</button>
+                    <button class="pm-tab-btn" data-hist="records" onclick="switchHistTab('records')">🏆 Records & Analytics</button>
+                </div>
+
+                <div id="hist-panel-champions" class="hist-panel">
+                    <div class="dashboard-card">
+                        <h2 class="section-title mb-3">🏛 League History</h2>
+                        <div id="history-content"></div>
+                        <div id="news-archive-panel" class="mt-3"></div>
+                        <div id="team-records-panel" class="mt-2"></div>
+                    </div>
+                </div>
+
+                <div id="hist-panel-legends" class="hist-panel" style="display:none;">
+                    <div class="dashboard-card">
+                        <h3 class="section-title mb-3">🏆 Trophy Room</h3>
+                        <div id="trophy-room-panel"></div>
+                    </div>
+                    <div class="dashboard-card mt-3">
+                        <h3 class="section-title mb-3">🐐 Franchise GOATs</h3>
+                        <div id="franchise-goat-panel"></div>
+                    </div>
+                    <div class="dashboard-card mt-3">
+                        <h3 class="section-title mb-3">⭐ Legacy Scores</h3>
+                        <div id="legacy-score-panel"></div>
+                    </div>
+                    <div class="dashboard-card mt-3">
+                        <h3 class="section-title mb-3">🏛 Hall of Fame</h3>
+                        <div id="hof-panel"></div>
+                    </div>
+                    <div class="dashboard-card mt-3">
+                        <h3 class="section-title mb-3">👕 Retired Jerseys</h3>
+                        <div id="retired-jerseys-panel"></div>
+                    </div>
+                </div>
+
+                <div id="hist-panel-leaders" class="hist-panel" style="display:none;">
+                    <div class="dashboard-card">
+                        <h2 class="section-title mb-3">📊 All-Time Career Leaders</h2>
+                        <div id="career-leaders-content" class="row"></div>
+                    </div>
+                </div>
+
+                <div id="hist-panel-records" class="hist-panel" style="display:none;">
+                    <div class="dashboard-card">
+                        <h3 class="section-title mb-3">🏆 Records, Legacy & Analytics</h3>
+                        <p class="player-meta small mb-3">The full records/legacy toolkit (Hall of Fame ballot, legacy scores, all-time redraft, all-decade team, and more) now lives in Awards & Legacy with a real dashboard.</p>
+                        <button class="hub-row-run-btn" onclick="dashGoTab('hub-awards')">🏅 Open Awards & Legacy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-hub-gm" class="tab-content" style="display:none;">
+                <div class="dashboard-card">
+                    <h2 class="section-title mb-3">🎙️ GM Career</h2>
+                    <div id="gm-bespoke-root">Loading...</div>
+                    <div class="subsection-title">More GM Tools</div>
+                    <div id="hubgrid-gm" class="hub-menu"></div>
+                </div>
+            </div>
+
+            <div id="tab-hub-franchise" class="tab-content" style="display:none;">
+                <div class="dashboard-card">
+                    <h2 class="section-title mb-3">🏟️ Franchise & Business</h2>
+                    <div id="franchise-bespoke-root"></div>
+                    <div class="subsection-title">All Franchise &amp; Business Tools</div>
+                    <div id="hubgrid-franchise" class="hub-menu"></div>
+                </div>
+            </div>
+
+            <div id="tab-hub-media" class="tab-content" style="display:none;">
+                <div class="dashboard-card">
+                    <h2 class="section-title mb-3">📰 Media & Fan Engagement</h2>
+                    <div id="media-bespoke-root">Loading...</div>
+                    <div class="subsection-title">More Media Tools</div>
+                    <div id="hubgrid-media" class="hub-menu"></div>
+                </div>
+            </div>
+
+            <div id="tab-hub-awards" class="tab-content" style="display:none;">
+                <div class="dashboard-card">
+                    <h2 class="section-title mb-3">🏅 Awards & Legacy</h2>
+                    <div id="awards-bespoke-root">Loading...</div>
+                    <div class="subsection-title">More Awards & Legacy Tools</div>
+                    <div id="hubgrid-awards" class="hub-menu"></div>
+                </div>
+            </div>
+
+            <div id="tab-hub-coaching" class="tab-content" style="display:none;">
+                <div class="dashboard-card">
+                    <h2 class="section-title mb-3">🧠 Coaching & Strategy</h2>
+                    <div id="coaching-bespoke-root"></div>
+                    <div class="subsection-title">All Coaching &amp; Strategy Tools</div>
+                    <div id="hubgrid-coaching" class="hub-menu"></div>
+                </div>
+            </div>
+
+            <div id="tab-hub-contracts" class="tab-content" style="display:none;">
+                <div class="dashboard-card">
+                    <h2 class="section-title mb-3">📄 Trades & Contracts</h2>
+                    <div id="contracts-bespoke-root"></div>
+                    <div class="subsection-title">All Trades &amp; Contracts Tools</div>
+                    <div id="hubgrid-frontoffice2" class="hub-menu"></div>
+                </div>
+            </div>
+
+            <div id="tab-hub-draft" class="tab-content" style="display:none;">
+                <div class="dashboard-card">
+                    <h2 class="section-title mb-3">🎓 Draft & Prospects</h2>
+                    <div id="draft-bespoke-root"></div>
+                    <div class="subsection-title">All Draft &amp; Prospects Tools</div>
+                    <div id="hubgrid-draft" class="hub-menu"></div>
+                </div>
+            </div>
+
+            <div id="tab-hub-sim" class="tab-content" style="display:none;">
+                <div class="dashboard-card">
+                    <h2 class="section-title mb-3">⏱️ Scheduling & Sim Controls</h2>
+                    <div id="sim-bespoke-root"></div>
+                    <div class="subsection-title">All Scheduling &amp; Sim Tools</div>
+                    <div id="hubgrid-sim" class="hub-menu"></div>
+                </div>
+            </div>
+
+            <div id="tab-hub-analytics" class="tab-content" style="display:none;">
+                <div class="dashboard-card">
+                    <h2 class="section-title mb-3">📈 Analytics & Projections</h2>
+                    <div id="analytics-bespoke-root"></div>
+                    <div class="subsection-title">All Analytics Tools</div>
+                    <div id="hubgrid-analytics" class="hub-menu"></div>
+                </div>
+            </div>
+
+            <div id="tab-hub-leagueops" class="tab-content" style="display:none;">
+                <div class="dashboard-card">
+                    <h2 class="section-title mb-3">⚖️ League Operations</h2>
+                    <div id="leagueops-bespoke-root"></div>
+                    <div class="subsection-title">All League Operations Tools</div>
+                    <div id="hubgrid-leagueops" class="hub-menu"></div>
+                </div>
+            </div>
+
+            </div><!-- /mlg-content -->
+    </main>
+</div><!-- /app-shell -->
+
+<!-- UPGRADE: ERA SELECTION SCREEN -- the very first thing a new league sees,
+     before the team picker. Each era carries its own rules, salary cap,
+     draft style, and cosmetic package, and choosing one backfills real
+     league history from 1984 up to that era's start year (nothing from
+     later eras leaks in). -->
+<div id="era-picker-overlay" style="display:none; position:fixed; inset:0; z-index:5001; background:#0b0f19; overflow-y:auto; padding:40px 20px;">
+    <div style="max-width:1100px; margin:0 auto; padding: 0 8px;">
+        <h1 class="text-center text-warning font-monospace mb-1">🕰️ Choose Your Era</h1>
+        <p class="text-center text-white-50 mb-4">Every era has its own rules, salary cap, draft style, and look. League history is generated from 1984 right up to your chosen starting point -- nothing from later eras exists yet.</p>
+        <div id="era-picker-grid" class="row g-3"></div>
+    </div>
+</div>
+
+<!-- UPGRADE: TEAM SELECTION SCREEN -- shown on first launch instead of
+     silently auto-assigning a franchise. Blocks the rest of the UI until
+     the user picks who they're GMing. -->
+<div id="team-picker-overlay" style="display:none; position:fixed; inset:0; z-index:5000; background:#0b0f19; overflow-y:auto; padding:40px 20px;">
+    <div id="main-content" style="max-width:1100px; margin:0 auto; padding: 0 8px;">
+        <h1 class="text-center text-warning font-monospace mb-1">🏀 Choose Your Franchise</h1>
+        <p class="text-center text-white-50 mb-4">Pick the team you want to run as General Manager. This can't be undone once the season starts.</p>
+        <div id="team-picker-grid" class="row g-3"></div>
+    </div>
+</div>
+
+<!-- BOXSCORE MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModals()"></div>
+<div class="modal-custom" id="boxscore-modal">
+    <div class="d-flex justify-content-between align-items-center mb-3 border-bottom border-secondary pb-2">
+        <h4 class="text-warning font-monospace m-0" id="box-header-title">GAME BOX SCORE</h4>
+        <button class="btn-danger-custom" onclick="closeModals()">X</button>
+    </div>
+    <div id="boxscore-stats-render"></div>
+</div>
+
+<!-- SERIES GAMES MODAL -->
+<div class="modal-custom series-modal" id="series-modal">
+    <div class="d-flex justify-content-between align-items-center mb-3 border-bottom border-secondary pb-2">
+        <h4 class="text-warning font-monospace m-0" id="series-header-title">Series Details</h4>
+        <button class="btn-danger-custom" onclick="closeModals()">X</button>
+    </div>
+    <div id="series-games-render"></div>
+</div>
+
+<!-- PLAYER STATS MODAL -->
+<div class="modal-custom player-modal" id="player-modal">
+    <div class="d-flex justify-content-between align-items-center mb-3 border-bottom border-secondary pb-2">
+        <h4 class="text-info font-monospace m-0" id="pm-name">Player Name</h4>
+        <button class="btn-danger-custom" onclick="closeModals()">X</button>
+    </div>
+    <div id="player-stats-render"></div>
+</div>
+
+<!-- PLAYER COMPARISON MODAL -- replaces the old window.open()-based compare
+     popup (which relied on typing an exact player name into a prompt() and
+     opened a bare, unstyled about:blank window that popup blockers often
+     killed outright). This is a real in-app modal with a searchable player
+     picker and a full side-by-side scouting report. -->
+<div class="modal-custom player-modal" id="compare-modal" style="max-width:700px;">
+    <div class="d-flex justify-content-between align-items-center mb-3 border-bottom border-secondary pb-2">
+        <h4 class="text-info font-monospace m-0">⚖ Compare Players</h4>
+        <button class="btn-danger-custom" onclick="closeModals()">X</button>
+    </div>
+    <div class="row g-2 mb-3">
+        <div class="col-6">
+            <label class="small text-white-50 mb-1">Player A</label>
+            <select id="compare-select-a" class="form-select form-select-sm bg-dark text-white border-secondary" onchange="runPlayerCompare()"></select>
+        </div>
+        <div class="col-6">
+            <label class="small text-white-50 mb-1">Player B</label>
+            <select id="compare-select-b" class="form-select form-select-sm bg-dark text-white border-secondary" onchange="runPlayerCompare()"></select>
+        </div>
+    </div>
+    <div id="compare-render"></div>
+</div>
+
+<!-- UI OVERHAUL: SAVE / LOAD MODAL -- replaces a raw browser prompt() that
+     required typing magic strings like "load:slot1" or "delete:slot1" by
+     hand. Real save slot cards with click Load/Overwrite/Delete buttons. -->
+<div class="modal-custom player-modal" id="save-load-modal" style="max-width:600px;">
+    <div class="d-flex justify-content-between align-items-center mb-3 border-bottom border-secondary pb-2">
+        <h4 class="text-info font-monospace m-0">💾 Save / Load</h4>
+        <button class="btn-danger-custom" onclick="closeModals()">X</button>
+    </div>
+    <div class="d-flex gap-2 mb-3">
+        <input id="save-new-slot-name" type="text" class="form-control form-control-sm bg-dark text-white border-secondary" placeholder="New save slot name">
+        <button class="btn btn-accent btn-sm" onclick="saveToNewSlot()">💾 Save New</button>
+    </div>
+    <div id="save-load-list"></div>
+</div>
+
+<!-- COACH PROFILE MODAL -- clicking any coach's name (roster panel, box scores,
+     franchise history, etc.) opens their career resume the same way a player
+     name opens a player card: system/scheme, career W-L, championships, and
+     every team they've coached. -->
+<div class="modal-custom player-modal" id="coach-modal">
+    <div class="d-flex justify-content-between align-items-center mb-3 border-bottom border-secondary pb-2">
+        <h4 class="text-info font-monospace m-0" id="cm-name">Coach Name</h4>
+        <button class="btn-danger-custom" onclick="closeModals()">X</button>
+    </div>
+    <div id="coach-stats-render"></div>
+</div>
+
+<!-- CONFETTI OVERLAY — rendered on canvas, auto-removes after 4s -->
+<canvas id="confetti-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;display:none;"></canvas>
+
+<!-- PRESS CONFERENCE MINI-GAME MODAL -->
+<div class="modal-custom" id="press-conf-modal" style="max-width:480px; display:none;">
+    <div class="d-flex justify-content-between align-items-center mb-3 border-bottom border-secondary pb-2">
+        <h4 class="text-warning font-monospace m-0">🎙 Press Conference</h4>
+    </div>
+    <p id="press-conf-prompt" class="text-white mb-3"></p>
+    <div id="press-conf-responses" class="d-grid gap-2"></div>
+</div>
+
+<!-- KEYBOARD SHORTCUTS HELP MODAL -->
+<div class="modal-custom" id="shortcuts-modal" style="max-width:420px; display:none;">
+    <div class="d-flex justify-content-between align-items-center mb-3 border-bottom border-secondary pb-2">
+        <h4 class="text-warning font-monospace m-0" style="font-size:1.05rem;">⌨️ Keyboard Shortcuts</h4>
+        <button class="btn-danger-custom" onclick="closeModals()">X</button>
+    </div>
+    <table class="table-dark-custom">
+        <tbody>
+            <tr><td><kbd>D</kbd></td><td>Sim one day</td></tr>
+            <tr><td><kbd>&#8594;</kbd> / <kbd>]</kbd></td><td>Next tab</td></tr>
+            <tr><td><kbd>&#8592;</kbd> / <kbd>[</kbd></td><td>Previous tab</td></tr>
+            <tr><td><kbd>Esc</kbd></td><td>Close any open modal</td></tr>
+            <tr><td><kbd>?</kbd></td><td>Toggle this help</td></tr>
+        </tbody>
+    </table>
+    <div class="small text-white-50">Shortcuts are disabled while typing in a text field.</div>
+</div>
+
+<!-- GAME-DAY QUICK ACTIONS MODAL -- 2K MyLeague-style popup that opens when you
+     click the 📅 icon on a calendar tile, giving Jump In Game / Sim to This Date /
+     Sim Regular Season options for that game instead of only a single click action. -->
+<div class="modal-custom" id="game-options-modal" style="max-width:420px;">
+    <div class="d-flex justify-content-between align-items-center mb-3 border-bottom border-secondary pb-2">
+        <h4 class="text-warning font-monospace m-0" style="font-size:1.05rem;">📅 Game Day Options</h4>
+        <button class="btn-danger-custom" onclick="closeModals()">X</button>
+    </div>
+    <div id="game-options-body"></div>
+</div>
+
+<!-- INCOMING TRADE OFFER POPUP -- fires mid-simulation regardless of active tab,
+     and pauses any auto-sim loop (calendar or playoffs) until resolved. -->
+<div id="news-ticker" style="position:fixed; top:70px; right:16px; width:320px; z-index:3000; pointer-events:none;"></div>
+<div class="modal-overlay" id="offer-popup-overlay" style="display:none; z-index:2000;"></div>
+<div class="modal-custom" id="offer-popup-modal" style="display:none; z-index:2001;">
+    <div id="offer-popup-body"></div>
+</div>
+
+
+<script src="/static/js/app-core.js"></script>
+
+<script src="/static/js/trade-center.js"></script>
+
+<script src="/static/js/hub-panels.js"></script>
+
+<script src="/static/js/dashboard.js"></script>
+
+<div class="bottom-ticker-wrap">
+    <div class="bottom-ticker-track" id="ticker-track">Loading league leaders...</div>
+</div>
+</body>
+</html>
