@@ -1,0 +1,1513 @@
+{
+  "gm": {
+    "label": "GM Career",
+    "items": [
+      {
+        "path": "/api/team_identity",
+        "method": "GET",
+        "args": [
+          "team"
+        ],
+        "arg_labels": {
+          "team": ""
+        },
+        "label": "Team Identity"
+      },
+      {
+        "path": "/api/coach_hot_seat",
+        "method": "GET",
+        "args": [
+          "team"
+        ],
+        "arg_labels": {
+          "team": ""
+        },
+        "label": "Coach Hot Seat"
+      },
+      {
+        "path": "/api/coach_confidence",
+        "method": "GET",
+        "args": [
+          "team"
+        ],
+        "arg_labels": {
+          "team": ""
+        },
+        "label": "Coach Confidence"
+      },
+      {
+        "path": "/api/maybe_fire_coach",
+        "method": "POST",
+        "args": [
+          "team"
+        ],
+        "arg_labels": {
+          "team": ""
+        },
+        "label": "Check If Coach Gets Fired"
+      },
+      {
+        "path": "/api/toggle_coaching_career_mode",
+        "method": "POST",
+        "args": [
+          "enabled"
+        ],
+        "arg_labels": {
+          "enabled": "true or false"
+        },
+        "label": "Toggle Coaching Career Mode"
+      },
+      {
+        "path": "/api/ownership_confidence",
+        "method": "GET",
+        "args": [
+          "team"
+        ],
+        "arg_labels": {
+          "team": ""
+        },
+        "label": "Ownership Confidence"
+      },
+      {
+        "path": "/api/owner_personality",
+        "method": "GET",
+        "args": [
+          "team"
+        ],
+        "arg_labels": {
+          "team": ""
+        },
+        "label": "Owner Personality"
+      },
+      {
+        "path": "/api/board_of_governors_vote",
+        "method": "POST",
+        "args": [],
+        "arg_labels": {},
+        "label": "Hold Board of Governors Vote"
+      },
+      {
+        "path": "/api/state_of_franchise_letter",
+        "method": "POST",
+        "args": [
+          "team"
+        ],
+        "arg_labels": {
+          "team": ""
+        },
+        "label": "Write State of the Franchise Letter"
+      },
+      {
+        "path": "/api/log_career_stop",
+        "method": "POST",
+        "args": [
+          "team",
+          "role"
+        ],
+        "arg_labels": {
+          "team": "",
+          "role": "Role (default General Manager)"
+        },
+        "label": "Log a Career Stop"
+      },
+      {
+        "path": "/api/add_coaching_tree",
+        "method": "POST",
+        "args": [
+          "mentor_name",
+          "hired_team",
+          "new_role"
+        ],
+        "arg_labels": {
+          "mentor_name": "Mentor name",
+          "hired_team": "Hired by team",
+          "new_role": "New role (default Head Coach)"
+        },
+        "label": "Add to Coaching Tree"
+      },
+      {
+        "path": "/api/add_fo_alumni",
+        "method": "POST",
+        "args": [
+          "name",
+          "previous_team",
+          "role"
+        ],
+        "arg_labels": {
+          "name": "Name",
+          "previous_team": "Previous team",
+          "role": "Role"
+        },
+        "label": "Add Front Office Alumni"
+      },
+      {
+        "path": "/api/resurface_fo_alumni",
+        "method": "POST",
+        "args": [
+          "name",
+          "new_team",
+          "new_role"
+        ],
+        "arg_labels": {
+          "name": "Name",
+          "new_team": "New team",
+          "new_role": "New role"
+        },
+        "label": "Resurface Alumni Elsewhere"
+      }
+    ]
+  },
+  "franchise": {
+    "label": "Franchise & Business",
+    "items": [
+      {
+        "path": "/api/set_ticket_price",
+        "method": "POST",
+        "args": [
+          "team",
+          "tier"
+        ],
+        "arg_labels": {
+          "team": "",
+          "tier": "Budget / Standard / Premium / Luxury"
+        },
+        "label": "Set Ticket Price Tier"
+      },
+      {
+        "path": "/api/merch_concessions_revenue",
+        "method": "GET",
+        "args": [
+          "team"
+        ],
+        "arg_labels": {
+          "team": ""
+        },
+        "label": "Merch & Concessions Revenue"
+      },
+      {
+        "path": "/api/ticket_loyalty_tier",
+        "method": "GET",
+        "args": [
+          "team"
+        ],
+        "arg_labels": {
+          "team": ""
+        },
+        "label": "Ticket Loyalty Tier"
+      },
+      {
+        "path": "/api/cap_sheet_projection",
+        "method": "GET",
+        "args": [
+          "team"
+        ],
+        "arg_labels": {
+          "team": ""
+        },
+        "label": "Cap Sheet 5-Year Projection"
+      },
+      {
+        "path": "/api/assign_mascot",
+        "method": "POST",
+        "args": [
+          "team"
+        ],
+        "arg_labels": {
+          "team": ""
+        },
+        "label": "Assign Team Mascot"
+      },
+      {
+        "path": "/api/upgrade_practice_facility",
+        "method": "POST",
+        "args": [
+          "team",
+          "tier"
+        ],
+        "arg_labels": {
+          "team": "",
+          "tier": "Standard / Upgraded / State-of-the-Art / World Class"
+        },
+        "label": "Upgrade Practice Facility"
+      },
+      {
+        "path": "/api/set_custom_uniform",
+        "method": "POST",
+        "args": [
+          "team",
+          "primary",
+          "secondary"
+        ],
+        "arg_labels": {
+          "team": "",
+          "primary": "Primary color hex (e.g. #1d428a)",
+          "secondary": "Secondary color hex"
+        },
+        "label": "Set Custom Uniform Colors"
+      },
+      {
+        "path": "/api/relocate_team",
+        "method": "POST",
+        "args": [
+          "new_name"
+        ],
+        "arg_labels": {
+          "new_name": "New team name/city"
+        },
+        "label": "Relocate Your Franchise"
+      },
+      {
+        "path": "/api/run_expansion_draft",
+        "method": "POST",
+        "args": [],
+        "arg_labels": {},
+        "label": "Run an Expansion Draft"
+      }
+    ]
+  },
+  "media": {
+    "label": "Media & Fan Engagement",
+    "items": [
+      {
+        "path": "/api/generate_social_event",
+        "method": "POST",
+        "args": [
+          "player_name"
+        ],
+        "arg_labels": {
+          "player_name": "Player name (optional)"
+        },
+        "label": "Generate a Social Media Moment"
+      },
+      {
+        "path": "/api/hype_video_script",
+        "method": "GET",
+        "args": [
+          "team"
+        ],
+        "arg_labels": {
+          "team": ""
+        },
+        "label": "Team Hype Video Script"
+      },
+      {
+        "path": "/api/assign_nickname",
+        "method": "POST",
+        "args": [
+          "player_name",
+          "nickname"
+        ],
+        "arg_labels": {
+          "player_name": "Player name",
+          "nickname": "Nickname (optional)"
+        },
+        "label": "Assign a Player Nickname"
+      },
+      {
+        "path": "/api/assign_walk_up_motif",
+        "method": "POST",
+        "args": [
+          "player_name"
+        ],
+        "arg_labels": {
+          "player_name": "Player name"
+        },
+        "label": "Assign Walk-Up Sound Motif"
+      },
+      {
+        "path": "/api/retired_number_ceremony_script",
+        "method": "GET",
+        "args": [
+          "player",
+          "team",
+          "number"
+        ],
+        "arg_labels": {
+          "player": "Player name",
+          "team": "",
+          "number": "Jersey number"
+        },
+        "label": "Retired Number Ceremony Script"
+      },
+      {
+        "path": "/api/road_atmosphere",
+        "method": "GET",
+        "args": [
+          "team"
+        ],
+        "arg_labels": {
+          "team": ""
+        },
+        "label": "Road Atmosphere Flavor"
+      },
+      {
+        "path": "/api/spark_rivalry",
+        "method": "POST",
+        "args": [
+          "player_a",
+          "player_b",
+          "reason"
+        ],
+        "arg_labels": {
+          "player_a": "Player A",
+          "player_b": "Player B",
+          "reason": "Reason (optional)"
+        },
+        "label": "Spark a Player Rivalry"
+      },
+      {
+        "path": "/api/campaign_for_award",
+        "method": "POST",
+        "args": [
+          "player_name",
+          "award"
+        ],
+        "arg_labels": {
+          "player_name": "Player name",
+          "award": "Award name"
+        },
+        "label": "Campaign for an Award"
+      },
+      {
+        "path": "/api/hometown_pride",
+        "method": "GET",
+        "args": [
+          "player",
+          "city"
+        ],
+        "arg_labels": {
+          "player": "Player name",
+          "city": "Tonight's game city"
+        },
+        "label": "Hometown Pride Check"
+      },
+      {
+        "path": "/api/player_documentary",
+        "method": "POST",
+        "args": [
+          "player_name"
+        ],
+        "arg_labels": {
+          "player_name": "Player name"
+        },
+        "label": "Generate a Player Documentary"
+      },
+      {
+        "path": "/api/jumbotron_highlight",
+        "method": "GET",
+        "args": [
+          "player"
+        ],
+        "arg_labels": {
+          "player": "Player name"
+        },
+        "label": "Jumbotron Highlight"
+      }
+    ]
+  },
+  "awards": {
+    "label": "Awards & Legacy",
+    "items": [
+      {
+        "path": "/api/league_history",
+        "method": "GET",
+        "args": [],
+        "arg_labels": {},
+        "label": "League History (all seasons)"
+      },
+      {
+        "path": "/api/franchise_records",
+        "method": "GET",
+        "args": [
+          "team"
+        ],
+        "arg_labels": {
+          "team": ""
+        },
+        "label": "Franchise Records"
+      },
+      {
+        "path": "/api/team_dynasty_rating",
+        "method": "GET",
+        "args": [
+          "team"
+        ],
+        "arg_labels": {
+          "team": ""
+        },
+        "label": "Team Dynasty Rating"
+      },
+      {
+        "path": "/api/player_legacy_card",
+        "method": "GET",
+        "args": [
+          "player"
+        ],
+        "arg_labels": {
+          "player": "Player name"
+        },
+        "label": "Player Legacy Card"
+      },
+      {
+        "path": "/api/compare_players",
+        "method": "GET",
+        "args": [
+          "a",
+          "b"
+        ],
+        "arg_labels": {
+          "a": "Player A",
+          "b": "Player B"
+        },
+        "label": "Player Comparison"
+      },
+      {
+        "path": "/api/career_highs",
+        "method": "GET",
+        "args": [
+          "name"
+        ],
+        "arg_labels": {
+          "name": "Player name"
+        },
+        "label": "Career Highs for a Player"
+      },
+      {
+        "path": "/api/milestone_watch_list",
+        "method": "GET",
+        "args": [],
+        "arg_labels": {},
+        "label": "Milestone Watch List"
+      },
+      {
+        "path": "/api/news_archive",
+        "method": "GET",
+        "args": [],
+        "arg_labels": {},
+        "label": "League News Archive"
+      },
+      {
+        "path": "/api/power_rankings",
+        "method": "GET",
+        "args": [],
+        "arg_labels": {},
+        "label": "Power Rankings"
+      },
+      {
+        "path": "/api/player_of_week",
+        "method": "GET",
+        "args": [],
+        "arg_labels": {},
+        "label": "Player of the Week History"
+      },
+      {
+        "path": "/api/coach_of_month",
+        "method": "GET",
+        "args": [],
+        "arg_labels": {},
+        "label": "Coach of the Month History"
+      },
+      {
+        "path": "/api/hustle_leaderboard",
+        "method": "GET",
+        "args": [],
+        "arg_labels": {},
+        "label": "Hustle Stats Leaderboard"
+      },
+      {
+        "path": "/api/executive_of_the_year",
+        "method": "POST",
+        "args": [],
+        "arg_labels": {},
+        "label": "Award Executive of the Year"
+      },
+      {
+        "path": "/api/clutch_player_of_the_year",
+        "method": "POST",
+        "args": [],
+        "arg_labels": {},
+        "label": "Award Clutch Player of the Year"
+      },
+      {
+        "path": "/api/simulate_fan_vote",
+        "method": "POST",
+        "args": [],
+        "arg_labels": {},
+        "label": "Simulate All-Star Fan Vote"
+      },
+      {
+        "path": "/api/all_star_captains_draft",
+        "method": "POST",
+        "args": [],
+        "arg_labels": {},
+        "label": "Run All-Star Captains Draft"
+      },
+      {
+        "path": "/api/select_all_decade_team",
+        "method": "POST",
+        "args": [],
+        "arg_labels": {},
+        "label": "Select the All-Decade Team"
+      },
+      {
+        "path": "/api/all_time_redraft",
+        "method": "GET",
+        "args": [],
+        "arg_labels": {},
+        "label": "All-Time Redraft"
+      },
+      {
+        "path": "/api/generate_backstory",
+        "method": "POST",
+        "args": [
+          "target_start_year"
+        ],
+        "arg_labels": {
+          "target_start_year": "Truncate history before this year"
+        },
+        "label": "Regenerate League Backstory (1984 -> now)"
+      }
+    ]
+  },
+  "coaching": {
+    "label": "Coaching & Strategy",
+    "items": [
+      {
+        "path": "/api/set_coaching_gameplan",
+        "method": "POST",
+        "args": [
+          "team",
+          "slider",
+          "value"
+        ],
+        "arg_labels": {
+          "team": "",
+          "slider": "Slider name (e.g. Pace)",
+          "value": "Value 0-100"
+        },
+        "label": "Set a Gameplan Slider"
+      },
+      {
+        "path": "/api/lineup_synergy",
+        "method": "POST",
+        "args": [
+          "players"
+        ],
+        "arg_labels": {
+          "players": "Name1, Name2, Name3, Name4, Name5"
+        },
+        "label": "Lineup Synergy (5 names, comma-separated)"
+      },
+      {
+        "path": "/api/injury_history",
+        "method": "GET",
+        "args": [
+          "player"
+        ],
+        "arg_labels": {
+          "player": "Player name"
+        },
+        "label": "Injury History"
+      },
+      {
+        "path": "/api/morale_snapshot",
+        "method": "GET",
+        "args": [
+          "player"
+        ],
+        "arg_labels": {
+          "player": "Player name"
+        },
+        "label": "Player Morale & Fatigue"
+      },
+      {
+        "path": "/api/skills_challenge",
+        "method": "POST",
+        "args": [],
+        "arg_labels": {},
+        "label": "Run Skills Challenge"
+      },
+      {
+        "path": "/api/set_load_management",
+        "method": "POST",
+        "args": [
+          "team",
+          "player_name",
+          "minutes_cap"
+        ],
+        "arg_labels": {
+          "team": "",
+          "player_name": "Player name",
+          "minutes_cap": "Minutes cap (0-48)"
+        },
+        "label": "Set Load Management Minutes Cap"
+      },
+      {
+        "path": "/api/choose_injury_treatment",
+        "method": "POST",
+        "args": [
+          "player_name",
+          "treatment"
+        ],
+        "arg_labels": {
+          "player_name": "Injured player name",
+          "treatment": "surgery or rehab"
+        },
+        "label": "Choose Injury Treatment"
+      },
+      {
+        "path": "/api/invest_skill_tree",
+        "method": "POST",
+        "args": [
+          "player_name",
+          "branch",
+          "node"
+        ],
+        "arg_labels": {
+          "player_name": "Player name",
+          "branch": "Sharpshooter / Slasher / Playmaker / Defender",
+          "node": "Node name within that branch"
+        },
+        "label": "Invest in a Skill Tree Node"
+      },
+      {
+        "path": "/api/position_battle",
+        "method": "POST",
+        "args": [
+          "team",
+          "position"
+        ],
+        "arg_labels": {
+          "team": "",
+          "position": "PG / SG / SF / PF / C"
+        },
+        "label": "Run a Position Battle"
+      },
+      {
+        "path": "/api/load_management_suggestions",
+        "method": "GET",
+        "args": [
+          "team"
+        ],
+        "arg_labels": {
+          "team": ""
+        },
+        "label": "Load Management Suggestions"
+      },
+      {
+        "path": "/api/run_combine_minigame",
+        "method": "POST",
+        "args": [
+          "prospect_name",
+          "drill",
+          "user_taps"
+        ],
+        "arg_labels": {
+          "prospect_name": "Prospect name",
+          "drill": "Drill (Vertical, Sprint, Agility, ...)",
+          "user_taps": "Your score (0-20)"
+        },
+        "label": "Run Combine Mini-Game"
+      }
+    ]
+  },
+  "frontoffice2": {
+    "label": "Trades & Contracts",
+    "items": [
+      {
+        "path": "/api/buyout_market",
+        "method": "GET",
+        "args": [],
+        "arg_labels": {},
+        "label": "View Buyout Market"
+      },
+      {
+        "path": "/api/enter_buyout_market",
+        "method": "POST",
+        "args": [
+          "player_name",
+          "remaining_salary"
+        ],
+        "arg_labels": {
+          "player_name": "Player name (must already be waived)",
+          "remaining_salary": "Remaining salary owed ($M)"
+        },
+        "label": "Put a Waived Player on the Buyout Market"
+      },
+      {
+        "path": "/api/trade_requests",
+        "method": "GET",
+        "args": [],
+        "arg_labels": {},
+        "label": "View Active Trade Requests"
+      },
+      {
+        "path": "/api/submit_trade_request",
+        "method": "POST",
+        "args": [
+          "player_name",
+          "reason"
+        ],
+        "arg_labels": {
+          "player_name": "Player name",
+          "reason": "Reason (optional)"
+        },
+        "label": "Submit a Trade Request for a Player"
+      },
+      {
+        "path": "/api/negotiate_contract",
+        "method": "POST",
+        "args": [
+          "team",
+          "player_name",
+          "years",
+          "salary"
+        ],
+        "arg_labels": {
+          "team": "",
+          "player_name": "Player name",
+          "years": "Years",
+          "salary": "Salary per year ($M)"
+        },
+        "label": "Negotiate a Contract"
+      },
+      {
+        "path": "/api/grade_trade",
+        "method": "POST",
+        "args": [
+          "team_a",
+          "players_a_get",
+          "team_b",
+          "players_b_get"
+        ],
+        "arg_labels": {
+          "team_a": "Team A",
+          "players_a_get": "Players Team A receives (comma-separated)",
+          "team_b": "Team B",
+          "players_b_get": "Players Team B receives (comma-separated)"
+        },
+        "label": "Grade a Trade"
+      },
+      {
+        "path": "/api/create_custom_player",
+        "method": "POST",
+        "args": [
+          "name",
+          "position",
+          "team"
+        ],
+        "arg_labels": {
+          "name": "Player name",
+          "position": "PG / SG / SF / PF / C",
+          "team": ""
+        },
+        "label": "Create a Custom Player"
+      },
+      {
+        "path": "/api/fantasy_draft_scramble",
+        "method": "POST",
+        "args": [],
+        "arg_labels": {},
+        "label": "Fantasy Draft Scramble (reshuffles EVERY roster!)"
+      },
+      {
+        "path": "/api/rfa/submit_offer_sheet",
+        "method": "POST",
+        "args": [
+          "player_name",
+          "offering_team",
+          "years",
+          "salary"
+        ],
+        "arg_labels": {
+          "player_name": "RFA player name",
+          "offering_team": "",
+          "years": "Years",
+          "salary": "Salary/yr ($M)"
+        },
+        "label": "Submit RFA Offer Sheet"
+      },
+      {
+        "path": "/api/rfa/match",
+        "method": "POST",
+        "args": [
+          "player_name",
+          "match"
+        ],
+        "arg_labels": {
+          "player_name": "Player name",
+          "match": "true to match, false to decline"
+        },
+        "label": "Match / Decline RFA Offer Sheet"
+      },
+      {
+        "path": "/api/extend_and_trade",
+        "method": "POST",
+        "args": [
+          "player_name",
+          "new_team",
+          "years",
+          "salary"
+        ],
+        "arg_labels": {
+          "player_name": "Player name",
+          "new_team": "Destination team",
+          "years": "Years",
+          "salary": "Salary/yr ($M)"
+        },
+        "label": "Extend-and-Trade a Player"
+      },
+      {
+        "path": "/api/check_designated_rookie",
+        "method": "GET",
+        "args": [
+          "player"
+        ],
+        "arg_labels": {
+          "player": "Player name"
+        },
+        "label": "Check Designated Rookie Eligibility"
+      },
+      {
+        "path": "/api/check_supermax",
+        "method": "GET",
+        "args": [
+          "player"
+        ],
+        "arg_labels": {
+          "player": "Player name"
+        },
+        "label": "Check Supermax Eligibility"
+      },
+      {
+        "path": "/api/attempt_unretirement",
+        "method": "POST",
+        "args": [
+          "player_name",
+          "team"
+        ],
+        "arg_labels": {
+          "player_name": "Retired player name",
+          "team": ""
+        },
+        "label": "Attempt Player Un-Retirement"
+      },
+      {
+        "path": "/api/what_would_it_take",
+        "method": "GET",
+        "args": [
+          "player"
+        ],
+        "arg_labels": {
+          "player": "Target player name"
+        },
+        "label": "\"What Would It Take\" for a Player"
+      },
+      {
+        "path": "/api/trade_finder_search",
+        "method": "GET",
+        "args": [
+          "attribute",
+          "attributes",
+          "hide_untouchable",
+          "max_age",
+          "max_rating",
+          "max_salary",
+          "min_attribute",
+          "min_rating",
+          "position",
+          "q",
+          "team"
+        ],
+        "arg_labels": {},
+        "label": "Trade Finder Search"
+      },
+      {
+        "path": "/api/find_trade_partners",
+        "method": "GET",
+        "args": [
+          "players",
+          "team"
+        ],
+        "arg_labels": {},
+        "label": "Find Trade Partners"
+      },
+      {
+        "path": "/api/suggest_trade_package",
+        "method": "GET",
+        "args": [],
+        "arg_labels": {},
+        "label": "Suggest Trade Package"
+      },
+      {
+        "path": "/api/team_intel",
+        "method": "GET",
+        "args": [
+          "team"
+        ],
+        "arg_labels": {},
+        "label": "Team Intel"
+      },
+      {
+        "path": "/api/shop_player",
+        "method": "GET",
+        "args": [
+          "player",
+          "team"
+        ],
+        "arg_labels": {},
+        "label": "Shop Player"
+      }
+    ]
+  },
+  "draft": {
+    "label": "Draft & Prospects",
+    "items": [
+      {
+        "path": "/api/invest_scouting_region",
+        "method": "POST",
+        "args": [
+          "team",
+          "region",
+          "points"
+        ],
+        "arg_labels": {
+          "team": "",
+          "region": "Region (EuroLeague, G-League, NCAA, ...)",
+          "points": "Points to invest"
+        },
+        "label": "Invest Scouting Points in a Region"
+      },
+      {
+        "path": "/api/scouted_prospect_grade",
+        "method": "GET",
+        "args": [
+          "team",
+          "prospect"
+        ],
+        "arg_labels": {
+          "team": "",
+          "prospect": "Prospect name"
+        },
+        "label": "Scouted Prospect Grade"
+      },
+      {
+        "path": "/api/set_big_board_rank",
+        "method": "POST",
+        "args": [
+          "prospect_name",
+          "rank"
+        ],
+        "arg_labels": {
+          "prospect_name": "Prospect name",
+          "rank": "Your rank"
+        },
+        "label": "Set Custom Big Board Rank"
+      },
+      {
+        "path": "/api/simulate_dev_league_game",
+        "method": "POST",
+        "args": [
+          "prospect_name"
+        ],
+        "arg_labels": {
+          "prospect_name": "Prospect name"
+        },
+        "label": "Simulate a Dev/Summer League Game"
+      },
+      {
+        "path": "/api/grade_draft_pick",
+        "method": "POST",
+        "args": [
+          "pick_no",
+          "team",
+          "prospect_name"
+        ],
+        "arg_labels": {
+          "pick_no": "Pick number",
+          "team": "",
+          "prospect_name": "Prospect name"
+        },
+        "label": "Grade a Draft Pick"
+      },
+      {
+        "path": "/api/draft_lottery_ceremony",
+        "method": "POST",
+        "args": [],
+        "arg_labels": {},
+        "label": "Run Draft Lottery Ceremony"
+      },
+      {
+        "path": "/api/redraft_simulator",
+        "method": "GET",
+        "args": [
+          "year"
+        ],
+        "arg_labels": {
+          "year": "Draft year"
+        },
+        "label": "Redraft a Past Draft Class"
+      },
+      {
+        "path": "/api/develop_academy_prospect",
+        "method": "POST",
+        "args": [
+          "team"
+        ],
+        "arg_labels": {
+          "team": ""
+        },
+        "label": "Develop an Academy Prospect"
+      }
+    ]
+  },
+  "sim": {
+    "label": "Scheduling & Sim Controls",
+    "items": [
+      {
+        "path": "/api/season_recap",
+        "method": "GET",
+        "args": [],
+        "arg_labels": {},
+        "label": "Season Recap"
+      },
+      {
+        "path": "/api/simcast",
+        "method": "GET",
+        "args": [],
+        "arg_labels": {},
+        "label": "Live SimCast (your last game)"
+      },
+      {
+        "path": "/api/call_timeout",
+        "method": "POST",
+        "args": [
+          "team"
+        ],
+        "arg_labels": {
+          "team": ""
+        },
+        "label": "Call a Timeout"
+      },
+      {
+        "path": "/api/legends_showcase",
+        "method": "POST",
+        "args": [
+          "team"
+        ],
+        "arg_labels": {
+          "team": ""
+        },
+        "label": "Simulate Legends Showcase Exhibition"
+      },
+      {
+        "path": "/api/championship_parade",
+        "method": "POST",
+        "args": [
+          "team"
+        ],
+        "arg_labels": {
+          "team": ""
+        },
+        "label": "Run Championship Parade"
+      },
+      {
+        "path": "/api/celebrity_legends_game",
+        "method": "POST",
+        "args": [],
+        "arg_labels": {},
+        "label": "Run Celebrity/Legends Undercard Game"
+      },
+      {
+        "path": "/api/scouting_report",
+        "method": "GET",
+        "args": [
+          "opponent"
+        ],
+        "arg_labels": {
+          "opponent": "Opponent team name"
+        },
+        "label": "Scout an Upcoming Opponent"
+      },
+      {
+        "path": "/api/sim_week",
+        "method": "POST",
+        "args": [],
+        "arg_labels": {},
+        "label": "Quick-Sim a Full Week"
+      },
+      {
+        "path": "/api/sim_season",
+        "method": "POST",
+        "args": [],
+        "arg_labels": {},
+        "label": "Quick-Sim the Rest of the Season"
+      },
+      {
+        "path": "/api/sim_to_day",
+        "method": "POST",
+        "args": [
+          "day"
+        ],
+        "arg_labels": {
+          "day": "Target day number"
+        },
+        "label": "Quick-Sim to a Specific Day"
+      },
+      {
+        "path": "/api/quick_sim/next_game",
+        "method": "POST",
+        "args": [],
+        "arg_labels": {},
+        "label": "Next Game"
+      },
+      {
+        "path": "/api/quick_sim/trade_deadline",
+        "method": "POST",
+        "args": [],
+        "arg_labels": {},
+        "label": "Trade Deadline"
+      },
+      {
+        "path": "/api/advance_round",
+        "method": "POST",
+        "args": [
+          "partner",
+          "team"
+        ],
+        "arg_labels": {},
+        "label": "Advance Round"
+      },
+      {
+        "path": "/api/start_playoffs",
+        "method": "POST",
+        "args": [],
+        "arg_labels": {},
+        "label": "Start Playoffs"
+      }
+    ]
+  },
+  "analytics": {
+    "label": "Analytics & Projections",
+    "items": [
+      {
+        "path": "/api/advanced_analytics",
+        "method": "GET",
+        "args": [
+          "player"
+        ],
+        "arg_labels": {
+          "player": "Player name"
+        },
+        "label": "Advanced Analytics (TS%, PER, Clutch)"
+      },
+      {
+        "path": "/api/export_stats_csv",
+        "method": "GET",
+        "args": [],
+        "arg_labels": {},
+        "label": "Export Season Stats (CSV download)"
+      },
+      {
+        "path": "/api/league_leaders",
+        "method": "GET",
+        "args": [
+          "category"
+        ],
+        "arg_labels": {
+          "category": "PTS / AST / REB / FG% / 3P% / FT%"
+        },
+        "label": "League Leaders (choose a stat)"
+      },
+      {
+        "path": "/api/clinch_tracker",
+        "method": "GET",
+        "args": [
+          "team"
+        ],
+        "arg_labels": {
+          "team": ""
+        },
+        "label": "Clinch / Magic Number Tracker"
+      },
+      {
+        "path": "/api/win_total_vs_actual",
+        "method": "GET",
+        "args": [
+          "team"
+        ],
+        "arg_labels": {
+          "team": ""
+        },
+        "label": "Win Total: Predicted vs Actual"
+      },
+      {
+        "path": "/api/home_away_splits",
+        "method": "GET",
+        "args": [
+          "team"
+        ],
+        "arg_labels": {
+          "team": ""
+        },
+        "label": "Home/Away Net Rating Splits"
+      },
+      {
+        "path": "/api/referee_profile",
+        "method": "GET",
+        "args": [
+          "name"
+        ],
+        "arg_labels": {
+          "name": "Referee name (optional)"
+        },
+        "label": "Referee Tendency Profile"
+      },
+      {
+        "path": "/api/strength_of_schedule",
+        "method": "GET",
+        "args": [
+          "team"
+        ],
+        "arg_labels": {
+          "team": ""
+        },
+        "label": "Strength of Schedule"
+      },
+      {
+        "path": "/api/predict_series_matchup",
+        "method": "GET",
+        "args": [
+          "team_a",
+          "team_b"
+        ],
+        "arg_labels": {
+          "team_a": "Team A",
+          "team_b": "Team B"
+        },
+        "label": "Predict a Playoff Series Matchup"
+      },
+      {
+        "path": "/api/two_way_roster_report",
+        "method": "GET",
+        "args": [
+          "team"
+        ],
+        "arg_labels": {
+          "team": ""
+        },
+        "label": "Two-Way Roster Report"
+      },
+      {
+        "path": "/api/predict_win_totals",
+        "method": "POST",
+        "args": [],
+        "arg_labels": {},
+        "label": "Predict Every Team's Win Total"
+      },
+      {
+        "path": "/api/clutch_win_probability",
+        "method": "GET",
+        "args": [
+          "home_score",
+          "away_score",
+          "seconds_left",
+          "has_ball_home"
+        ],
+        "arg_labels": {
+          "home_score": "Home score",
+          "away_score": "Away score",
+          "seconds_left": "Seconds left",
+          "has_ball_home": "true or false"
+        },
+        "label": "Clutch-Time Win Probability"
+      },
+      {
+        "path": "/api/standings_tiebreaker",
+        "method": "GET",
+        "args": [
+          "team_a",
+          "team_b"
+        ],
+        "arg_labels": {
+          "team_a": "Team A",
+          "team_b": "Team B"
+        },
+        "label": "Standings Tiebreaker Check"
+      }
+    ]
+  },
+  "leagueops": {
+    "label": "League Operations",
+    "items": [
+      {
+        "path": "/api/eras",
+        "method": "GET",
+        "args": [],
+        "arg_labels": {},
+        "label": "View Available Eras"
+      },
+      {
+        "path": "/api/set_league_rule",
+        "method": "POST",
+        "args": [
+          "rule",
+          "value"
+        ],
+        "arg_labels": {
+          "rule": "Rule name (e.g. shot_clock_seconds)",
+          "value": "New value"
+        },
+        "label": "Set a League Rule"
+      },
+      {
+        "path": "/api/reset_league_rules",
+        "method": "POST",
+        "args": [],
+        "arg_labels": {},
+        "label": "Reset League Rules to Default"
+      },
+      {
+        "path": "/api/start_new_era_league",
+        "method": "POST",
+        "args": [
+          "era",
+          "user_team"
+        ],
+        "arg_labels": {
+          "era": "Era id (1984, 1992, 1998, 2003, 2011, 2016, Modern)",
+          "user_team": ""
+        },
+        "label": "Start a New Era League (resets your league!)"
+      },
+      {
+        "path": "/api/set_difficulty",
+        "method": "POST",
+        "args": [
+          "setting",
+          "value"
+        ],
+        "arg_labels": {
+          "setting": "ai_trade_aggressiveness / injury_frequency / cap_strictness",
+          "value": "Value 0-100"
+        },
+        "label": "Set Difficulty Setting"
+      },
+      {
+        "path": "/api/set_theme",
+        "method": "POST",
+        "args": [
+          "theme"
+        ],
+        "arg_labels": {
+          "theme": "dark / light / high_contrast / colorblind_friendly"
+        },
+        "label": "Set UI Theme"
+      },
+      {
+        "path": "/api/set_score_bug_style",
+        "method": "POST",
+        "args": [
+          "style"
+        ],
+        "arg_labels": {
+          "style": "Classic / Modern Minimal / Retro / Full Stats"
+        },
+        "label": "Set Broadcast Score Bug Style"
+      },
+      {
+        "path": "/api/whatif/save",
+        "method": "POST",
+        "args": [
+          "label",
+          "from_year"
+        ],
+        "arg_labels": {
+          "label": "Branch name",
+          "from_year": "Branch from year"
+        },
+        "label": "Save a \"What-If\" History Branch"
+      },
+      {
+        "path": "/api/whatif/list",
+        "method": "GET",
+        "args": [],
+        "arg_labels": {},
+        "label": "List \"What-If\" Branches"
+      },
+      {
+        "path": "/api/set_training_focus",
+        "method": "POST",
+        "args": [
+          "team",
+          "player_name",
+          "focus"
+        ],
+        "arg_labels": {
+          "team": "",
+          "player_name": "Player name",
+          "focus": "Shooting / Finishing / Playmaking / Defense / Physical / Recovery / Film Study"
+        },
+        "label": "Set In-Season Training Focus"
+      },
+      {
+        "path": "/api/training_focus",
+        "method": "GET",
+        "args": [
+          "team"
+        ],
+        "arg_labels": {
+          "team": ""
+        },
+        "label": "View Team's Training Focus Board"
+      },
+      {
+        "path": "/api/crowd_intensity",
+        "method": "GET",
+        "args": [
+          "team"
+        ],
+        "arg_labels": {
+          "team": ""
+        },
+        "label": "Crowd Intensity Tonight"
+      },
+      {
+        "path": "/api/fan_approval",
+        "method": "GET",
+        "args": [
+          "team"
+        ],
+        "arg_labels": {
+          "team": ""
+        },
+        "label": "Fan Approval"
+      },
+      {
+        "path": "/api/league_rulebook",
+        "method": "GET",
+        "args": [],
+        "arg_labels": {},
+        "label": "View League Rulebook"
+      },
+      {
+        "path": "/api/league_search",
+        "method": "GET",
+        "args": [
+          "q"
+        ],
+        "arg_labels": {},
+        "label": "League Search"
+      },
+      {
+        "path": "/api/rivalries",
+        "method": "GET",
+        "args": [
+          "team"
+        ],
+        "arg_labels": {},
+        "label": "Rivalries"
+      }
+    ]
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "_note": "Every badge in the game, exactly as it's written in the player JSON files (key/name/icon/tier/desc/rating -- tier and rating are per-player and only appear once a player actually qualifies; this is the master catalog itself). Sorted into 5 categories. A badge's 'attrs' field shows which player attributes determine whether they earn it and at what tier (Bronze 80+, Silver 85+, Gold 90+, HOF 95+, averaged across the listed attributes).",
+
+  "finishing": [
+    {
+      "key": "slasher",
+      "name": "Slasher",
+      "icon": "\u26a1",
+      "attrs": ["Driving Layup", "Driving Dunk"],
+      "desc": "Explosive finisher who consistently converts at the rim in traffic."
+    },
+    {
+      "key": "post_menace",
+      "name": "Post Menace",
+      "icon": "\ud83d\udcaa",
+      "attrs": ["Post Control"],
+      "desc": "Bullies smaller defenders with back-to-the-basket scoring."
+    }
+  ],
+
+  "shooting": [
+    {
+      "key": "sharpshooter",
+      "name": "Sharpshooter",
+      "icon": "\ud83c\udfaf",
+      "attrs": ["Three-Point"],
+      "desc": "Knocks down threes at an elite clip on catch-and-shoot and pull-up looks."
+    }
+  ],
+
+  "playmaking": [
+    {
+      "key": "dimer",
+      "name": "Dimer",
+      "icon": "\ud83e\udde0",
+      "attrs": ["Passing Accuracy", "Vision"],
+      "desc": "Elite table-setter who consistently creates good looks for teammates."
+    }
+  ],
+
+  "defense": [
+    {
+      "key": "rim_protector",
+      "name": "Rim Protector",
+      "icon": "\ud83d\udee1\ufe0f",
+      "attrs": ["Block", "Interior Defense"],
+      "desc": "Alters shots and swats attempts around the basket."
+    },
+    {
+      "key": "lockdown",
+      "name": "Lockdown Defender",
+      "icon": "\ud83d\udd12",
+      "attrs": ["Perimeter Defense", "Lateral Quickness"],
+      "desc": "Shuts down opposing ball-handlers on the perimeter."
+    },
+    {
+      "key": "pickpocket",
+      "name": "Pick-Pocket",
+      "icon": "\ud83d\udd90\ufe0f",
+      "attrs": ["Steal"],
+      "desc": "Elite ball-hawk who consistently generates takeaways."
+    },
+    {
+      "key": "glass_cleaner",
+      "name": "Glass Cleaner",
+      "icon": "\ud83e\uddf9",
+      "attrs": ["Offensive Rebound", "Defensive Rebound"],
+      "desc": "Dominates the boards on both ends of the floor."
+    }
+  ],
+
+  "physical": [
+    {
+      "key": "iron_man",
+      "name": "Iron Man",
+      "icon": "\ud83e\uddbe",
+      "attrs": ["Durability"],
+      "desc": "Rarely misses time -- a much lower baseline injury risk."
+    },
+    {
+      "key": "high_motor",
+      "name": "High Motor",
+      "icon": "\ud83d\udd25",
+      "attrs": ["Hustle"],
+      "desc": "Non-stop energy that shows up in loose balls, closeouts, and effort plays."
+    },
+    {
+      "key": "brick_wall",
+      "name": "Brick Wall",
+      "icon": "\ud83e\uddf1",
+      "attrs": ["Strength"],
+      "desc": "Powerful frame that wins physical, bump-and-grind matchups."
+    }
+  ],
+
+  "tier_thresholds": {
+    "Bronze": "80+ average across the badge's listed attrs",
+    "Silver": "85+",
+    "Gold": "90+",
+    "HOF": "95+",
+    "note": "A player only carries a badge at all if they clear at least the Bronze threshold -- otherwise it's simply absent from their badges list, not shown at a 0/low tier."
+  }
+}

@@ -1,0 +1,1444 @@
+{
+  "draft_picks": {
+    "2026_R1_GothamKnights": {
+      "id": "2026_R1_GothamKnights",
+      "year": 2026,
+      "round": 1,
+      "original_team": "Gotham Knights",
+      "current_team": "Gotham Knights",
+      "protection": "None"
+    },
+    "2026_R2_GothamKnights": {
+      "id": "2026_R2_GothamKnights",
+      "year": 2026,
+      "round": 2,
+      "original_team": "Gotham Knights",
+      "current_team": "Gotham Knights",
+      "protection": "None"
+    },
+    "2027_R1_GothamKnights": {
+      "id": "2027_R1_GothamKnights",
+      "year": 2027,
+      "round": 1,
+      "original_team": "Gotham Knights",
+      "current_team": "Gotham Knights",
+      "protection": "None"
+    },
+    "2027_R2_GothamKnights": {
+      "id": "2027_R2_GothamKnights",
+      "year": 2027,
+      "round": 2,
+      "original_team": "Gotham Knights",
+      "current_team": "Gotham Knights",
+      "protection": "None"
+    },
+    "2028_R1_GothamKnights": {
+      "id": "2028_R1_GothamKnights",
+      "year": 2028,
+      "round": 1,
+      "original_team": "Gotham Knights",
+      "current_team": "Gotham Knights",
+      "protection": "None"
+    },
+    "2028_R2_GothamKnights": {
+      "id": "2028_R2_GothamKnights",
+      "year": 2028,
+      "round": 2,
+      "original_team": "Gotham Knights",
+      "current_team": "Gotham Knights",
+      "protection": "None"
+    },
+    "2026_R1_SteelHarborIronclads": {
+      "id": "2026_R1_SteelHarborIronclads",
+      "year": 2026,
+      "round": 1,
+      "original_team": "Steel Harbor Ironclads",
+      "current_team": "Steel Harbor Ironclads",
+      "protection": "None"
+    },
+    "2026_R2_SteelHarborIronclads": {
+      "id": "2026_R2_SteelHarborIronclads",
+      "year": 2026,
+      "round": 2,
+      "original_team": "Steel Harbor Ironclads",
+      "current_team": "Steel Harbor Ironclads",
+      "protection": "None"
+    },
+    "2027_R1_SteelHarborIronclads": {
+      "id": "2027_R1_SteelHarborIronclads",
+      "year": 2027,
+      "round": 1,
+      "original_team": "Steel Harbor Ironclads",
+      "current_team": "Steel Harbor Ironclads",
+      "protection": "None"
+    },
+    "2027_R2_SteelHarborIronclads": {
+      "id": "2027_R2_SteelHarborIronclads",
+      "year": 2027,
+      "round": 2,
+      "original_team": "Steel Harbor Ironclads",
+      "current_team": "Steel Harbor Ironclads",
+      "protection": "None"
+    },
+    "2028_R1_SteelHarborIronclads": {
+      "id": "2028_R1_SteelHarborIronclads",
+      "year": 2028,
+      "round": 1,
+      "original_team": "Steel Harbor Ironclads",
+      "current_team": "Steel Harbor Ironclads",
+      "protection": "None"
+    },
+    "2028_R2_SteelHarborIronclads": {
+      "id": "2028_R2_SteelHarborIronclads",
+      "year": 2028,
+      "round": 2,
+      "original_team": "Steel Harbor Ironclads",
+      "current_team": "Steel Harbor Ironclads",
+      "protection": "None"
+    },
+    "2026_R1_KolkataReapers": {
+      "id": "2026_R1_KolkataReapers",
+      "year": 2026,
+      "round": 1,
+      "original_team": "Kolkata Reapers",
+      "current_team": "Kolkata Reapers",
+      "protection": "None"
+    },
+    "2026_R2_KolkataReapers": {
+      "id": "2026_R2_KolkataReapers",
+      "year": 2026,
+      "round": 2,
+      "original_team": "Kolkata Reapers",
+      "current_team": "Kolkata Reapers",
+      "protection": "None"
+    },
+    "2027_R1_KolkataReapers": {
+      "id": "2027_R1_KolkataReapers",
+      "year": 2027,
+      "round": 1,
+      "original_team": "Kolkata Reapers",
+      "current_team": "Kolkata Reapers",
+      "protection": "None"
+    },
+    "2027_R2_KolkataReapers": {
+      "id": "2027_R2_KolkataReapers",
+      "year": 2027,
+      "round": 2,
+      "original_team": "Kolkata Reapers",
+      "current_team": "Kolkata Reapers",
+      "protection": "None"
+    },
+    "2028_R1_KolkataReapers": {
+      "id": "2028_R1_KolkataReapers",
+      "year": 2028,
+      "round": 1,
+      "original_team": "Kolkata Reapers",
+      "current_team": "Kolkata Reapers",
+      "protection": "None"
+    },
+    "2028_R2_KolkataReapers": {
+      "id": "2028_R2_KolkataReapers",
+      "year": 2028,
+      "round": 2,
+      "original_team": "Kolkata Reapers",
+      "current_team": "Kolkata Reapers",
+      "protection": "None"
+    },
+    "2026_R1_CrescentBayStorm": {
+      "id": "2026_R1_CrescentBayStorm",
+      "year": 2026,
+      "round": 1,
+      "original_team": "Crescent Bay Storm",
+      "current_team": "Crescent Bay Storm",
+      "protection": "None"
+    },
+    "2026_R2_CrescentBayStorm": {
+      "id": "2026_R2_CrescentBayStorm",
+      "year": 2026,
+      "round": 2,
+      "original_team": "Crescent Bay Storm",
+      "current_team": "Crescent Bay Storm",
+      "protection": "None"
+    },
+    "2027_R1_CrescentBayStorm": {
+      "id": "2027_R1_CrescentBayStorm",
+      "year": 2027,
+      "round": 1,
+      "original_team": "Crescent Bay Storm",
+      "current_team": "Crescent Bay Storm",
+      "protection": "None"
+    },
+    "2027_R2_CrescentBayStorm": {
+      "id": "2027_R2_CrescentBayStorm",
+      "year": 2027,
+      "round": 2,
+      "original_team": "Crescent Bay Storm",
+      "current_team": "Crescent Bay Storm",
+      "protection": "None"
+    },
+    "2028_R1_CrescentBayStorm": {
+      "id": "2028_R1_CrescentBayStorm",
+      "year": 2028,
+      "round": 1,
+      "original_team": "Crescent Bay Storm",
+      "current_team": "Crescent Bay Storm",
+      "protection": "None"
+    },
+    "2028_R2_CrescentBayStorm": {
+      "id": "2028_R2_CrescentBayStorm",
+      "year": 2028,
+      "round": 2,
+      "original_team": "Crescent Bay Storm",
+      "current_team": "Crescent Bay Storm",
+      "protection": "None"
+    },
+    "2026_R1_OldMeridianRavens": {
+      "id": "2026_R1_OldMeridianRavens",
+      "year": 2026,
+      "round": 1,
+      "original_team": "Old Meridian Ravens",
+      "current_team": "Old Meridian Ravens",
+      "protection": "None"
+    },
+    "2026_R2_OldMeridianRavens": {
+      "id": "2026_R2_OldMeridianRavens",
+      "year": 2026,
+      "round": 2,
+      "original_team": "Old Meridian Ravens",
+      "current_team": "Old Meridian Ravens",
+      "protection": "None"
+    },
+    "2027_R1_OldMeridianRavens": {
+      "id": "2027_R1_OldMeridianRavens",
+      "year": 2027,
+      "round": 1,
+      "original_team": "Old Meridian Ravens",
+      "current_team": "Old Meridian Ravens",
+      "protection": "None"
+    },
+    "2027_R2_OldMeridianRavens": {
+      "id": "2027_R2_OldMeridianRavens",
+      "year": 2027,
+      "round": 2,
+      "original_team": "Old Meridian Ravens",
+      "current_team": "Old Meridian Ravens",
+      "protection": "None"
+    },
+    "2028_R1_OldMeridianRavens": {
+      "id": "2028_R1_OldMeridianRavens",
+      "year": 2028,
+      "round": 1,
+      "original_team": "Old Meridian Ravens",
+      "current_team": "Old Meridian Ravens",
+      "protection": "None"
+    },
+    "2028_R2_OldMeridianRavens": {
+      "id": "2028_R2_OldMeridianRavens",
+      "year": 2028,
+      "round": 2,
+      "original_team": "Old Meridian Ravens",
+      "current_team": "Old Meridian Ravens",
+      "protection": "None"
+    },
+    "2026_R1_VantageCityVoltage": {
+      "id": "2026_R1_VantageCityVoltage",
+      "year": 2026,
+      "round": 1,
+      "original_team": "Vantage City Voltage",
+      "current_team": "Vantage City Voltage",
+      "protection": "None"
+    },
+    "2026_R2_VantageCityVoltage": {
+      "id": "2026_R2_VantageCityVoltage",
+      "year": 2026,
+      "round": 2,
+      "original_team": "Vantage City Voltage",
+      "current_team": "Vantage City Voltage",
+      "protection": "None"
+    },
+    "2027_R1_VantageCityVoltage": {
+      "id": "2027_R1_VantageCityVoltage",
+      "year": 2027,
+      "round": 1,
+      "original_team": "Vantage City Voltage",
+      "current_team": "Vantage City Voltage",
+      "protection": "None"
+    },
+    "2027_R2_VantageCityVoltage": {
+      "id": "2027_R2_VantageCityVoltage",
+      "year": 2027,
+      "round": 2,
+      "original_team": "Vantage City Voltage",
+      "current_team": "Vantage City Voltage",
+      "protection": "None"
+    },
+    "2028_R1_VantageCityVoltage": {
+      "id": "2028_R1_VantageCityVoltage",
+      "year": 2028,
+      "round": 1,
+      "original_team": "Vantage City Voltage",
+      "current_team": "Vantage City Voltage",
+      "protection": "None"
+    },
+    "2028_R2_VantageCityVoltage": {
+      "id": "2028_R2_VantageCityVoltage",
+      "year": 2028,
+      "round": 2,
+      "original_team": "Vantage City Voltage",
+      "current_team": "Vantage City Voltage",
+      "protection": "None"
+    },
+    "2026_R1_ChennaiComets": {
+      "id": "2026_R1_ChennaiComets",
+      "year": 2026,
+      "round": 1,
+      "original_team": "Chennai Comets",
+      "current_team": "Chennai Comets",
+      "protection": "None"
+    },
+    "2026_R2_ChennaiComets": {
+      "id": "2026_R2_ChennaiComets",
+      "year": 2026,
+      "round": 2,
+      "original_team": "Chennai Comets",
+      "current_team": "Chennai Comets",
+      "protection": "None"
+    },
+    "2027_R1_ChennaiComets": {
+      "id": "2027_R1_ChennaiComets",
+      "year": 2027,
+      "round": 1,
+      "original_team": "Chennai Comets",
+      "current_team": "Chennai Comets",
+      "protection": "None"
+    },
+    "2027_R2_ChennaiComets": {
+      "id": "2027_R2_ChennaiComets",
+      "year": 2027,
+      "round": 2,
+      "original_team": "Chennai Comets",
+      "current_team": "Chennai Comets",
+      "protection": "None"
+    },
+    "2028_R1_ChennaiComets": {
+      "id": "2028_R1_ChennaiComets",
+      "year": 2028,
+      "round": 1,
+      "original_team": "Chennai Comets",
+      "current_team": "Chennai Comets",
+      "protection": "None"
+    },
+    "2028_R2_ChennaiComets": {
+      "id": "2028_R2_ChennaiComets",
+      "year": 2028,
+      "round": 2,
+      "original_team": "Chennai Comets",
+      "current_team": "Chennai Comets",
+      "protection": "None"
+    },
+    "2026_R1_KowloonMarauders": {
+      "id": "2026_R1_KowloonMarauders",
+      "year": 2026,
+      "round": 1,
+      "original_team": "Kowloon Marauders",
+      "current_team": "Kowloon Marauders",
+      "protection": "None"
+    },
+    "2026_R2_KowloonMarauders": {
+      "id": "2026_R2_KowloonMarauders",
+      "year": 2026,
+      "round": 2,
+      "original_team": "Kowloon Marauders",
+      "current_team": "Kowloon Marauders",
+      "protection": "None"
+    },
+    "2027_R1_KowloonMarauders": {
+      "id": "2027_R1_KowloonMarauders",
+      "year": 2027,
+      "round": 1,
+      "original_team": "Kowloon Marauders",
+      "current_team": "Kowloon Marauders",
+      "protection": "None"
+    },
+    "2027_R2_KowloonMarauders": {
+      "id": "2027_R2_KowloonMarauders",
+      "year": 2027,
+      "round": 2,
+      "original_team": "Kowloon Marauders",
+      "current_team": "Kowloon Marauders",
+      "protection": "None"
+    },
+    "2028_R1_KowloonMarauders": {
+      "id": "2028_R1_KowloonMarauders",
+      "year": 2028,
+      "round": 1,
+      "original_team": "Kowloon Marauders",
+      "current_team": "Kowloon Marauders",
+      "protection": "None"
+    },
+    "2028_R2_KowloonMarauders": {
+      "id": "2028_R2_KowloonMarauders",
+      "year": 2028,
+      "round": 2,
+      "original_team": "Kowloon Marauders",
+      "current_team": "Kowloon Marauders",
+      "protection": "None"
+    },
+    "2026_R1_RioGrandeOutlaws": {
+      "id": "2026_R1_RioGrandeOutlaws",
+      "year": 2026,
+      "round": 1,
+      "original_team": "Rio Grande Outlaws",
+      "current_team": "Rio Grande Outlaws",
+      "protection": "None"
+    },
+    "2026_R2_RioGrandeOutlaws": {
+      "id": "2026_R2_RioGrandeOutlaws",
+      "year": 2026,
+      "round": 2,
+      "original_team": "Rio Grande Outlaws",
+      "current_team": "Rio Grande Outlaws",
+      "protection": "None"
+    },
+    "2027_R1_RioGrandeOutlaws": {
+      "id": "2027_R1_RioGrandeOutlaws",
+      "year": 2027,
+      "round": 1,
+      "original_team": "Rio Grande Outlaws",
+      "current_team": "Rio Grande Outlaws",
+      "protection": "None"
+    },
+    "2027_R2_RioGrandeOutlaws": {
+      "id": "2027_R2_RioGrandeOutlaws",
+      "year": 2027,
+      "round": 2,
+      "original_team": "Rio Grande Outlaws",
+      "current_team": "Rio Grande Outlaws",
+      "protection": "None"
+    },
+    "2028_R1_RioGrandeOutlaws": {
+      "id": "2028_R1_RioGrandeOutlaws",
+      "year": 2028,
+      "round": 1,
+      "original_team": "Rio Grande Outlaws",
+      "current_team": "Rio Grande Outlaws",
+      "protection": "None"
+    },
+    "2028_R2_RioGrandeOutlaws": {
+      "id": "2028_R2_RioGrandeOutlaws",
+      "year": 2028,
+      "round": 2,
+      "original_team": "Rio Grande Outlaws",
+      "current_team": "Rio Grande Outlaws",
+      "protection": "None"
+    },
+    "2026_R1_HyderabadSentinels": {
+      "id": "2026_R1_HyderabadSentinels",
+      "year": 2026,
+      "round": 1,
+      "original_team": "Hyderabad Sentinels",
+      "current_team": "Hyderabad Sentinels",
+      "protection": "None"
+    },
+    "2026_R2_HyderabadSentinels": {
+      "id": "2026_R2_HyderabadSentinels",
+      "year": 2026,
+      "round": 2,
+      "original_team": "Hyderabad Sentinels",
+      "current_team": "Hyderabad Sentinels",
+      "protection": "None"
+    },
+    "2027_R1_HyderabadSentinels": {
+      "id": "2027_R1_HyderabadSentinels",
+      "year": 2027,
+      "round": 1,
+      "original_team": "Hyderabad Sentinels",
+      "current_team": "Hyderabad Sentinels",
+      "protection": "None"
+    },
+    "2027_R2_HyderabadSentinels": {
+      "id": "2027_R2_HyderabadSentinels",
+      "year": 2027,
+      "round": 2,
+      "original_team": "Hyderabad Sentinels",
+      "current_team": "Hyderabad Sentinels",
+      "protection": "None"
+    },
+    "2028_R1_HyderabadSentinels": {
+      "id": "2028_R1_HyderabadSentinels",
+      "year": 2028,
+      "round": 1,
+      "original_team": "Hyderabad Sentinels",
+      "current_team": "Hyderabad Sentinels",
+      "protection": "None"
+    },
+    "2028_R2_HyderabadSentinels": {
+      "id": "2028_R2_HyderabadSentinels",
+      "year": 2028,
+      "round": 2,
+      "original_team": "Hyderabad Sentinels",
+      "current_team": "Hyderabad Sentinels",
+      "protection": "None"
+    },
+    "2026_R1_NovaHavenBlaze": {
+      "id": "2026_R1_NovaHavenBlaze",
+      "year": 2026,
+      "round": 1,
+      "original_team": "Nova Haven Blaze",
+      "current_team": "Nova Haven Blaze",
+      "protection": "None"
+    },
+    "2026_R2_NovaHavenBlaze": {
+      "id": "2026_R2_NovaHavenBlaze",
+      "year": 2026,
+      "round": 2,
+      "original_team": "Nova Haven Blaze",
+      "current_team": "Nova Haven Blaze",
+      "protection": "None"
+    },
+    "2027_R1_NovaHavenBlaze": {
+      "id": "2027_R1_NovaHavenBlaze",
+      "year": 2027,
+      "round": 1,
+      "original_team": "Nova Haven Blaze",
+      "current_team": "Nova Haven Blaze",
+      "protection": "None"
+    },
+    "2027_R2_NovaHavenBlaze": {
+      "id": "2027_R2_NovaHavenBlaze",
+      "year": 2027,
+      "round": 2,
+      "original_team": "Nova Haven Blaze",
+      "current_team": "Nova Haven Blaze",
+      "protection": "None"
+    },
+    "2028_R1_NovaHavenBlaze": {
+      "id": "2028_R1_NovaHavenBlaze",
+      "year": 2028,
+      "round": 1,
+      "original_team": "Nova Haven Blaze",
+      "current_team": "Nova Haven Blaze",
+      "protection": "None"
+    },
+    "2028_R2_NovaHavenBlaze": {
+      "id": "2028_R2_NovaHavenBlaze",
+      "year": 2028,
+      "round": 2,
+      "original_team": "Nova Haven Blaze",
+      "current_team": "Nova Haven Blaze",
+      "protection": "None"
+    },
+    "2026_R1_DelhiTitans": {
+      "id": "2026_R1_DelhiTitans",
+      "year": 2026,
+      "round": 1,
+      "original_team": "Delhi Titans",
+      "current_team": "Delhi Titans",
+      "protection": "None"
+    },
+    "2026_R2_DelhiTitans": {
+      "id": "2026_R2_DelhiTitans",
+      "year": 2026,
+      "round": 2,
+      "original_team": "Delhi Titans",
+      "current_team": "Delhi Titans",
+      "protection": "None"
+    },
+    "2027_R1_DelhiTitans": {
+      "id": "2027_R1_DelhiTitans",
+      "year": 2027,
+      "round": 1,
+      "original_team": "Delhi Titans",
+      "current_team": "Delhi Titans",
+      "protection": "None"
+    },
+    "2027_R2_DelhiTitans": {
+      "id": "2027_R2_DelhiTitans",
+      "year": 2027,
+      "round": 2,
+      "original_team": "Delhi Titans",
+      "current_team": "Delhi Titans",
+      "protection": "None"
+    },
+    "2028_R1_DelhiTitans": {
+      "id": "2028_R1_DelhiTitans",
+      "year": 2028,
+      "round": 1,
+      "original_team": "Delhi Titans",
+      "current_team": "Delhi Titans",
+      "protection": "None"
+    },
+    "2028_R2_DelhiTitans": {
+      "id": "2028_R2_DelhiTitans",
+      "year": 2028,
+      "round": 2,
+      "original_team": "Delhi Titans",
+      "current_team": "Delhi Titans",
+      "protection": "None"
+    },
+    "2026_R1_ShanghaiWolves": {
+      "id": "2026_R1_ShanghaiWolves",
+      "year": 2026,
+      "round": 1,
+      "original_team": "Shanghai Wolves",
+      "current_team": "Shanghai Wolves",
+      "protection": "None"
+    },
+    "2026_R2_ShanghaiWolves": {
+      "id": "2026_R2_ShanghaiWolves",
+      "year": 2026,
+      "round": 2,
+      "original_team": "Shanghai Wolves",
+      "current_team": "Shanghai Wolves",
+      "protection": "None"
+    },
+    "2027_R1_ShanghaiWolves": {
+      "id": "2027_R1_ShanghaiWolves",
+      "year": 2027,
+      "round": 1,
+      "original_team": "Shanghai Wolves",
+      "current_team": "Shanghai Wolves",
+      "protection": "None"
+    },
+    "2027_R2_ShanghaiWolves": {
+      "id": "2027_R2_ShanghaiWolves",
+      "year": 2027,
+      "round": 2,
+      "original_team": "Shanghai Wolves",
+      "current_team": "Shanghai Wolves",
+      "protection": "None"
+    },
+    "2028_R1_ShanghaiWolves": {
+      "id": "2028_R1_ShanghaiWolves",
+      "year": 2028,
+      "round": 1,
+      "original_team": "Shanghai Wolves",
+      "current_team": "Shanghai Wolves",
+      "protection": "None"
+    },
+    "2028_R2_ShanghaiWolves": {
+      "id": "2028_R2_ShanghaiWolves",
+      "year": 2028,
+      "round": 2,
+      "original_team": "Shanghai Wolves",
+      "current_team": "Shanghai Wolves",
+      "protection": "None"
+    },
+    "2026_R1_BengaluruBallers": {
+      "id": "2026_R1_BengaluruBallers",
+      "year": 2026,
+      "round": 1,
+      "original_team": "Bengaluru Ballers",
+      "current_team": "Bengaluru Ballers",
+      "protection": "None"
+    },
+    "2026_R2_BengaluruBallers": {
+      "id": "2026_R2_BengaluruBallers",
+      "year": 2026,
+      "round": 2,
+      "original_team": "Bengaluru Ballers",
+      "current_team": "Bengaluru Ballers",
+      "protection": "None"
+    },
+    "2027_R1_BengaluruBallers": {
+      "id": "2027_R1_BengaluruBallers",
+      "year": 2027,
+      "round": 1,
+      "original_team": "Bengaluru Ballers",
+      "current_team": "Bengaluru Ballers",
+      "protection": "None"
+    },
+    "2027_R2_BengaluruBallers": {
+      "id": "2027_R2_BengaluruBallers",
+      "year": 2027,
+      "round": 2,
+      "original_team": "Bengaluru Ballers",
+      "current_team": "Bengaluru Ballers",
+      "protection": "None"
+    },
+    "2028_R1_BengaluruBallers": {
+      "id": "2028_R1_BengaluruBallers",
+      "year": 2028,
+      "round": 1,
+      "original_team": "Bengaluru Ballers",
+      "current_team": "Bengaluru Ballers",
+      "protection": "None"
+    },
+    "2028_R2_BengaluruBallers": {
+      "id": "2028_R2_BengaluruBallers",
+      "year": 2028,
+      "round": 2,
+      "original_team": "Bengaluru Ballers",
+      "current_team": "Bengaluru Ballers",
+      "protection": "None"
+    },
+    "2026_R1_MumbaiVipers": {
+      "id": "2026_R1_MumbaiVipers",
+      "year": 2026,
+      "round": 1,
+      "original_team": "Mumbai Vipers",
+      "current_team": "Mumbai Vipers",
+      "protection": "None"
+    },
+    "2026_R2_MumbaiVipers": {
+      "id": "2026_R2_MumbaiVipers",
+      "year": 2026,
+      "round": 2,
+      "original_team": "Mumbai Vipers",
+      "current_team": "Mumbai Vipers",
+      "protection": "None"
+    },
+    "2027_R1_MumbaiVipers": {
+      "id": "2027_R1_MumbaiVipers",
+      "year": 2027,
+      "round": 1,
+      "original_team": "Mumbai Vipers",
+      "current_team": "Mumbai Vipers",
+      "protection": "None"
+    },
+    "2027_R2_MumbaiVipers": {
+      "id": "2027_R2_MumbaiVipers",
+      "year": 2027,
+      "round": 2,
+      "original_team": "Mumbai Vipers",
+      "current_team": "Mumbai Vipers",
+      "protection": "None"
+    },
+    "2028_R1_MumbaiVipers": {
+      "id": "2028_R1_MumbaiVipers",
+      "year": 2028,
+      "round": 1,
+      "original_team": "Mumbai Vipers",
+      "current_team": "Mumbai Vipers",
+      "protection": "None"
+    },
+    "2028_R2_MumbaiVipers": {
+      "id": "2028_R2_MumbaiVipers",
+      "year": 2028,
+      "round": 2,
+      "original_team": "Mumbai Vipers",
+      "current_team": "Mumbai Vipers",
+      "protection": "None"
+    },
+    "2026_R1_NeonCityPhantoms": {
+      "id": "2026_R1_NeonCityPhantoms",
+      "year": 2026,
+      "round": 1,
+      "original_team": "Neon City Phantoms",
+      "current_team": "Neon City Phantoms",
+      "protection": "None"
+    },
+    "2026_R2_NeonCityPhantoms": {
+      "id": "2026_R2_NeonCityPhantoms",
+      "year": 2026,
+      "round": 2,
+      "original_team": "Neon City Phantoms",
+      "current_team": "Neon City Phantoms",
+      "protection": "None"
+    },
+    "2027_R1_NeonCityPhantoms": {
+      "id": "2027_R1_NeonCityPhantoms",
+      "year": 2027,
+      "round": 1,
+      "original_team": "Neon City Phantoms",
+      "current_team": "Neon City Phantoms",
+      "protection": "None"
+    },
+    "2027_R2_NeonCityPhantoms": {
+      "id": "2027_R2_NeonCityPhantoms",
+      "year": 2027,
+      "round": 2,
+      "original_team": "Neon City Phantoms",
+      "current_team": "Neon City Phantoms",
+      "protection": "None"
+    },
+    "2028_R1_NeonCityPhantoms": {
+      "id": "2028_R1_NeonCityPhantoms",
+      "year": 2028,
+      "round": 1,
+      "original_team": "Neon City Phantoms",
+      "current_team": "Neon City Phantoms",
+      "protection": "None"
+    },
+    "2028_R2_NeonCityPhantoms": {
+      "id": "2028_R2_NeonCityPhantoms",
+      "year": 2028,
+      "round": 2,
+      "original_team": "Neon City Phantoms",
+      "current_team": "Neon City Phantoms",
+      "protection": "None"
+    },
+    "2026_R1_AtlasRidgeGrizzlies": {
+      "id": "2026_R1_AtlasRidgeGrizzlies",
+      "year": 2026,
+      "round": 1,
+      "original_team": "Atlas Ridge Grizzlies",
+      "current_team": "Atlas Ridge Grizzlies",
+      "protection": "None"
+    },
+    "2026_R2_AtlasRidgeGrizzlies": {
+      "id": "2026_R2_AtlasRidgeGrizzlies",
+      "year": 2026,
+      "round": 2,
+      "original_team": "Atlas Ridge Grizzlies",
+      "current_team": "Atlas Ridge Grizzlies",
+      "protection": "None"
+    },
+    "2027_R1_AtlasRidgeGrizzlies": {
+      "id": "2027_R1_AtlasRidgeGrizzlies",
+      "year": 2027,
+      "round": 1,
+      "original_team": "Atlas Ridge Grizzlies",
+      "current_team": "Atlas Ridge Grizzlies",
+      "protection": "None"
+    },
+    "2027_R2_AtlasRidgeGrizzlies": {
+      "id": "2027_R2_AtlasRidgeGrizzlies",
+      "year": 2027,
+      "round": 2,
+      "original_team": "Atlas Ridge Grizzlies",
+      "current_team": "Atlas Ridge Grizzlies",
+      "protection": "None"
+    },
+    "2028_R1_AtlasRidgeGrizzlies": {
+      "id": "2028_R1_AtlasRidgeGrizzlies",
+      "year": 2028,
+      "round": 1,
+      "original_team": "Atlas Ridge Grizzlies",
+      "current_team": "Atlas Ridge Grizzlies",
+      "protection": "None"
+    },
+    "2028_R2_AtlasRidgeGrizzlies": {
+      "id": "2028_R2_AtlasRidgeGrizzlies",
+      "year": 2028,
+      "round": 2,
+      "original_team": "Atlas Ridge Grizzlies",
+      "current_team": "Atlas Ridge Grizzlies",
+      "protection": "None"
+    },
+    "2026_R1_FrostpineYetis": {
+      "id": "2026_R1_FrostpineYetis",
+      "year": 2026,
+      "round": 1,
+      "original_team": "Frostpine Yetis",
+      "current_team": "Frostpine Yetis",
+      "protection": "None"
+    },
+    "2026_R2_FrostpineYetis": {
+      "id": "2026_R2_FrostpineYetis",
+      "year": 2026,
+      "round": 2,
+      "original_team": "Frostpine Yetis",
+      "current_team": "Frostpine Yetis",
+      "protection": "None"
+    },
+    "2027_R1_FrostpineYetis": {
+      "id": "2027_R1_FrostpineYetis",
+      "year": 2027,
+      "round": 1,
+      "original_team": "Frostpine Yetis",
+      "current_team": "Frostpine Yetis",
+      "protection": "None"
+    },
+    "2027_R2_FrostpineYetis": {
+      "id": "2027_R2_FrostpineYetis",
+      "year": 2027,
+      "round": 2,
+      "original_team": "Frostpine Yetis",
+      "current_team": "Frostpine Yetis",
+      "protection": "None"
+    },
+    "2028_R1_FrostpineYetis": {
+      "id": "2028_R1_FrostpineYetis",
+      "year": 2028,
+      "round": 1,
+      "original_team": "Frostpine Yetis",
+      "current_team": "Frostpine Yetis",
+      "protection": "None"
+    },
+    "2028_R2_FrostpineYetis": {
+      "id": "2028_R2_FrostpineYetis",
+      "year": 2028,
+      "round": 2,
+      "original_team": "Frostpine Yetis",
+      "current_team": "Frostpine Yetis",
+      "protection": "None"
+    },
+    "2026_R1_SundownValleyCoyotes": {
+      "id": "2026_R1_SundownValleyCoyotes",
+      "year": 2026,
+      "round": 1,
+      "original_team": "Sundown Valley Coyotes",
+      "current_team": "Sundown Valley Coyotes",
+      "protection": "None"
+    },
+    "2026_R2_SundownValleyCoyotes": {
+      "id": "2026_R2_SundownValleyCoyotes",
+      "year": 2026,
+      "round": 2,
+      "original_team": "Sundown Valley Coyotes",
+      "current_team": "Sundown Valley Coyotes",
+      "protection": "None"
+    },
+    "2027_R1_SundownValleyCoyotes": {
+      "id": "2027_R1_SundownValleyCoyotes",
+      "year": 2027,
+      "round": 1,
+      "original_team": "Sundown Valley Coyotes",
+      "current_team": "Sundown Valley Coyotes",
+      "protection": "None"
+    },
+    "2027_R2_SundownValleyCoyotes": {
+      "id": "2027_R2_SundownValleyCoyotes",
+      "year": 2027,
+      "round": 2,
+      "original_team": "Sundown Valley Coyotes",
+      "current_team": "Sundown Valley Coyotes",
+      "protection": "None"
+    },
+    "2028_R1_SundownValleyCoyotes": {
+      "id": "2028_R1_SundownValleyCoyotes",
+      "year": 2028,
+      "round": 1,
+      "original_team": "Sundown Valley Coyotes",
+      "current_team": "Sundown Valley Coyotes",
+      "protection": "None"
+    },
+    "2028_R2_SundownValleyCoyotes": {
+      "id": "2028_R2_SundownValleyCoyotes",
+      "year": 2028,
+      "round": 2,
+      "original_team": "Sundown Valley Coyotes",
+      "current_team": "Sundown Valley Coyotes",
+      "protection": "None"
+    },
+    "2026_R1_EmberFallsDragons": {
+      "id": "2026_R1_EmberFallsDragons",
+      "year": 2026,
+      "round": 1,
+      "original_team": "Ember Falls Dragons",
+      "current_team": "Ember Falls Dragons",
+      "protection": "None"
+    },
+    "2026_R2_EmberFallsDragons": {
+      "id": "2026_R2_EmberFallsDragons",
+      "year": 2026,
+      "round": 2,
+      "original_team": "Ember Falls Dragons",
+      "current_team": "Ember Falls Dragons",
+      "protection": "None"
+    },
+    "2027_R1_EmberFallsDragons": {
+      "id": "2027_R1_EmberFallsDragons",
+      "year": 2027,
+      "round": 1,
+      "original_team": "Ember Falls Dragons",
+      "current_team": "Ember Falls Dragons",
+      "protection": "None"
+    },
+    "2027_R2_EmberFallsDragons": {
+      "id": "2027_R2_EmberFallsDragons",
+      "year": 2027,
+      "round": 2,
+      "original_team": "Ember Falls Dragons",
+      "current_team": "Ember Falls Dragons",
+      "protection": "None"
+    },
+    "2028_R1_EmberFallsDragons": {
+      "id": "2028_R1_EmberFallsDragons",
+      "year": 2028,
+      "round": 1,
+      "original_team": "Ember Falls Dragons",
+      "current_team": "Ember Falls Dragons",
+      "protection": "None"
+    },
+    "2028_R2_EmberFallsDragons": {
+      "id": "2028_R2_EmberFallsDragons",
+      "year": 2028,
+      "round": 2,
+      "original_team": "Ember Falls Dragons",
+      "current_team": "Ember Falls Dragons",
+      "protection": "None"
+    },
+    "2026_R1_LakeshoreSirens": {
+      "id": "2026_R1_LakeshoreSirens",
+      "year": 2026,
+      "round": 1,
+      "original_team": "Lakeshore Sirens",
+      "current_team": "Lakeshore Sirens",
+      "protection": "None"
+    },
+    "2026_R2_LakeshoreSirens": {
+      "id": "2026_R2_LakeshoreSirens",
+      "year": 2026,
+      "round": 2,
+      "original_team": "Lakeshore Sirens",
+      "current_team": "Lakeshore Sirens",
+      "protection": "None"
+    },
+    "2027_R1_LakeshoreSirens": {
+      "id": "2027_R1_LakeshoreSirens",
+      "year": 2027,
+      "round": 1,
+      "original_team": "Lakeshore Sirens",
+      "current_team": "Lakeshore Sirens",
+      "protection": "None"
+    },
+    "2027_R2_LakeshoreSirens": {
+      "id": "2027_R2_LakeshoreSirens",
+      "year": 2027,
+      "round": 2,
+      "original_team": "Lakeshore Sirens",
+      "current_team": "Lakeshore Sirens",
+      "protection": "None"
+    },
+    "2028_R1_LakeshoreSirens": {
+      "id": "2028_R1_LakeshoreSirens",
+      "year": 2028,
+      "round": 1,
+      "original_team": "Lakeshore Sirens",
+      "current_team": "Lakeshore Sirens",
+      "protection": "None"
+    },
+    "2028_R2_LakeshoreSirens": {
+      "id": "2028_R2_LakeshoreSirens",
+      "year": 2028,
+      "round": 2,
+      "original_team": "Lakeshore Sirens",
+      "current_team": "Lakeshore Sirens",
+      "protection": "None"
+    },
+    "2026_R1_CopperfieldMiners": {
+      "id": "2026_R1_CopperfieldMiners",
+      "year": 2026,
+      "round": 1,
+      "original_team": "Copperfield Miners",
+      "current_team": "Copperfield Miners",
+      "protection": "None"
+    },
+    "2026_R2_CopperfieldMiners": {
+      "id": "2026_R2_CopperfieldMiners",
+      "year": 2026,
+      "round": 2,
+      "original_team": "Copperfield Miners",
+      "current_team": "Copperfield Miners",
+      "protection": "None"
+    },
+    "2027_R1_CopperfieldMiners": {
+      "id": "2027_R1_CopperfieldMiners",
+      "year": 2027,
+      "round": 1,
+      "original_team": "Copperfield Miners",
+      "current_team": "Copperfield Miners",
+      "protection": "None"
+    },
+    "2027_R2_CopperfieldMiners": {
+      "id": "2027_R2_CopperfieldMiners",
+      "year": 2027,
+      "round": 2,
+      "original_team": "Copperfield Miners",
+      "current_team": "Copperfield Miners",
+      "protection": "None"
+    },
+    "2028_R1_CopperfieldMiners": {
+      "id": "2028_R1_CopperfieldMiners",
+      "year": 2028,
+      "round": 1,
+      "original_team": "Copperfield Miners",
+      "current_team": "Copperfield Miners",
+      "protection": "None"
+    },
+    "2028_R2_CopperfieldMiners": {
+      "id": "2028_R2_CopperfieldMiners",
+      "year": 2028,
+      "round": 2,
+      "original_team": "Copperfield Miners",
+      "current_team": "Copperfield Miners",
+      "protection": "None"
+    },
+    "2026_R1_IronwoodBison": {
+      "id": "2026_R1_IronwoodBison",
+      "year": 2026,
+      "round": 1,
+      "original_team": "Ironwood Bison",
+      "current_team": "Ironwood Bison",
+      "protection": "None"
+    },
+    "2026_R2_IronwoodBison": {
+      "id": "2026_R2_IronwoodBison",
+      "year": 2026,
+      "round": 2,
+      "original_team": "Ironwood Bison",
+      "current_team": "Ironwood Bison",
+      "protection": "None"
+    },
+    "2027_R1_IronwoodBison": {
+      "id": "2027_R1_IronwoodBison",
+      "year": 2027,
+      "round": 1,
+      "original_team": "Ironwood Bison",
+      "current_team": "Ironwood Bison",
+      "protection": "None"
+    },
+    "2027_R2_IronwoodBison": {
+      "id": "2027_R2_IronwoodBison",
+      "year": 2027,
+      "round": 2,
+      "original_team": "Ironwood Bison",
+      "current_team": "Ironwood Bison",
+      "protection": "None"
+    },
+    "2028_R1_IronwoodBison": {
+      "id": "2028_R1_IronwoodBison",
+      "year": 2028,
+      "round": 1,
+      "original_team": "Ironwood Bison",
+      "current_team": "Ironwood Bison",
+      "protection": "None"
+    },
+    "2028_R2_IronwoodBison": {
+      "id": "2028_R2_IronwoodBison",
+      "year": 2028,
+      "round": 2,
+      "original_team": "Ironwood Bison",
+      "current_team": "Ironwood Bison",
+      "protection": "None"
+    },
+    "2026_R1_SaltFlatsScorpions": {
+      "id": "2026_R1_SaltFlatsScorpions",
+      "year": 2026,
+      "round": 1,
+      "original_team": "Salt Flats Scorpions",
+      "current_team": "Salt Flats Scorpions",
+      "protection": "None"
+    },
+    "2026_R2_SaltFlatsScorpions": {
+      "id": "2026_R2_SaltFlatsScorpions",
+      "year": 2026,
+      "round": 2,
+      "original_team": "Salt Flats Scorpions",
+      "current_team": "Salt Flats Scorpions",
+      "protection": "None"
+    },
+    "2027_R1_SaltFlatsScorpions": {
+      "id": "2027_R1_SaltFlatsScorpions",
+      "year": 2027,
+      "round": 1,
+      "original_team": "Salt Flats Scorpions",
+      "current_team": "Salt Flats Scorpions",
+      "protection": "None"
+    },
+    "2027_R2_SaltFlatsScorpions": {
+      "id": "2027_R2_SaltFlatsScorpions",
+      "year": 2027,
+      "round": 2,
+      "original_team": "Salt Flats Scorpions",
+      "current_team": "Salt Flats Scorpions",
+      "protection": "None"
+    },
+    "2028_R1_SaltFlatsScorpions": {
+      "id": "2028_R1_SaltFlatsScorpions",
+      "year": 2028,
+      "round": 1,
+      "original_team": "Salt Flats Scorpions",
+      "current_team": "Salt Flats Scorpions",
+      "protection": "None"
+    },
+    "2028_R2_SaltFlatsScorpions": {
+      "id": "2028_R2_SaltFlatsScorpions",
+      "year": 2028,
+      "round": 2,
+      "original_team": "Salt Flats Scorpions",
+      "current_team": "Salt Flats Scorpions",
+      "protection": "None"
+    },
+    "2026_R1_CobaltCitySharks": {
+      "id": "2026_R1_CobaltCitySharks",
+      "year": 2026,
+      "round": 1,
+      "original_team": "Cobalt City Sharks",
+      "current_team": "Cobalt City Sharks",
+      "protection": "None"
+    },
+    "2026_R2_CobaltCitySharks": {
+      "id": "2026_R2_CobaltCitySharks",
+      "year": 2026,
+      "round": 2,
+      "original_team": "Cobalt City Sharks",
+      "current_team": "Cobalt City Sharks",
+      "protection": "None"
+    },
+    "2027_R1_CobaltCitySharks": {
+      "id": "2027_R1_CobaltCitySharks",
+      "year": 2027,
+      "round": 1,
+      "original_team": "Cobalt City Sharks",
+      "current_team": "Cobalt City Sharks",
+      "protection": "None"
+    },
+    "2027_R2_CobaltCitySharks": {
+      "id": "2027_R2_CobaltCitySharks",
+      "year": 2027,
+      "round": 2,
+      "original_team": "Cobalt City Sharks",
+      "current_team": "Cobalt City Sharks",
+      "protection": "None"
+    },
+    "2028_R1_CobaltCitySharks": {
+      "id": "2028_R1_CobaltCitySharks",
+      "year": 2028,
+      "round": 1,
+      "original_team": "Cobalt City Sharks",
+      "current_team": "Cobalt City Sharks",
+      "protection": "None"
+    },
+    "2028_R2_CobaltCitySharks": {
+      "id": "2028_R2_CobaltCitySharks",
+      "year": 2028,
+      "round": 2,
+      "original_team": "Cobalt City Sharks",
+      "current_team": "Cobalt City Sharks",
+      "protection": "None"
+    },
+    "2026_R1_RedrockCanyonHawks": {
+      "id": "2026_R1_RedrockCanyonHawks",
+      "year": 2026,
+      "round": 1,
+      "original_team": "Redrock Canyon Hawks",
+      "current_team": "Redrock Canyon Hawks",
+      "protection": "None"
+    },
+    "2026_R2_RedrockCanyonHawks": {
+      "id": "2026_R2_RedrockCanyonHawks",
+      "year": 2026,
+      "round": 2,
+      "original_team": "Redrock Canyon Hawks",
+      "current_team": "Redrock Canyon Hawks",
+      "protection": "None"
+    },
+    "2027_R1_RedrockCanyonHawks": {
+      "id": "2027_R1_RedrockCanyonHawks",
+      "year": 2027,
+      "round": 1,
+      "original_team": "Redrock Canyon Hawks",
+      "current_team": "Redrock Canyon Hawks",
+      "protection": "None"
+    },
+    "2027_R2_RedrockCanyonHawks": {
+      "id": "2027_R2_RedrockCanyonHawks",
+      "year": 2027,
+      "round": 2,
+      "original_team": "Redrock Canyon Hawks",
+      "current_team": "Redrock Canyon Hawks",
+      "protection": "None"
+    },
+    "2028_R1_RedrockCanyonHawks": {
+      "id": "2028_R1_RedrockCanyonHawks",
+      "year": 2028,
+      "round": 1,
+      "original_team": "Redrock Canyon Hawks",
+      "current_team": "Redrock Canyon Hawks",
+      "protection": "None"
+    },
+    "2028_R2_RedrockCanyonHawks": {
+      "id": "2028_R2_RedrockCanyonHawks",
+      "year": 2028,
+      "round": 2,
+      "original_team": "Redrock Canyon Hawks",
+      "current_team": "Redrock Canyon Hawks",
+      "protection": "None"
+    },
+    "2026_R1_StarlightMeteors": {
+      "id": "2026_R1_StarlightMeteors",
+      "year": 2026,
+      "round": 1,
+      "original_team": "Starlight Meteors",
+      "current_team": "Starlight Meteors",
+      "protection": "None"
+    },
+    "2026_R2_StarlightMeteors": {
+      "id": "2026_R2_StarlightMeteors",
+      "year": 2026,
+      "round": 2,
+      "original_team": "Starlight Meteors",
+      "current_team": "Starlight Meteors",
+      "protection": "None"
+    },
+    "2027_R1_StarlightMeteors": {
+      "id": "2027_R1_StarlightMeteors",
+      "year": 2027,
+      "round": 1,
+      "original_team": "Starlight Meteors",
+      "current_team": "Starlight Meteors",
+      "protection": "None"
+    },
+    "2027_R2_StarlightMeteors": {
+      "id": "2027_R2_StarlightMeteors",
+      "year": 2027,
+      "round": 2,
+      "original_team": "Starlight Meteors",
+      "current_team": "Starlight Meteors",
+      "protection": "None"
+    },
+    "2028_R1_StarlightMeteors": {
+      "id": "2028_R1_StarlightMeteors",
+      "year": 2028,
+      "round": 1,
+      "original_team": "Starlight Meteors",
+      "current_team": "Starlight Meteors",
+      "protection": "None"
+    },
+    "2028_R2_StarlightMeteors": {
+      "id": "2028_R2_StarlightMeteors",
+      "year": 2028,
+      "round": 2,
+      "original_team": "Starlight Meteors",
+      "current_team": "Starlight Meteors",
+      "protection": "None"
+    },
+    "2026_R1_HighlandPeaksRams": {
+      "id": "2026_R1_HighlandPeaksRams",
+      "year": 2026,
+      "round": 1,
+      "original_team": "Highland Peaks Rams",
+      "current_team": "Highland Peaks Rams",
+      "protection": "None"
+    },
+    "2026_R2_HighlandPeaksRams": {
+      "id": "2026_R2_HighlandPeaksRams",
+      "year": 2026,
+      "round": 2,
+      "original_team": "Highland Peaks Rams",
+      "current_team": "Highland Peaks Rams",
+      "protection": "None"
+    },
+    "2027_R1_HighlandPeaksRams": {
+      "id": "2027_R1_HighlandPeaksRams",
+      "year": 2027,
+      "round": 1,
+      "original_team": "Highland Peaks Rams",
+      "current_team": "Highland Peaks Rams",
+      "protection": "None"
+    },
+    "2027_R2_HighlandPeaksRams": {
+      "id": "2027_R2_HighlandPeaksRams",
+      "year": 2027,
+      "round": 2,
+      "original_team": "Highland Peaks Rams",
+      "current_team": "Highland Peaks Rams",
+      "protection": "None"
+    },
+    "2028_R1_HighlandPeaksRams": {
+      "id": "2028_R1_HighlandPeaksRams",
+      "year": 2028,
+      "round": 1,
+      "original_team": "Highland Peaks Rams",
+      "current_team": "Highland Peaks Rams",
+      "protection": "None"
+    },
+    "2028_R2_HighlandPeaksRams": {
+      "id": "2028_R2_HighlandPeaksRams",
+      "year": 2028,
+      "round": 2,
+      "original_team": "Highland Peaks Rams",
+      "current_team": "Highland Peaks Rams",
+      "protection": "None"
+    },
+    "2026_R1_DriftwoodBayHerons": {
+      "id": "2026_R1_DriftwoodBayHerons",
+      "year": 2026,
+      "round": 1,
+      "original_team": "Driftwood Bay Herons",
+      "current_team": "Driftwood Bay Herons",
+      "protection": "None"
+    },
+    "2026_R2_DriftwoodBayHerons": {
+      "id": "2026_R2_DriftwoodBayHerons",
+      "year": 2026,
+      "round": 2,
+      "original_team": "Driftwood Bay Herons",
+      "current_team": "Driftwood Bay Herons",
+      "protection": "None"
+    },
+    "2027_R1_DriftwoodBayHerons": {
+      "id": "2027_R1_DriftwoodBayHerons",
+      "year": 2027,
+      "round": 1,
+      "original_team": "Driftwood Bay Herons",
+      "current_team": "Driftwood Bay Herons",
+      "protection": "None"
+    },
+    "2027_R2_DriftwoodBayHerons": {
+      "id": "2027_R2_DriftwoodBayHerons",
+      "year": 2027,
+      "round": 2,
+      "original_team": "Driftwood Bay Herons",
+      "current_team": "Driftwood Bay Herons",
+      "protection": "None"
+    },
+    "2028_R1_DriftwoodBayHerons": {
+      "id": "2028_R1_DriftwoodBayHerons",
+      "year": 2028,
+      "round": 1,
+      "original_team": "Driftwood Bay Herons",
+      "current_team": "Driftwood Bay Herons",
+      "protection": "None"
+    },
+    "2028_R2_DriftwoodBayHerons": {
+      "id": "2028_R2_DriftwoodBayHerons",
+      "year": 2028,
+      "round": 2,
+      "original_team": "Driftwood Bay Herons",
+      "current_team": "Driftwood Bay Herons",
+      "protection": "None"
+    },
+    "2026_R1_UnionSquareSentries": {
+      "id": "2026_R1_UnionSquareSentries",
+      "year": 2026,
+      "round": 1,
+      "original_team": "Union Square Sentries",
+      "current_team": "Union Square Sentries",
+      "protection": "None"
+    },
+    "2026_R2_UnionSquareSentries": {
+      "id": "2026_R2_UnionSquareSentries",
+      "year": 2026,
+      "round": 2,
+      "original_team": "Union Square Sentries",
+      "current_team": "Union Square Sentries",
+      "protection": "None"
+    },
+    "2027_R1_UnionSquareSentries": {
+      "id": "2027_R1_UnionSquareSentries",
+      "year": 2027,
+      "round": 1,
+      "original_team": "Union Square Sentries",
+      "current_team": "Union Square Sentries",
+      "protection": "None"
+    },
+    "2027_R2_UnionSquareSentries": {
+      "id": "2027_R2_UnionSquareSentries",
+      "year": 2027,
+      "round": 2,
+      "original_team": "Union Square Sentries",
+      "current_team": "Union Square Sentries",
+      "protection": "None"
+    },
+    "2028_R1_UnionSquareSentries": {
+      "id": "2028_R1_UnionSquareSentries",
+      "year": 2028,
+      "round": 1,
+      "original_team": "Union Square Sentries",
+      "current_team": "Union Square Sentries",
+      "protection": "None"
+    },
+    "2028_R2_UnionSquareSentries": {
+      "id": "2028_R2_UnionSquareSentries",
+      "year": 2028,
+      "round": 2,
+      "original_team": "Union Square Sentries",
+      "current_team": "Union Square Sentries",
+      "protection": "None"
+    }
+  }
+}
